@@ -1,0 +1,92 @@
+﻿========= 28/10/2019 =========
+- Terminato il dizionario
+- Ritoccati FR
+- Definito Unload History
+- Password con gli asterischi
+
+(x) Revisionare verbi attivi e dizionario dei FR 
+(x) Finire FR sull'help
+
+
+========= 30/10/2019 =========
+- Iniziato UCD su Draw.io
+- (x) Terminare UCD
+
+
+========= 17/12/2019 =========
+- Buttato vecchio UCD
+- Iniziato nuovo UCD
+- Iniziato activity diagram per "Booking Request"
+
+
+========= 18/12/2019 =========
+- Assunto che la prenotazione non va confermata dal C.O. ma che può comunque cancellarla
+- Terminato UCD su draw.io
+- Terminato Activity Diagram per "Booking Request"
+- (x) Inserire timeout per l'AD e vedere se mettere multithread
+- Iniziato UI prototype per homepage e creazione del logo BeEcological.
+- 
+- 
+- 
+- 
+- 
+========= 19/12/2019 =========
+- Activity Diagram per "Booking Request" e "Register Unload". Resta da vedere il timeout e come gestire interazione prenotazione/registrazione
+- Terminati Prototipi UI per Homepage e Center Page lato User
+
+
+========= 20/12/2019 =========
+- Terminati Prototipi UI per Homepage, Center Page lato user e Center Page lato Owner. 
+- Terminare Prototipo UI Admin.
+- Terminare sempre Activity Diagram
+
+
+========= 23/12/2019 =========
+- Terminati tutti gli UI Prototypes
+- Iniziata trascrizione AD su draw.io
+- Terminato AD booking request
+- Iniziato AD register unload - pensare al timeout xD
+- (x) Spaesati completamente su Class Diagram [porco dio deangelisssssssssss sei come falessi]
+
+
+========= 07/01/2020 =========
+- Tentativo invenzione Class Diagram
+- Porco dio fa freddo
+
+
+========= 08/01/2020 =========
+- Inizio scrittura codice (?)
+- Iniziato con JavaFX
+
+
+========= 16/01/2020 =========
+- Iniziate e quasi terminate UI Home e Login con SceneBuilder.
+- Vedere come lanciare una nuova scena premendo un pulsante
+- Perfezionare barra di ricerca Home
+- Perfezionare Time perchèuna volta scelta l'ora deve restare sulla barra
+
+
+========= 18/01/2019 =========
+- Iniziata persistenza su DB - ok passaggio dati da login su DB
+- Iniziata Home CenterOwner
+- Inserire tabella orari center owner
+- Inserire immagine del center
+- Come passare variabili all'fxml?
+
+========= ??/??/2019 =========
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+- 
+========= ??/??/2019 =========
+- 
+- 
+- 
+- 
+- 
+- 

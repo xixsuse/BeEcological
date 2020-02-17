@@ -1,0 +1,4 @@
+VERDE   --> #589442	[pressed: #486E3A]
+BLU     --> #0B526D	[pressed: #0A384A]
+ARANCIO --> #FF8C00
+GRIGIO  --> #4D4B4B
