@@ -47,6 +47,24 @@ public class ShopController implements Initializable {
 		alert.setHeaderText(null);
 		alert.setContentText("Buying timeout expired, retry!");		
 		alert.show();
+		try {
+			Stage window = (Stage) homeButton.getScene().getWindow();
+		    URL url = new File("src/FXView/Homepage.fxml").toURI().toURL();
+		    FXMLLoader loader = new FXMLLoader(url);
+			Parent tableViewParent = loader.load();
+			Scene tableViewScene = new Scene(tableViewParent);
+			window.setScene(tableViewScene);
+			window.setTitle("BeEcological - Home");
+			HomepageController controller = (HomepageController) loader.getController();
+			controller.loginGroup.setVisible(false);
+			controller.userGroup.setVisible(true);
+			controller.userButton.setText(UserBean.instance.getUsername());
+			controller.circleUserGroup.setVisible(true);
+			controller.circleOwnerGroup.setVisible(false);
+			window.show();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 	}
 
 	 public class TimeoutThread extends Thread { //thread which control if the booking request is made within 2 minutes

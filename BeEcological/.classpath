@@ -5,5 +5,7 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="C:/Users/jacop/Desktop/Nuova cartella - Copia/BeEcological/lib/commons-io-2.6.jar"/>
 	<classpathentry kind="lib" path="C:/Users/jacop/Desktop/Nuova cartella - Copia/BeEcological/lib/mysql-connector-java-8.0.19.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Danilo/Desktop/prog-ispw/BeEcological/lib/commons-io-2.6.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Danilo/Desktop/prog-ispw/BeEcological/lib/mysql-connector-java-8.0.19.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
