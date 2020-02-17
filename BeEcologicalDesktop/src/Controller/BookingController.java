@@ -13,9 +13,9 @@ public class BookingController {
 	public BookingController() {}
 	
 	public int VerifyBooking(BookingBean bookingBean) {
-		Booking booking = new Booking(bookingBean.getUser(), bookingBean.getCenter(), bookingBean.getDate(), 
+		Booking booking1 = new Booking(bookingBean.getUser(), bookingBean.getCenter(), bookingBean.getDate(), 
 				bookingBean.getTime(), bookingBean.getStatus());
-		int result = BookingDAO.existingBooking(booking);
+		int result = BookingDAO.existingBooking(booking1);
 		return result;
 	}
 	
