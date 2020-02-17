@@ -14,8 +14,8 @@
     <path id="BeEcological.classpath">
         <pathelement location="bin"/>
         <path refid="JavaFX SDK.libraryclasspath"/>
-        <pathelement location="../../../Nuova cartella - Copia/BeEcological/lib/commons-io-2.6.jar"/>
-        <pathelement location="../../../Nuova cartella - Copia/BeEcological/lib/mysql-connector-java-8.0.19.jar"/>
+        <pathelement location="lib/commons-io-2.6.jar"/>
+        <pathelement location="lib/mysql-connector-java-8.0.19.jar"/>
     </path>
     <target name="init">
         <mkdir dir="bin"/>
