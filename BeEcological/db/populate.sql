@@ -1,2 +1,0 @@
-insert into beecological.centerinfo value("Cavariccio","via cavariccio");
-insert into beecological.centerowner value("camel","testtest","danilo","dellorco","camel@gmail.com","3311111111",1,"Cavariccio");
