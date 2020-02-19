@@ -10,5 +10,5 @@ install: true
 
 script: 
   - mvn install
-  - sonar-scanner
-  
+  - ant build
+  - sonar-scanner 
