@@ -3,8 +3,8 @@
 <html lang="en">
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="logic.Bean.CenterOwnerBean,logic.Bean.CenterBean" %>
-<jsp:useBean id="owner" class="Bean.CenterOwnerBean" scope="session" />
-<jsp:useBean id="center" class="Bean.CenterBean" scope="session" />
+<jsp:useBean id="owner" class="logic.Bean.CenterOwnerBean" scope="session" />
+<jsp:useBean id="center" class="logic.Bean.CenterBean" scope="session" />
 <%owner = (CenterOwnerBean)session.getAttribute("loggedOwner");
 center = (CenterBean)session.getAttribute("centerInfo"); %>
 <head>

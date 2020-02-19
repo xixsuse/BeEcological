@@ -8,7 +8,8 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="C:/Users/jacop/Desktop/Nuova cartella - Copia/BeEcologicalWeb/lib/commons-io-2.6.jar"/>
-	<classpathentry kind="lib" path="C:/Users/jacop/Desktop/Nuova cartella - Copia/BeEcologicalWeb/lib/mysql-connector-java-8.0.19.jar"/>
+	<classpathentry kind="lib" path="C:/Users/jacop/Desktop/BeEcological/trunk/WebContent/WEB-INF/lib/commons-io-2.6.jar"/>
+	<classpathentry kind="lib" path="C:/Users/jacop/Desktop/BeEcological/trunk/WebContent/WEB-INF/lib/jstl-1.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/jacop/Desktop/BeEcological/trunk/WebContent/WEB-INF/lib/mysql-connector-java-8.0.19.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
