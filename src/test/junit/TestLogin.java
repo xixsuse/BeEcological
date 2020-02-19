@@ -21,8 +21,9 @@ class TestLogin {
 		userBean.setUsername(username);
 		userBean.setPassword(pass);
 		
+		userController = new UserController();
 		result = userController.Login(userBean);
 		
-		assertEquals(result, true);
+		assertEquals(true, result);
 	}		
 }
