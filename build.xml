@@ -97,6 +97,7 @@
     </target>
     <target name="mainApp">
         <java classname="logic.mainApp" failonerror="true" fork="yes">
+		  <jvmarg line="--module-path &quot;C:\Program Files\Java\javafx-sdk-11\lib&quot; --add-modules javafx.controls,javafx.fxml"/>
             <classpath refid="BeEcological.classpath"/>
         </java>
     </target>

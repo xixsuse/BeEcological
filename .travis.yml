@@ -6,9 +6,8 @@ addons:
     organization: "ispw-beecological"
     token:
       secure: "516ddefea1fdfae3d6e3c47e333eb1819e012dde"
-install: true
+
 script: 
-  - ant build
   - mvn install
   - sonar-scanner
   
