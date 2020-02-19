@@ -14,7 +14,7 @@ class TestLogin {
 	@Test
 	public void testLogin() {
 		String username = "stormjack";
-		String pass = "22222222";
+		String pass = "11111111";
 		boolean result;
 		
 		UserBean userBean = new UserBean();
