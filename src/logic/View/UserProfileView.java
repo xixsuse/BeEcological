@@ -38,7 +38,6 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 
-@SuppressWarnings("restriction")
 public class UserProfileView implements Initializable {
 	
 	private ArrayList<WasteUnloadedBean> data = new ArrayList<>();

@@ -44,7 +44,6 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 
-@SuppressWarnings("restriction")
 public class SearchResultView implements Initializable {
 	
 	ArrayList<CenterBean> data = new ArrayList<>();
