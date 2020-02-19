@@ -84,7 +84,7 @@ public class UserDAO {
         try {
             //caricamento driver mysql
         	Class.forName(DRIVER_CLASS_NAME);
-            
+        	
         	//apertura connessione
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
             
