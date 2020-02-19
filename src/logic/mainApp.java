@@ -1,4 +1,4 @@
-package logic.Controller;
+package logic;
 import java.io.File;
 import java.net.URL;
 import java.sql.SQLException;

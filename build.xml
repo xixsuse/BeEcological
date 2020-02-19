@@ -5,6 +5,7 @@
               directory with the processing instruction <?eclipse.ant.import?>
               as the first entry and export the buildfile again. --><project basedir="." default="build" name="BeEcological">
     <property environment="env"/>
+    <property name="ECLIPSE_HOME" value="../../../eclipse/jee-2019-09/eclipse/"/>
     <property name="debuglevel" value="source,lines,vars"/>
     <property name="target" value="1.8"/>
     <property name="source" value="1.8"/>
@@ -14,6 +15,42 @@
         <pathelement location="WebContent/WEB-INF/lib/mysql-connector-java-8.0.19.jar"/>
     </path>
     <path id="EAR Libraries.libraryclasspath"/>
+    <path id="Apache Tomcat v9.0 [Apache Tomcat v9.0].libraryclasspath">
+        <pathelement location="../../../../../Program Files/Apache Software Foundation/Tomcat 9.0/lib/annotations-api.jar"/>
+        <pathelement location="../../../../../Program Files/Apache Software Foundation/Tomcat 9.0/lib/catalina-ant.jar"/>
+        <pathelement location="../../../../../Program Files/Apache Software Foundation/Tomcat 9.0/lib/catalina-ha.jar"/>
+        <pathelement location="../../../../../Program Files/Apache Software Foundation/Tomcat 9.0/lib/catalina-ssi.jar"/>
+        <pathelement location="../../../../../Program Files/Apache Software Foundation/Tomcat 9.0/lib/catalina-storeconfig.jar"/>
+        <pathelement location="../../../../../Program Files/Apache Software Foundation/Tomcat 9.0/lib/catalina-tribes.jar"/>
+        <pathelement location="../../../../../Program Files/Apache Software Foundation/Tomcat 9.0/lib/catalina.jar"/>
+        <pathelement location="../../../../../Program Files/Apache Software Foundation/Tomcat 9.0/lib/commons-io-2.6.jar"/>
+        <pathelement location="../../../../../Program Files/Apache Software Foundation/Tomcat 9.0/lib/ecj-4.13.jar"/>
+        <pathelement location="../../../../../Program Files/Apache Software Foundation/Tomcat 9.0/lib/el-api.jar"/>
+        <pathelement location="../../../../../Program Files/Apache Software Foundation/Tomcat 9.0/lib/jasper-el.jar"/>
+        <pathelement location="../../../../../Program Files/Apache Software Foundation/Tomcat 9.0/lib/jasper.jar"/>
+        <pathelement location="../../../../../Program Files/Apache Software Foundation/Tomcat 9.0/lib/jaspic-api.jar"/>
+        <pathelement location="../../../../../Program Files/Apache Software Foundation/Tomcat 9.0/lib/jsp-api.jar"/>
+        <pathelement location="../../../../../Program Files/Apache Software Foundation/Tomcat 9.0/lib/mysql-connector-java-8.0.19.jar"/>
+        <pathelement location="../../../../../Program Files/Apache Software Foundation/Tomcat 9.0/lib/servlet-api.jar"/>
+        <pathelement location="../../../../../Program Files/Apache Software Foundation/Tomcat 9.0/lib/tomcat-api.jar"/>
+        <pathelement location="../../../../../Program Files/Apache Software Foundation/Tomcat 9.0/lib/tomcat-coyote.jar"/>
+        <pathelement location="../../../../../Program Files/Apache Software Foundation/Tomcat 9.0/lib/tomcat-dbcp.jar"/>
+        <pathelement location="../../../../../Program Files/Apache Software Foundation/Tomcat 9.0/lib/tomcat-i18n-cs.jar"/>
+        <pathelement location="../../../../../Program Files/Apache Software Foundation/Tomcat 9.0/lib/tomcat-i18n-de.jar"/>
+        <pathelement location="../../../../../Program Files/Apache Software Foundation/Tomcat 9.0/lib/tomcat-i18n-es.jar"/>
+        <pathelement location="../../../../../Program Files/Apache Software Foundation/Tomcat 9.0/lib/tomcat-i18n-fr.jar"/>
+        <pathelement location="../../../../../Program Files/Apache Software Foundation/Tomcat 9.0/lib/tomcat-i18n-ja.jar"/>
+        <pathelement location="../../../../../Program Files/Apache Software Foundation/Tomcat 9.0/lib/tomcat-i18n-ko.jar"/>
+        <pathelement location="../../../../../Program Files/Apache Software Foundation/Tomcat 9.0/lib/tomcat-i18n-pt-BR.jar"/>
+        <pathelement location="../../../../../Program Files/Apache Software Foundation/Tomcat 9.0/lib/tomcat-i18n-ru.jar"/>
+        <pathelement location="../../../../../Program Files/Apache Software Foundation/Tomcat 9.0/lib/tomcat-i18n-zh-CN.jar"/>
+        <pathelement location="../../../../../Program Files/Apache Software Foundation/Tomcat 9.0/lib/tomcat-jdbc.jar"/>
+        <pathelement location="../../../../../Program Files/Apache Software Foundation/Tomcat 9.0/lib/tomcat-jni.jar"/>
+        <pathelement location="../../../../../Program Files/Apache Software Foundation/Tomcat 9.0/lib/tomcat-util-scan.jar"/>
+        <pathelement location="../../../../../Program Files/Apache Software Foundation/Tomcat 9.0/lib/tomcat-util.jar"/>
+        <pathelement location="../../../../../Program Files/Apache Software Foundation/Tomcat 9.0/lib/tomcat-websocket.jar"/>
+        <pathelement location="../../../../../Program Files/Apache Software Foundation/Tomcat 9.0/lib/websocket-api.jar"/>
+    </path>
     <path id="BeEcological.classpath">
         <pathelement location="build/classes"/>
         <path refid="Web App Libraries.libraryclasspath"/>
@@ -21,6 +58,7 @@
         <pathelement location="WebContent/WEB-INF/lib/commons-io-2.6.jar"/>
         <pathelement location="WebContent/WEB-INF/lib/jstl-1.2.jar"/>
         <pathelement location="WebContent/WEB-INF/lib/mysql-connector-java-8.0.19.jar"/>
+        <path refid="Apache Tomcat v9.0 [Apache Tomcat v9.0].libraryclasspath"/>
     </path>
     <target name="init">
         <mkdir dir="build/classes"/>
@@ -44,18 +82,21 @@
         </javac>
     </target>
     <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
-    <target name="mainApp (2)">
-        <java classname="logic.Controller.mainApp" failonerror="true" fork="yes">
-            <classpath refid="BeEcological.classpath"/>
-        </java>
+    <target description="copy Eclipse compiler jars to ant lib directory" name="init-eclipse-compiler">
+        <copy todir="${ant.library.dir}">
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </copy>
+        <unzip dest="${ant.library.dir}">
+            <patternset includes="jdtCompilerAdapter.jar"/>
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </unzip>
+    </target>
+    <target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
+        <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
+        <antcall target="build"/>
     </target>
     <target name="mainApp">
-        <java classname="Controller.mainApp" failonerror="true" fork="yes">
-            <classpath refid="BeEcological.classpath"/>
-        </java>
-    </target>
-    <target name="TimezoneDump">
-        <java classname="com.mysql.cj.jdbc.admin.TimezoneDump" failonerror="true" fork="yes">
+        <java classname="logic.mainApp" failonerror="true" fork="yes">
             <classpath refid="BeEcological.classpath"/>
         </java>
     </target>
