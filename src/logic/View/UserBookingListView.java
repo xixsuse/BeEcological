@@ -38,7 +38,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 
-@SuppressWarnings({ "unused" })
+@SuppressWarnings({ "unused", "restriction" })
 public class UserBookingListView implements Initializable {
 	
 	private ArrayList<BookingBean> data = new ArrayList<>();

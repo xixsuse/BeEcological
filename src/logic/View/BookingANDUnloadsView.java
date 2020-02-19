@@ -40,6 +40,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.Tooltip;
 import javafx.stage.Stage;
 
+@SuppressWarnings("restriction")
 public class BookingANDUnloadsView 
 implements Initializable {
 	

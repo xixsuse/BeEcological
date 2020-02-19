@@ -48,6 +48,7 @@ import javafx.scene.control.Tooltip;
 import javafx.stage.Stage;
 
 
+@SuppressWarnings("restriction")
 public class ManageBookingView implements Initializable {
 	
 	ArrayList<BookingBean> data = new ArrayList<>();

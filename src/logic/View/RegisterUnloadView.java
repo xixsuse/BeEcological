@@ -50,6 +50,7 @@ import javafx.scene.control.Tooltip;
 import javafx.stage.Stage;
 
 
+@SuppressWarnings("restriction")
 public class RegisterUnloadView implements Initializable {
 	
 	private ArrayList<BookingBean> data = new ArrayList<>();

@@ -2,7 +2,7 @@
 
 <html lang="en">
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page import="Bean.CenterOwnerBean,Bean.CenterBean" %>
+<%@ page import="logic.Bean.CenterOwnerBean,logic.Bean.CenterBean" %>
 <jsp:useBean id="owner" class="Bean.CenterOwnerBean" scope="session" />
 <jsp:useBean id="center" class="Bean.CenterBean" scope="session" />
 <%owner = (CenterOwnerBean)session.getAttribute("loggedOwner");

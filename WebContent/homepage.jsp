@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <html lang ="en">
-<%@ page import="Bean.UserBean" %>
+<%@ page import="logic.Bean.UserBean" %>
 <%UserBean user = new UserBean();
 if(session.getAttribute("loggedUser")!=null){
 	user=(UserBean)session.getAttribute("loggedUser"); %>

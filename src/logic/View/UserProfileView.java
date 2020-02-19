@@ -3,15 +3,16 @@ package logic.View;
 import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
 import com.sun.javafx.scene.control.skin.TableHeaderRow;
 
-import logic.Bean.CenterBean;
-import logic.Bean.CenterOwnerBean;
 import logic.Bean.UserBean;
-import logic.Controller.CenterController;
+import logic.Bean.WasteUnloadedBean;
+import logic.Controller.UserController;
+import logic.Controller.WasteUnloadedController;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -26,71 +27,58 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
-import javafx.scene.control.Tooltip;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseButton;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 
-public class SearchResultView implements Initializable {
+@SuppressWarnings("restriction")
+public class UserProfileView implements Initializable {
 	
-	ArrayList<CenterBean> data = new ArrayList<>();
-	ObservableList<CenterBean> center_list = FXCollections.observableArrayList();
-	ObservableList<String> list = FXCollections.observableArrayList();
+	private ArrayList<WasteUnloadedBean> data = new ArrayList<>();
+	private ObservableList<WasteUnloadedBean> unload_list = FXCollections.observableArrayList();
 	
-	@FXML private ComboBox<String> hourBooking;
 	@FXML private MenuItem userProfileItem, logoutItem;
 	@FXML public MenuButton userButton;
-	@FXML private Button homeButton, loginButton, searchButton, shopButton;
-	@FXML public Group loginGroup, userGroup;
-	@FXML private TextField searchBar;
-	@FXML public Text textSearched;
+	@FXML private Group userGroup;
+	@FXML private Button homeButton, searchButton, seeBookingButton, editDataButton, changeCredButton, deleteAccountButton;
+	@FXML private Text userNick, ecoPoints, name, surname, email, phoneNumber;
 	
-    @FXML private TableView<CenterBean> tableView;
-    @FXML private TableColumn<CenterBean, String> col_name, col_city, col_cap, col_address, col_phone;
+	@FXML private TableView<WasteUnloadedBean> unloadTable;
+	@FXML private TableColumn<WasteUnloadedBean, String> col_center, col_date, col_time, col_waste, col_wasteQuantity, col_ecoPoints;
 	
-    private CenterBean center;
-    private CenterOwnerBean owner;
-    private CenterController control;
-    
+	private UserController control;
+	private WasteUnloadedController control1;
+	
 	public void returnHomepage(ActionEvent event) {
 		try {
-		    Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+			Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
 		    URL url = new File("src/fxml/Homepage.fxml").toURI().toURL();
 		    FXMLLoader loader = new FXMLLoader(url);
 			Parent tableViewParent = loader.load();
 			Scene tableViewScene = new Scene(tableViewParent);
 			window.setScene(tableViewScene);
-			window.setTitle("Homepage");
+			window.setTitle("BeEcological - Home");
 			HomepageView controller = (HomepageView) loader.getController();
-			if (UserBean.instance != null) {
-				controller.loginGroup.setVisible(false);
-				controller.userGroup.setVisible(true);
-				controller.userButton.setText(UserBean.getUserInstance("").getUsername());
-				controller.circleUserGroup.setVisible(true);
-				controller.circleOwnerGroup.setVisible(false);
-				controller.welcomebackText.setText("Welcome back, "+UserBean.getUserInstance("").getUsername());
-			}
+			controller.loginGroup.setVisible(false);
+			controller.userGroup.setVisible(true);
+			controller.userButton.setText(UserBean.instance.getUsername());
+			controller.circleUserGroup.setVisible(true);
+			controller.circleOwnerGroup.setVisible(false);
+			controller.welcomebackText.setText("Welcome back, "+UserBean.instance.getUsername());
 			window.show();
 		}catch(Exception e){
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void doSearch(ActionEvent event) {
-		tool.string = searchBar.getText();
 		try {
 			Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
 		    URL url = new File("src/fxml/SearchResult.fxml").toURI().toURL();
@@ -99,32 +87,25 @@ public class SearchResultView implements Initializable {
 			Scene tableViewScene = new Scene(tableViewParent);
 			window.setScene(tableViewScene);
 			window.setTitle("BeEcological - Search Result");
-			
 			SearchResultView controller = (SearchResultView) loader.getController();
-			if(UserBean.instance != null) {
-				controller.loginGroup.setVisible(false);
-				controller.userGroup.setVisible(true);
-				controller.userButton.setText(UserBean.getUserInstance("").getUsername());
-			}
-			else {
-				controller.userGroup.setVisible(false);
-				controller.loginGroup.setVisible(true);
-			}
-			controller.textSearched.setText(tool.string); //setta il testo del risultato come quello cercato
+			controller.loginGroup.setVisible(false);
+			controller.userGroup.setVisible(true);
+			controller.userButton.setText(UserBean.instance.getUsername());
 			window.show();
 		}catch(Exception e){
 			e.printStackTrace();
 		}
 	}
-
-	public void toUserLogin(ActionEvent event) {
+	
+	public void gotoUserBookingList(ActionEvent event) {
 		try {
-			URL url = new File("src/fxml/LoginUser.fxml").toURI().toURL();
-			Parent tableViewParent = FXMLLoader.load(url);
-			Scene tableViewScene = new Scene(tableViewParent);
 			Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+		    URL url = new File("src/fxml/UserBookingList.fxml").toURI().toURL();
+		    FXMLLoader loader = new FXMLLoader(url);
+			Parent tableViewParent = loader.load();
+			Scene tableViewScene = new Scene(tableViewParent);
 			window.setScene(tableViewScene);
-			window.setTitle("Login");
+			window.setTitle("BeEcological - Booking List");
 			window.show();
 		}catch(Exception e){
 			e.printStackTrace();
@@ -147,46 +128,53 @@ public class SearchResultView implements Initializable {
 		}
 	}
 	
-	public void openCenterPage(MouseEvent event) {
-		if (event.getButton().equals(MouseButton.PRIMARY)) {
-	        int index = tableView.getSelectionModel().getSelectedIndex();
-	        center = new CenterBean();
-	        control = new CenterController();
-	        center = tableView.getItems().get(index);
-	        owner = control.OwnerOfTheSelectedCenter(center);
-		}
-		System.out.println("Nome cliccato: "+center.getName());
-		tool.centerName = center.getName();
-		try {
-			Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-		    URL url = new File("src/fxml/CenterPage.fxml").toURI().toURL();
-		    FXMLLoader loader = new FXMLLoader(url);
-			Parent tableViewParent = loader.load();
-			Scene tableViewScene = new Scene(tableViewParent);
-			window.setScene(tableViewScene);
-			window.setTitle("BeEcological - Center Page");
-			
-			CenterPageView controller = (CenterPageView) loader.getController();
-			if(UserBean.instance != null) {
-				controller.loginGroup.setVisible(false);
-				controller.userGroup.setVisible(true);
-				controller.userButton.setText(UserBean.instance.getUsername());
-			}
-			else {
-				controller.userGroup.setVisible(false);
-				controller.loginGroup.setVisible(true);
-			}
-			controller.centerSearched.setText(center.getName());
-			controller.infoSearched.setText(center.getAddress()+"\n"+center.getCity()+" "+center.getCAP());
-			controller.centerPhoneSearched.setText(center.getCenterPhone());
-			controller.emailSearched.setText(owner.getEmailAddress());
-			controller.ownerPhoneSearched.setText(owner.getPhoneNumber());
-			window.show();
-		}catch(Exception e){
-			e.printStackTrace();
-		}
+	public void editData(ActionEvent event) {
+		Alert alert = new Alert(AlertType.INFORMATION);		
+		alert.setTitle("Edit Personal Data");
+		alert.setHeaderText(null);
+		alert.setContentText("Functionality not implemented.");		
+		alert.showAndWait();
+		return;
 	}
 	
+	public void changeCred(ActionEvent event) {
+		Alert alert = new Alert(AlertType.INFORMATION);		
+		alert.setTitle("Change Login Credentials");
+		alert.setHeaderText(null);
+		alert.setContentText("Functionality not implemented.");		
+		alert.showAndWait();
+		return;
+	}
+	
+	
+	public void deleteAccount(ActionEvent event) {
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+		alert.setTitle("Delete Account");
+		alert.setHeaderText(null);
+		alert.setContentText("Are you sure you want to delete your account?");
+		Optional<ButtonType> result = alert.showAndWait();
+
+		if (result.get() == ButtonType.OK){
+			try {
+				Stage window = (Stage) userButton.getScene().getWindow();
+			    URL url = new File("src/fxml/Homepage.fxml").toURI().toURL();
+			    FXMLLoader loader = new FXMLLoader(url);
+				Parent tableViewParent = loader.load();
+				Scene tableViewScene = new Scene(tableViewParent);
+				window.setScene(tableViewScene);
+				window.setTitle("Homepage");
+				HomepageView controller = (HomepageView) loader.getController();
+				controller.userGroup.setVisible(false);
+				control = new UserController();
+				control.deleteAccount(UserBean.instance);
+				UserBean.instance = null;
+				window.show();
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
+	}
+		
 	public void gotoUserProfile(ActionEvent event) {
 		try {
 			//ricavo lo stage dal menuButton, poichè il menuItem non è una sottoclasse di Node
@@ -196,12 +184,14 @@ public class SearchResultView implements Initializable {
 			Parent tableViewParent = loader.load();
 			Scene tableViewScene = new Scene(tableViewParent);
 			window.setScene(tableViewScene);
+			window.setScene(tableViewScene);
 			window.setTitle("BeEcological - Profile");
-			window.show();
+			System.out.println(UserBean.instance.getUsername());
+			window.show();			
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-	}
+	}	
 	
 	public void doLogout(ActionEvent event) {
 		Alert alert = new Alert(AlertType.CONFIRMATION);
@@ -219,6 +209,8 @@ public class SearchResultView implements Initializable {
 				Scene tableViewScene = new Scene(tableViewParent);
 				window.setScene(tableViewScene);
 				window.setTitle("Homepage");
+				HomepageView controller = (HomepageView) loader.getController();
+				controller.userGroup.setVisible(false);
 				UserBean.instance = null;
 				window.show();
 			}catch(Exception e){
@@ -229,38 +221,45 @@ public class SearchResultView implements Initializable {
 		    //do nothing
 		}
 	}
-
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		homeButton.setTooltip(new Tooltip("Return to BeEcological Homepage"));
-		searchBar.setFont(Font.font("Calibri Light", FontWeight.NORMAL, 15));
+		userGroup.setVisible(true);
+		control = new UserController();
+		List<String> userInfo = control.UserInformation(UserBean.instance);
+		userButton.setText(UserBean.instance.getUsername());
+		userNick.setText(UserBean.instance.getUsername());
+		name.setText(userInfo.get(0));
+		surname.setText(userInfo.get(1));
+		email.setText(userInfo.get(2));
+		phoneNumber.setText(userInfo.get(3));
+		ecoPoints.setText(userInfo.get(4));
 		
-		center = new CenterBean();
-		center.setName(tool.string);
-		center_list.removeAll(center_list);
-	    try{      
-	    	control = new CenterController();
-	        data = control.CenterList(center);
-	        center_list.addAll(data);
+		unload_list.removeAll(unload_list);
+	    try {
+	        control1 = new WasteUnloadedController();
+	    	data = control1.ListUnloadByUser(UserBean.instance);
+	        unload_list.addAll(data);
 	    }
 	    catch(Exception e){
 	          e.printStackTrace();
 	          System.out.println("Error on Building Data");            
 	    }
 	    //riempio le colonne tramite il corrispondente nome dell'attributo dato nella definizione della classe
-		col_name.setCellValueFactory(new PropertyValueFactory<>("name"));
-		col_city.setCellValueFactory(new PropertyValueFactory<>("city"));
-		col_cap.setCellValueFactory(new PropertyValueFactory<>("CAP"));
-		col_address.setCellValueFactory(new PropertyValueFactory<>("address"));
-		col_phone.setCellValueFactory(new PropertyValueFactory<>("centerPhone"));
-		tableView.setItems(center_list);
+		col_center.setCellValueFactory(new PropertyValueFactory<>("center"));
+	    col_date.setCellValueFactory(new PropertyValueFactory<>("date"));
+		col_time.setCellValueFactory(new PropertyValueFactory<>("time"));
+		col_waste.setCellValueFactory(new PropertyValueFactory<>("waste"));
+		col_wasteQuantity.setCellValueFactory(new PropertyValueFactory<>("wasteQuantity"));
+		col_ecoPoints.setCellValueFactory(new PropertyValueFactory<>("ecoPoints"));
+		unloadTable.setItems(unload_list);
 		
-		tableView.widthProperty().addListener(new ChangeListener<Number>()
+		unloadTable.widthProperty().addListener(new ChangeListener<Number>()
 		{
 			@Override
 		    public void changed(ObservableValue<? extends Number> source, Number oldWidth, Number newWidth)
 		    {
-				TableHeaderRow header = (TableHeaderRow) tableView.lookup("TableHeaderRow");
+				TableHeaderRow header = (TableHeaderRow) unloadTable.lookup("TableHeaderRow");
 		        header.reorderingProperty().addListener(new ChangeListener<Boolean>() {
 		            @Override
 		            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
@@ -270,4 +269,5 @@ public class SearchResultView implements Initializable {
 		    }
 		});
 	}
+	
 }
