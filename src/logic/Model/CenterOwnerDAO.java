@@ -16,6 +16,9 @@ public class CenterOwnerDAO {
     private static String DB_URL = "jdbc:mysql://127.0.0.1:3306/beecological?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
     private static String DRIVER_CLASS_NAME = "com.mysql.cj.jdbc.Driver";
    
+    private CenterOwnerDAO(String userConn) {
+    	CenterOwnerDAO.USER = userConn;
+    }
     
     public static boolean checkUsername(String username) {
     	Statement stmt = null;
@@ -139,7 +142,7 @@ public class CenterOwnerDAO {
             //creazione ed esecuzione della query
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_READ_ONLY);
-        	String deleteStatement = String.format("DELETE FROM beecological.owner WHERE beecological.owner.username = '" +username+ "';");
+        	String deleteStatement = "DELETE FROM beecological.owner WHERE beecological.owner.username = '"+username+"';";
         	stmt.executeUpdate(deleteStatement);
             
             stmt.close();

@@ -28,9 +28,8 @@ public class WasteUnloadedController {
 		return WasteUnloadedDAO.wasteForAnUnload(waste);
 	}
 	
-	public ArrayList<WasteUnloadedBean> listUnloadByCenter(WasteUnloadedBean wasteBean) {
+	public ArrayList<WasteUnloadedBean> listUnloadBean(ArrayList<WasteUnloaded> listOfUnload) {
 		ArrayList<WasteUnloadedBean> listOfUnloadBean = new ArrayList<>();
-		ArrayList<WasteUnloaded> listOfUnload = WasteUnloadedDAO.listOfUnloadRegisteredByCenter(wasteBean.getWbCenter());
 		for(WasteUnloaded waste : listOfUnload) {
 			WasteUnloadedBean wasteB = new WasteUnloadedBean();
 			wasteB.setWbUser(waste.getWuUser());
@@ -45,20 +44,13 @@ public class WasteUnloadedController {
 		return listOfUnloadBean;
 	}
 	
+	public ArrayList<WasteUnloadedBean> listUnloadByCenter(WasteUnloadedBean wasteBean) {
+		ArrayList<WasteUnloaded> listOfUnload = WasteUnloadedDAO.listOfUnloadRegisteredByCenter(wasteBean.getWbCenter());
+		return listUnloadBean(listOfUnload);
+	}
+	
 	public ArrayList<WasteUnloadedBean> listUnloadByUser(UserBean userBean) {
-		ArrayList<WasteUnloadedBean> listOfUnloadBean = new ArrayList<>();
 		ArrayList<WasteUnloaded> listOfUnload = WasteUnloadedDAO.listOfUnloadRegisteredByUser(userBean.getUsbUsername());
-		for(WasteUnloaded waste : listOfUnload) {
-			WasteUnloadedBean wasteB = new WasteUnloadedBean();
-			wasteB.setWbUser(waste.getWuUser());
-			wasteB.setWbCenter(waste.getWuCenter());
-			wasteB.setWbDate(waste.getWuDate());
-			wasteB.setWbTime(waste.getWuTime());
-			wasteB.setWbWaste(waste.getWuWaste());
-			wasteB.setWbWasteQuantity(waste.getWuWasteQuantity());
-			wasteB.setWbEcoPoints(waste.getWuEcoPoints());
-			listOfUnloadBean.add(wasteB);
-		}
-		return listOfUnloadBean;
+		return listUnloadBean(listOfUnload);
 	}
 }

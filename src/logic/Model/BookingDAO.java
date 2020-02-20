@@ -14,6 +14,9 @@ public class BookingDAO {
     private static String DB_URL = "jdbc:mysql://127.0.0.1:3306/beecological?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
     private static String DRIVER_CLASS_NAME = "com.mysql.cj.jdbc.Driver";
    
+    private BookingDAO(String userConn) {
+    	BookingDAO.USER = userConn;
+    }
     
     public static void makeBooking(Booking booking) {
     	Statement stmt = null;

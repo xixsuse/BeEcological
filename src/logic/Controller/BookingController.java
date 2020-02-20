@@ -33,9 +33,8 @@ public class BookingController {
 		BookingDAO.updateBooking(booking);
 	}
 	
-	public ArrayList<BookingBean> bookingListByCenter(BookingBean bookingBean) {
+	public ArrayList<BookingBean> listBookingBean(ArrayList<Booking> listOfBooking) {
 		ArrayList<BookingBean> listOfBookingBean = new ArrayList<>();
-		ArrayList<Booking> listOfBooking = BookingDAO.listOfBookingByCenter(bookingBean.getBbCenter(), bookingBean.getBbStatus());
 		for(Booking book : listOfBooking) {
 			BookingBean bookB = new BookingBean();
 			bookB.setBbId(book.getbId());
@@ -49,19 +48,13 @@ public class BookingController {
 		return listOfBookingBean;
 	}
 	
+	public ArrayList<BookingBean> bookingListByCenter(BookingBean bookingBean) {
+		ArrayList<Booking> listOfBooking = BookingDAO.listOfBookingByCenter(bookingBean.getBbCenter(), bookingBean.getBbStatus());
+		return listBookingBean(listOfBooking);
+	}
+	
 	public ArrayList<BookingBean> bookingListByUser(BookingBean bookingBean) {
-		ArrayList<BookingBean> listOfBookingBean = new ArrayList<>();
 		ArrayList<Booking> listOfBooking = BookingDAO.listOfBookingByUser(bookingBean.getBbUser(), bookingBean.getBbStatus());
-		for(Booking book : listOfBooking) {
-			BookingBean bookB = new BookingBean();
-			bookB.setBbId(book.getbId());
-			bookB.setBbUser(book.getbUser());
-			bookB.setBbCenter(book.getbCenter());
-			bookB.setBbDate(book.getbDate());
-			bookB.setBbTime(book.getbTime());
-			bookB.setBbStatus(book.getbStatus());
-			listOfBookingBean.add(bookB);
-		}
-		return listOfBookingBean;
+		return listBookingBean(listOfBooking);
 	}
 }
