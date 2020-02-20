@@ -33,7 +33,7 @@ CREATE TABLE beecological.owner(
 CREATE TABLE beecological.bookingRequest(
 	ID INT AUTO_INCREMENT PRIMARY KEY, 
 	user VARCHAR(25),
-    center VARCHAR(25),
+    center VARCHAR(50),
     date DATE,
     time TIME,
     status CHAR(1),
@@ -44,7 +44,7 @@ CREATE TABLE beecological.bookingRequest(
 
 CREATE TABLE beecological.unload(
 	user VARCHAR(25),
-    center VARCHAR(25),
+    center VARCHAR(50),
     date DATE,
     time TIME,
     UNIQUE (user,center,date,time),
@@ -60,7 +60,7 @@ CREATE TABLE beecological.waste(
 
 CREATE TABLE beecological.wasteUnloaded(
 	user VARCHAR(25),
-    center VARCHAR(25),
+    center VARCHAR(50),
     date DATE,
     time TIME,
     waste VARCHAR(50),
@@ -107,18 +107,7 @@ BEGIN
     
     UPDATE beecological.user SET user.ecoPoints = user.ecoPoints-ecoPointsAmount WHERE beecological.user.username = userToRemovePoints;
 END$$
-	
-CREATE TABLE beecological.image(
-	path VARCHAR(255),
-    center VARCHAR(25),
-    FOREIGN KEY (center) REFERENCES beecological.center(centerName)
-);
 
-CREATE TABLE beecological.item(
-	ID CHAR(3) PRIMARY KEY,
-    name VARCHAR (255),
-    price INT
-);
 
 ALTER TABLE beecological.bookingRequest auto_increment = 0;
 ALTER TABLE beecological.unload auto_increment = 0;
