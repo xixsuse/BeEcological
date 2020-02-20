@@ -15,7 +15,6 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="lib" path="C:/libProject/commons-io-2.6.jar"/>
-	<classpathentry kind="lib" path="C:/libProject/jstl-1.2.jar"/>
 	<classpathentry kind="lib" path="C:/libProject/junit-4.13.jar"/>
 	<classpathentry kind="lib" path="C:/libProject/mysql-connector-java-8.0.19.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
