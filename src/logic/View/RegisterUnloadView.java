@@ -101,32 +101,46 @@ public class RegisterUnloadView implements Initializable {
 		switch(id) {
 		case "b1":
 			textDisabler(event,b1,f1);
+			return;
 		case "b2":
 			textDisabler(event,b2,f2);
+			return;
 		case "b3":
 			textDisabler(event,b3,f3);
+			return;
 		case "b4":
 			textDisabler(event,b4,f4);
+			return;
 		case "b5":
 			textDisabler(event,b5,f5);
+			return;
 		case "b6":
 			textDisabler(event,b6,f6);
+			return;
 		case "b7":
 			textDisabler(event,b7,f7);
+			return;
 		case "b8":
 			textDisabler(event,b8,f8);
+			return;
 		case "b9":
 			textDisabler(event,b9,f9);
+			return;
 		case "b10":
 			textDisabler(event,b10,f10);
+			return;
 		case "b11":
 			textDisabler(event,b11,f11);
+			return;
 		case "b12":
 			textDisabler(event,b12,f12);
+			return;
 		case "b13":
 			textDisabler(event,b13,f13);
+			return;
 		case "b14":
 			textDisabler(event,b14,f14);
+			return;
 		}
 	}
 	

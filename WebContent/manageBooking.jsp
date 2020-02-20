@@ -94,7 +94,7 @@ center = (CenterBean)session.getAttribute("centerInfo"); %>
   </thead>
   <tbody>
  	<c:forEach items="${bookWait}" var="list">
-    <tr class = "table-row" data-href='ConfirmBookingServlet?userToRegister1=${list.user}&date1=${list.date}&time1=${list.time}&username=<%=owner.getUsername()%>&ownerphone=<%=owner.getPhoneNumber()%>&mail=<%=owner.getEmailAddress()%>&centername=<%=center.getName()%>&centerphone=<%=center.getCenterPhone()%>&address=<%=center.getAddress()%>'>
+    <tr class = "table-row" data-href='ConfirmBookingServlet?userToRegister1=${list.user}&date1=${list.date}&time1=${list.time}&username=<%=owner.getCobUsername()%>&ownerphone=<%=owner.getCobPhone()%>&mail=<%=owner.getCobEmail()%>&centername=<%=center.getCbName()%>&centerphone=<%=center.getCbPhone()%>&address=<%=center.getCbAddress()%>'>
     	<td>${list.ID}</td>
         <td>${list.user}</td>
         <td>${list.date}</td>

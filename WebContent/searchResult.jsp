@@ -88,7 +88,7 @@ if(session.getAttribute("loggedUser")!=null){
   </thead>
   <tbody>
  	<c:forEach items="${listOfCenter}" var="list">
-    <tr class = "table-row" data-href='CenterPageServlet?username=<%=user.getUsername()%>&centername=${list.name}&address=${list.address}&phone=${list.centerPhone}'>
+    <tr class = "table-row" data-href='CenterPageServlet?username=<%=user.getUsbUsername()%>&centername=${list.name}&address=${list.address}&phone=${list.centerPhone}'>
         <td>${list.name}</td>
         <td>${list.city}</td>
         <td>${list.CAP}</td>

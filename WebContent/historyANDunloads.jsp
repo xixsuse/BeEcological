@@ -68,7 +68,7 @@ center = (CenterBean)session.getAttribute("centerInfo"); %>
   </thead>
   <tbody>
  	<c:forEach items="${bookAccept}" var="list">
-    <tr class = "table-row1" data-href='DeleteBookingServlet?userToDelete=${list.user}&date=${list.date}&time=${list.time}&username=<%=owner.getUsername()%>&ownerphone=<%=owner.getPhoneNumber()%>&mail=<%=owner.getEmailAddress()%>&centername=<%=center.getName()%>&centerphone=<%=center.getCenterPhone()%>&address=<%=center.getAddress()%>'>
+    <tr class = "table-row1" data-href='DeleteBookingServlet?userToDelete=${list.user}&date=${list.date}&time=${list.time}&username=<%=owner.getCobUsername()%>&ownerphone=<%=owner.getCobPhone()%>&mail=<%=owner.getCobEmail()%>&centername=<%=center.getCbName()%>&centerphone=<%=center.getCbPhone()%>&address=<%=center.getCbAddress()%>'>
         <td>${list.ID}</td>
         <td>${list.user}</td>
         <td>${list.date}</td>
@@ -95,7 +95,7 @@ center = (CenterBean)session.getAttribute("centerInfo"); %>
   </thead>
   <tbody>
  	<c:forEach items="${unloadRegister}" var="list">
-    <tr class = "table-row2" data-href='DeleteUnloadServlet?userToDelete1=${list.user}&date1=${list.date}&time1=${list.time}&waste=${list.waste}&quantity=${list.wasteQuantity}&username=<%=owner.getUsername()%>&ownerphone=<%=owner.getPhoneNumber()%>&mail=<%=owner.getEmailAddress()%>&centername=<%=center.getName()%>&centerphone=<%=center.getCenterPhone()%>&address=<%=center.getAddress()%>'>
+    <tr class = "table-row2" data-href='DeleteUnloadServlet?userToDelete1=${list.user}&date1=${list.date}&time1=${list.time}&waste=${list.waste}&quantity=${list.wasteQuantity}&username=<%=owner.getCobUsername()%>&ownerphone=<%=owner.getCobPhone()%>&mail=<%=owner.getCobEmail()%>&centername=<%=center.getCbName()%>&centerphone=<%=center.getCbPhone()%>&address=<%=center.getCbAddress()%>'>
         <td>${list.user}</td>
         <td>${list.date}</td>
         <td>${list.time}</td>
