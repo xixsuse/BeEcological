@@ -103,7 +103,8 @@ public class ManageBookingView implements Initializable {
 		control1 = new UserController();
 		
 		Alert alert = new Alert(AlertType.ERROR);		
-		res = control1.CheckRegistration(user); //se true username non esiste, non posso aggiungere prenotazione
+		res = control1.CheckRegistration(user);
+		//se true username non esiste, non posso aggiungere prenotazione
 		if (res) {
 			alert.setTitle("Invalid booking request.");
 			alert.setHeaderText(null);

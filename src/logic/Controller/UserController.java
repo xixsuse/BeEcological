@@ -2,9 +2,10 @@ package logic.Controller;
 
 import java.util.List;
 
-import error.AlreadyUsedUsernameException;
 import error.EmptyFieldException;
 import error.InexistentUsernameException;
+import error.InvalidEmailException;
+import error.ShortPasswordException;
 import logic.Bean.UserBean;
 import logic.Model.User;
 import logic.Model.UserDAO;
@@ -26,18 +27,24 @@ public class UserController {
 		return result;
 	}
 	
-	public boolean CheckRegistration(UserBean userBean) throws AlreadyUsedUsernameException {
-		if(!UserDAO.checkUsername(userBean.getUsername())) {
-			throw new AlreadyUsedUsernameException();
-		}
+	public boolean CheckRegistration(UserBean userBean) {
 		boolean result = UserDAO.checkUsername(userBean.getUsername());
 		return result;
 	}
 	
-	public void SaveRegistration(UserBean userBean) {
+	public void SaveRegistration(UserBean userBean) throws EmptyFieldException, ShortPasswordException, InvalidEmailException {
 		User user = new User(userBean.getName(), userBean.getSurname(), userBean.getEmailAddress(), userBean.getPhoneNumber(), 
 				userBean.getUsername(), userBean.getPassword(), userBean.getEcopoints());
-		UserDAO.saveUser(user);
+		if(userBean.getPassword().length() == 0) {
+			throw new EmptyFieldException();
+		}
+		if(userBean.getPassword().length() < 8) {
+			throw new ShortPasswordException();
+		}
+		if(!userBean.getEmailAddress().contains("@")) {
+			throw new InvalidEmailException();
+		}
+ 		UserDAO.saveUser(user);
 	}
 	
 	public List<String> UserInformation(UserBean userBean) {

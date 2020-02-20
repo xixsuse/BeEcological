@@ -179,7 +179,8 @@ public class RegisterUnloadView implements Initializable {
 		wasteQuantity_list.removeAll(wasteQuantity_list);
 		
 		Alert alert = new Alert(AlertType.ERROR);		
-		res = control.CheckRegistration(user); //se true username non esiste, non posso aggiungere prenotazione
+		res = control.CheckRegistration(user);
+		//se true username non esiste, non posso aggiungere prenotazione
 		if (res) {
 			alert.setTitle("Invalid unload registration.");
 			alert.setHeaderText(null);

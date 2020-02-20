@@ -2,50 +2,61 @@ package test.junit;
 
 import static org.junit.Assert.*;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
-import error.InexistentUsernameException;
-import logic.Bean.BookingBean;
-import logic.Controller.BookingController;
+import error.EmptyFieldException;
+import error.InvalidEmailException;
+import error.ShortPasswordException;
+import logic.Bean.UserBean;
+import logic.Controller.UserController;
 
 public class TestRegistration {
+	
+	UserBean userBean;
+	UserController userController = new UserController();
+	
+	@Before
+	public void prepareData() {
+		String name = "name";
+		String surname = "surname";
+		String email = "newEmail@gmail.com";	
+		String phone = "3333333333";
+		String username = "newUsername";
+		String password = "newPassword";
+		userBean = new UserBean();
+		userBean.setUsername(username);
+		userBean.setName(name);
+		userBean.setSurname(surname);
+		userBean.setEmailAddress(email);
+		userBean.setPhoneNumber(phone);
+		userBean.setPassword(password);
+	}
 	
 	@Test
 	public void testRegistration() {
 		String message = "";
-		String username = "incorrectUser";
-		String center = "la vecchia mola";
-		String date = "2020/03/15";
-		String time = "11:00";
-		String status = "W"; //request booking (in wait to be accepted)
-		int count;
-		boolean result;
-		
-		BookingBean bookingBean = new BookingBean();
-		bookingBean.setUser(username);
-		bookingBean.setCenter(center);
-		bookingBean.setDate(date);
-		bookingBean.setTime(time);
-		bookingBean.setStatus(status);
-		
-		BookingController bookingController = new BookingController();
+		boolean expected = true;
+		boolean result = userController.CheckRegistration(userBean);
 		
 		try {
-			bookingController.InsertBooking(bookingBean);
-		} catch (InexistentUsernameException e) {
-			message = "Username not valid";
-		}
-		
-		count = bookingController.VerifyBooking(bookingBean);
-		if (count==0) {
-			//book invalid
+			userController.SaveRegistration(userBean);
+		} catch (EmptyFieldException e){
+			message = "Empty field";
+			result = false;
+		} catch (ShortPasswordException e) {
+			message = "Password too short";
+			result = false;
+		} catch (InvalidEmailException e) {
+			message = "Invalid email";
 			result = false;
 		}
-		else {
-			//book insert
-			result = true;
-		}
-		
-		assertEquals(message, true, result);
+		assertEquals(message, expected, result);
+	}
+	
+	@After
+	public void deleteRegister() {
+		userController.deleteAccount(userBean);
 	}
 }

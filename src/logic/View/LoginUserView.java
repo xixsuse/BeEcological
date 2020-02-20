@@ -119,7 +119,7 @@ public class LoginUserView implements Initializable {
 	}
 	
 	public void registerUser(ActionEvent event) {
-		boolean ok;
+		boolean ok = true;
 		String name = textName.getText();
 		String surname = textSurname.getText();
 		String emailAddress = textEmailAddress.getText();
