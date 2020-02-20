@@ -1,11 +1,11 @@
-package logic.view;
+package logic.View;
 
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import logic.bean.CenterOwnerBean;
-import logic.controller.OwnerController;
+import logic.Bean.CenterOwnerBean;
+import logic.Controller.OwnerController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

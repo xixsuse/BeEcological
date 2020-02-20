@@ -1,4 +1,4 @@
-package logic.model;
+package logic.Model;
 
 public class Booking {
 	private int bId;

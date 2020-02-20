@@ -1,14 +1,14 @@
-package logic.controller;
+package logic.Controller;
 
 
 
 import java.util.ArrayList;
 
 import error.InexistentUsernameException;
-import logic.bean.BookingBean;
-import logic.model.Booking;
-import logic.model.BookingDAO;
-import logic.model.UserDAO;
+import logic.Bean.BookingBean;
+import logic.Model.Booking;
+import logic.Model.BookingDAO;
+import logic.Model.UserDAO;
 
 public class BookingController {
 	

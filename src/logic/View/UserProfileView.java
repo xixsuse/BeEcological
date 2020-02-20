@@ -1,4 +1,4 @@
-package logic.view;
+package logic.View;
 
 import java.io.File;
 import java.net.URL;
@@ -9,10 +9,10 @@ import java.util.ResourceBundle;
 
 import com.sun.javafx.scene.control.skin.TableHeaderRow;
 
-import logic.bean.UserBean;
-import logic.bean.WasteUnloadedBean;
-import logic.controller.UserController;
-import logic.controller.WasteUnloadedController;
+import logic.Bean.UserBean;
+import logic.Bean.WasteUnloadedBean;
+import logic.Controller.UserController;
+import logic.Controller.WasteUnloadedController;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;

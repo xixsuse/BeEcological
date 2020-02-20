@@ -1,4 +1,4 @@
-package logic.servlet;
+package logic.Servlet;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -7,9 +7,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import logic.bean.BookingBean;
-import logic.bean.UserBean;
-import logic.controller.BookingController;
+import logic.Bean.BookingBean;
+import logic.Bean.UserBean;
+import logic.Controller.BookingController;
 
 import java.io.IOException;
 import java.util.ArrayList;

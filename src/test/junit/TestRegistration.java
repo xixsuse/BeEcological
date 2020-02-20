@@ -10,8 +10,8 @@ import error.AlreadyUsedUsernameException;
 import error.EmptyFieldException;
 import error.InvalidEmailException;
 import error.ShortPasswordException;
-import logic.bean.UserBean;
-import logic.controller.UserController;
+import logic.Bean.UserBean;
+import logic.Controller.UserController;
 
 public class TestRegistration {
 	

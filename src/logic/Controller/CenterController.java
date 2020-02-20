@@ -1,12 +1,12 @@
-package logic.controller;
+package logic.Controller;
 
 import java.util.ArrayList;
 
-import logic.bean.CenterBean;
-import logic.bean.CenterOwnerBean;
-import logic.model.Center;
-import logic.model.CenterDAO;
-import logic.model.CenterOwner;
+import logic.Bean.CenterBean;
+import logic.Bean.CenterOwnerBean;
+import logic.Model.Center;
+import logic.Model.CenterDAO;
+import logic.Model.CenterOwner;
 
 public class CenterController {
 	

@@ -1,4 +1,4 @@
-package logic.view;
+package logic.View;
 
 import java.io.File;
 import java.io.IOException;
@@ -30,7 +30,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import logic.bean.UserBean;
+import logic.Bean.UserBean;
 
 
 

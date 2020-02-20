@@ -1,4 +1,4 @@
-package logic.view;
+package logic.View;
 
 import java.io.File;
 import java.net.URL;
@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-import logic.bean.UserBean;
-import logic.controller.UserController;
+import logic.Bean.UserBean;
+import logic.Controller.UserController;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

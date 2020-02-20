@@ -1,4 +1,4 @@
-package logic.bean;
+package logic.Bean;
 
 public class CenterOwnerBean {
 	public static CenterOwnerBean instance = null;

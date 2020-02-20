@@ -1,4 +1,4 @@
-package logic.view;
+package logic.View;
 
 import java.io.File;
 import java.net.URL;
@@ -12,15 +12,15 @@ import java.util.ResourceBundle;
 
 import com.sun.javafx.scene.control.skin.TableHeaderRow;
 
-import logic.bean.BookingBean;
-import logic.bean.CenterOwnerBean;
-import logic.bean.UnloadBean;
-import logic.bean.UserBean;
-import logic.bean.WasteUnloadedBean;
-import logic.controller.BookingController;
-import logic.controller.UnloadController;
-import logic.controller.UserController;
-import logic.controller.WasteUnloadedController;
+import logic.Bean.BookingBean;
+import logic.Bean.CenterOwnerBean;
+import logic.Bean.UnloadBean;
+import logic.Bean.UserBean;
+import logic.Bean.WasteUnloadedBean;
+import logic.Controller.BookingController;
+import logic.Controller.UnloadController;
+import logic.Controller.UserController;
+import logic.Controller.WasteUnloadedController;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;

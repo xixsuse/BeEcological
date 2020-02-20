@@ -14,8 +14,12 @@
 	-fx-cursor: hand;
 }
 
+.table-row-cell: hover {
+	-fx-background-color: #b9e0ab;
+}
+
 .table-row-cell: pressed {
-	-fx-background-color: #ABD4B0;
+	-fx-background-color: #8cbd7b;
 	-fx-text-fill: white;
 }
 

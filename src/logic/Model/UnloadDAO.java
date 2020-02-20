@@ -1,4 +1,4 @@
-package logic.model;
+package logic.Model;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

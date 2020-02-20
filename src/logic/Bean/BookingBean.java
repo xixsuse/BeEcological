@@ -1,4 +1,4 @@
-package logic.bean;
+package logic.Bean;
 
 public class BookingBean {
 	private int bbId;

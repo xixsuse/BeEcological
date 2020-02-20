@@ -1,4 +1,4 @@
-package logic.controller;
+package logic.Controller;
 
 import java.util.List;
 
@@ -7,9 +7,9 @@ import error.EmptyFieldException;
 import error.InexistentUsernameException;
 import error.InvalidEmailException;
 import error.ShortPasswordException;
-import logic.bean.UserBean;
-import logic.model.User;
-import logic.model.UserDAO;
+import logic.Bean.UserBean;
+import logic.Model.User;
+import logic.Model.UserDAO;
 
 public class UserController {
 	

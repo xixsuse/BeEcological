@@ -5,8 +5,8 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import error.InexistentUsernameException;
-import logic.bean.BookingBean;
-import logic.controller.BookingController;
+import logic.Bean.BookingBean;
+import logic.Controller.BookingController;
 
 public class TestBookingRequest {
 	

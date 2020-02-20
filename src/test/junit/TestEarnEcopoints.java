@@ -8,10 +8,10 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import logic.bean.UserBean;
-import logic.bean.WasteUnloadedBean;
-import logic.controller.UserController;
-import logic.controller.WasteUnloadedController;
+import logic.Bean.UserBean;
+import logic.Bean.WasteUnloadedBean;
+import logic.Controller.UserController;
+import logic.Controller.WasteUnloadedController;
 
 public class TestEarnEcopoints {
 	

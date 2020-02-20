@@ -1,12 +1,12 @@
-package logic.controller;
+package logic.Controller;
 
 
 import java.util.ArrayList;
 
-import logic.bean.UserBean;
-import logic.bean.WasteUnloadedBean;
-import logic.model.WasteUnloaded;
-import logic.model.WasteUnloadedDAO;
+import logic.Bean.UserBean;
+import logic.Bean.WasteUnloadedBean;
+import logic.Model.WasteUnloaded;
+import logic.Model.WasteUnloadedDAO;
 
 public class WasteUnloadedController {
 

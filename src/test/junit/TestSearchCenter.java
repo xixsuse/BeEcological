@@ -7,8 +7,8 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
-import logic.bean.CenterBean;
-import logic.controller.CenterController;
+import logic.Bean.CenterBean;
+import logic.Controller.CenterController;
 
 public class TestSearchCenter {
 	

@@ -6,8 +6,8 @@ import org.junit.Test;
 
 import error.EmptyFieldException;
 import error.InexistentUsernameException;
-import logic.bean.UserBean;
-import logic.controller.UserController;
+import logic.Bean.UserBean;
+import logic.Controller.UserController;
 
 public class TestLogin {
 	

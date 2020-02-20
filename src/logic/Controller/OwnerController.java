@@ -1,10 +1,10 @@
-package logic.controller;
+package logic.Controller;
 
 import java.util.List;
 
-import logic.bean.CenterOwnerBean;
-import logic.model.CenterOwner;
-import logic.model.CenterOwnerDAO;
+import logic.Bean.CenterOwnerBean;
+import logic.Model.CenterOwner;
+import logic.Model.CenterOwnerDAO;
 
 public class OwnerController {
 	
