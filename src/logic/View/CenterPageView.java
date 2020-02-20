@@ -15,11 +15,11 @@ import java.util.TimerTask;
 
 import error.EmptyFieldException;
 import error.InexistentUsernameException;
-import logic.Bean.BookingBean;
-import logic.Bean.CenterBean;
-import logic.Bean.UserBean;
 import logic.Controller.BookingController;
 import logic.Controller.UserController;
+import logic.bean.BookingBean;
+import logic.bean.CenterBean;
+import logic.bean.UserBean;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

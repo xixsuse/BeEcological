@@ -9,8 +9,8 @@ import java.util.ResourceBundle;
 
 import org.apache.commons.io.FileUtils;
 
-import logic.Bean.CenterOwnerBean;
 import logic.Controller.OwnerController;
+import logic.bean.CenterOwnerBean;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

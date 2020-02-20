@@ -2,9 +2,9 @@ package logic.Controller;
 
 import java.util.List;
 
-import logic.Bean.CenterOwnerBean;
 import logic.Model.CenterOwner;
 import logic.Model.CenterOwnerDAO;
+import logic.bean.CenterOwnerBean;
 
 public class OwnerController {
 	

@@ -2,12 +2,12 @@ package logic.Controller;
 
 import java.util.List;
 
-import logic.Bean.CenterOwnerBean;
-import logic.Bean.UnloadBean;
 import logic.Model.CenterOwner;
 import logic.Model.CenterOwnerDAO;
 import logic.Model.Unload;
 import logic.Model.UnloadDAO;
+import logic.bean.CenterOwnerBean;
+import logic.bean.UnloadBean;
 
 public class UnloadController {
 	

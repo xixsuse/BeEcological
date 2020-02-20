@@ -7,10 +7,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import logic.Bean.UserBean;
-import logic.Bean.WasteUnloadedBean;
 import logic.Controller.UserController;
 import logic.Controller.WasteUnloadedController;
+import logic.bean.UserBean;
+import logic.bean.WasteUnloadedBean;
 
 import java.io.IOException;
 import java.util.ArrayList;

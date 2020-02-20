@@ -7,12 +7,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import logic.Bean.CenterBean;
-import logic.Bean.CenterOwnerBean;
-import logic.Bean.UnloadBean;
-import logic.Bean.WasteUnloadedBean;
 import logic.Controller.UnloadController;
 import logic.Controller.WasteUnloadedController;
+import logic.bean.CenterBean;
+import logic.bean.CenterOwnerBean;
+import logic.bean.UnloadBean;
+import logic.bean.WasteUnloadedBean;
 
 import java.io.IOException;
 import java.io.PrintWriter;

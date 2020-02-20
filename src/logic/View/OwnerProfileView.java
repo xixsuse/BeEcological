@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-import logic.Bean.CenterOwnerBean;
 import logic.Controller.OwnerController;
+import logic.bean.CenterOwnerBean;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

@@ -1,11 +1,11 @@
-package logic.Bean;
+package logic.bean;
 
 public class CenterBean {	
     private String name;
     private String centerPhone;
     private String city;
     private String address;
-    private String CAP;
+    private String cap;
     private String num;
     
     
@@ -45,13 +45,13 @@ public class CenterBean {
         this.address = address;
     }
     
-    public String getCAP() {
-        return this.CAP;
+    public String getCap() {
+        return this.cap;
     }
 
 
-    public void setCAP(String CAP) {
-        this.CAP = CAP;
+    public void setCap(String cap) {
+        this.cap = cap;
     }
     
     public String getNum() {
@@ -61,10 +61,5 @@ public class CenterBean {
 
     public void setNum(String num) {
         this.num = num;
-    }
-    
-    @Override
-    public String toString(){
-		return this.name + " \"" + this.address + "\" (" + this.num + ")";    	
     }
 }

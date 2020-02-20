@@ -3,10 +3,10 @@ package logic.Controller;
 
 import java.util.ArrayList;
 
-import logic.Bean.UserBean;
-import logic.Bean.WasteUnloadedBean;
 import logic.Model.WasteUnloaded;
 import logic.Model.WasteUnloadedDAO;
+import logic.bean.UserBean;
+import logic.bean.WasteUnloadedBean;
 
 public class WasteUnloadedController {
 	

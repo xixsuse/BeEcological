@@ -2,11 +2,11 @@ package logic.Controller;
 
 import java.util.ArrayList;
 
-import logic.Bean.CenterBean;
-import logic.Bean.CenterOwnerBean;
 import logic.Model.Center;
 import logic.Model.CenterDAO;
 import logic.Model.CenterOwner;
+import logic.bean.CenterBean;
+import logic.bean.CenterOwnerBean;
 
 public class CenterController {
 	
@@ -19,7 +19,7 @@ public class CenterController {
 			CenterBean centerB = new CenterBean();
 			centerB.setName(center.getName());
 			centerB.setCity(center.getCity());
-			centerB.setCAP(center.getCAP());
+			centerB.setCap(center.getCAP());
 			centerB.setAddress(center.getAddress());
 			centerB.setNum(center.getNum());
 			centerB.setCenterPhone(center.getCenterPhone());

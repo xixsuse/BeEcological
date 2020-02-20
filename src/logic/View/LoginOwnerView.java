@@ -4,8 +4,8 @@ import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import logic.Bean.CenterOwnerBean;
 import logic.Controller.OwnerController;
+import logic.bean.CenterOwnerBean;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

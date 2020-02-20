@@ -1,4 +1,4 @@
-package logic.Bean;
+package logic.bean;
 
 public class CenterOwnerBean {
 	public static CenterOwnerBean instance = null;
@@ -81,10 +81,5 @@ public class CenterOwnerBean {
 
     public void setCenter(String centerName) {
         this.centerName = centerName;
-    }
-    
-    @Override
-    public String toString(){
-		return this.username + " \"" + this.password + "\" (" + this.centerName + ")";    	
     }
 }

@@ -7,9 +7,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import logic.Bean.CenterBean;
-import logic.Bean.CenterOwnerBean;
 import logic.Controller.OwnerController;
+import logic.bean.CenterBean;
+import logic.bean.CenterOwnerBean;
 
 import java.io.IOException;
 import java.util.List;
@@ -40,7 +40,7 @@ public class OwnerProfileServlet extends HttpServlet {
         centerBean.setCenterPhone(information.get(5));
         centerBean.setCity(information.get(6));
         centerBean.setAddress(information.get(7));
-        centerBean.setCAP(information.get(8));
+        centerBean.setCap(information.get(8));
         centerBean.setNum(information.get(9));
         
         HttpSession session = request.getSession(true);

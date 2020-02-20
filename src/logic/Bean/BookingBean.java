@@ -1,7 +1,7 @@
-package logic.Bean;
+package logic.bean;
 
 public class BookingBean {
-	private int ID;
+	private int id;
 	private String user;
 	private String center;
 	private String date;
@@ -9,12 +9,12 @@ public class BookingBean {
 	private String status;
 	
 	
-	public int getID() {
-		return this.ID;
+	public int getId() {
+		return this.id;
 	}
 	
-	public void setID(int ID) {
-		this.ID = ID;
+	public void setId(int ID) {
+		this.id = ID;
 	}
 	
 	public String getUser() {

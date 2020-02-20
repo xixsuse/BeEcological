@@ -9,10 +9,10 @@ import java.util.ResourceBundle;
 
 import com.sun.javafx.scene.control.skin.TableHeaderRow;
 
-import logic.Bean.UserBean;
-import logic.Bean.WasteUnloadedBean;
 import logic.Controller.UserController;
 import logic.Controller.WasteUnloadedController;
+import logic.bean.UserBean;
+import logic.bean.WasteUnloadedBean;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;

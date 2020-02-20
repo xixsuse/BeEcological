@@ -8,10 +8,10 @@ import java.util.ResourceBundle;
 
 import com.sun.javafx.scene.control.skin.TableHeaderRow;
 
-import logic.Bean.CenterBean;
-import logic.Bean.CenterOwnerBean;
-import logic.Bean.UserBean;
 import logic.Controller.CenterController;
+import logic.bean.CenterBean;
+import logic.bean.CenterOwnerBean;
+import logic.bean.UserBean;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -177,7 +177,7 @@ public class SearchResultView implements Initializable {
 				controller.loginGroup.setVisible(true);
 			}
 			controller.centerSearched.setText(center.getName());
-			controller.infoSearched.setText(center.getAddress()+"\n"+center.getCity()+" "+center.getCAP());
+			controller.infoSearched.setText(center.getAddress()+"\n"+center.getCity()+" "+center.getCap());
 			controller.centerPhoneSearched.setText(center.getCenterPhone());
 			controller.emailSearched.setText(owner.getEmailAddress());
 			controller.ownerPhoneSearched.setText(owner.getPhoneNumber());

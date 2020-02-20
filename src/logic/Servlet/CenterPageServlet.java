@@ -7,10 +7,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import logic.Bean.CenterBean;
-import logic.Bean.CenterOwnerBean;
-import logic.Bean.UserBean;
 import logic.Controller.CenterController;
+import logic.bean.CenterBean;
+import logic.bean.CenterOwnerBean;
+import logic.bean.UserBean;
 
 import java.io.IOException;
 

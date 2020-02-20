@@ -14,12 +14,12 @@ import java.util.ResourceBundle;
 import com.sun.javafx.scene.control.skin.TableHeaderRow;
 
 import error.InexistentUsernameException;
-import logic.Bean.BookingBean;
-import logic.Bean.CenterOwnerBean;
-import logic.Bean.UserBean;
 import logic.Controller.BookingController;
 import logic.Controller.OwnerController;
 import logic.Controller.UserController;
+import logic.bean.BookingBean;
+import logic.bean.CenterOwnerBean;
+import logic.bean.UserBean;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;

@@ -5,10 +5,10 @@ package logic.Controller;
 import java.util.ArrayList;
 
 import error.InexistentUsernameException;
-import logic.Bean.BookingBean;
 import logic.Model.Booking;
 import logic.Model.BookingDAO;
 import logic.Model.UserDAO;
+import logic.bean.BookingBean;
 
 public class BookingController {
 	
@@ -41,7 +41,7 @@ public class BookingController {
 		ArrayList<Booking> listOfBooking = BookingDAO.listOfBookingByCenter(bookingBean.getCenter(), bookingBean.getStatus());
 		for(Booking book : listOfBooking) {
 			BookingBean bookB = new BookingBean();
-			bookB.setID(book.getID());
+			bookB.setId(book.getID());
 			bookB.setUser(book.getUser());
 			bookB.setCenter(book.getCenter());
 			bookB.setDate(book.getDate());
@@ -57,7 +57,7 @@ public class BookingController {
 		ArrayList<Booking> listOfBooking = BookingDAO.listOfBookingByUser(bookingBean.getUser(), bookingBean.getStatus());
 		for(Booking book : listOfBooking) {
 			BookingBean bookB = new BookingBean();
-			bookB.setID(book.getID());
+			bookB.setId(book.getID());
 			bookB.setUser(book.getUser());
 			bookB.setCenter(book.getCenter());
 			bookB.setDate(book.getDate());

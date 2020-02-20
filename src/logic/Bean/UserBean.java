@@ -1,4 +1,4 @@
-package logic.Bean;
+package logic.bean;
 
 public class UserBean {
 	public static UserBean instance = null;
@@ -92,10 +92,4 @@ public class UserBean {
     public void setEcopoints(int ecoPoints) {
         this.ecoPoints = ecoPoints;
     }
-    
-    @Override
-    public String toString(){
-		return this.username + " \"" + this.password + "\" (" + this.ecoPoints + ")";    	
-    }
-
 }

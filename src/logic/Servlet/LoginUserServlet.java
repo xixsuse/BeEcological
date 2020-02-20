@@ -10,8 +10,8 @@ import javax.servlet.http.HttpSession;
 
 import error.EmptyFieldException;
 import error.InexistentUsernameException;
-import logic.Bean.UserBean;
 import logic.Controller.UserController;
+import logic.bean.UserBean;
 
 import java.io.IOException;
 

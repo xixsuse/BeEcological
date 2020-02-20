@@ -8,13 +8,13 @@ import java.util.ResourceBundle;
 
 import com.sun.javafx.scene.control.skin.TableHeaderRow;
 
-import logic.Bean.BookingBean;
-import logic.Bean.CenterOwnerBean;
-import logic.Bean.UnloadBean;
-import logic.Bean.WasteUnloadedBean;
 import logic.Controller.BookingController;
 import logic.Controller.UnloadController;
 import logic.Controller.WasteUnloadedController;
+import logic.bean.BookingBean;
+import logic.bean.CenterOwnerBean;
+import logic.bean.UnloadBean;
+import logic.bean.WasteUnloadedBean;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;

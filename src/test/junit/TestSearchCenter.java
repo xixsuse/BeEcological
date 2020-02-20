@@ -7,8 +7,8 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
-import logic.Bean.CenterBean;
 import logic.Controller.CenterController;
+import logic.bean.CenterBean;
 
 public class TestSearchCenter {
 	
@@ -30,7 +30,7 @@ public class TestSearchCenter {
 		center.setCenterPhone(phone);
 		center.setAddress(address +" "+ num);
 		center.setCity(city);
-		center.setCAP(cap);
+		center.setCap(cap);
 	}
 	
 	@SuppressWarnings("deprecation")
@@ -41,10 +41,10 @@ public class TestSearchCenter {
 		centerBean.setName(centername);
 		
 		List<CenterBean> centerList = centerController.CenterList(centerBean);
-		Object[] expected = {center.getName(), center.getCenterPhone(), center.getAddress(), center.getCity(), center.getCAP(), 
+		Object[] expected = {center.getName(), center.getCenterPhone(), center.getAddress(), center.getCity(), center.getCap(), 
 				center.getAddress()};
 		Object[] result = {centerList.get(0).getName(), centerList.get(0).getCenterPhone(), centerList.get(0).getAddress(), 
-				centerList.get(0).getCity(), centerList.get(0).getCAP(), centerList.get(0).getAddress()};
+				centerList.get(0).getCity(), centerList.get(0).getCap(), centerList.get(0).getAddress()};
 		
 		String message = "expected: "+expected+" new: "+centerList;
 		assertEquals(message, expected, result);

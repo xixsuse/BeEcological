@@ -7,9 +7,9 @@ import error.EmptyFieldException;
 import error.InexistentUsernameException;
 import error.InvalidEmailException;
 import error.ShortPasswordException;
-import logic.Bean.UserBean;
 import logic.Model.User;
 import logic.Model.UserDAO;
+import logic.bean.UserBean;
 
 public class UserController {
 	

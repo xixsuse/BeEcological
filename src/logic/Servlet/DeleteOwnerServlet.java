@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import logic.Bean.CenterOwnerBean;
 import logic.Controller.OwnerController;
+import logic.bean.CenterOwnerBean;
 
 import java.io.IOException;
 import java.io.PrintWriter;

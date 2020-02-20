@@ -1,4 +1,4 @@
-package logic.Bean;
+package logic.bean;
 
 public class UnloadBean {
 	private String user;

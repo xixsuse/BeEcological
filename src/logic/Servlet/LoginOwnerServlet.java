@@ -8,10 +8,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import logic.Bean.CenterBean;
-import logic.Bean.CenterOwnerBean;
 import logic.
 Controller.OwnerController;
+import logic.bean.CenterBean;
+import logic.bean.CenterOwnerBean;
 
 import java.io.IOException;
 import java.util.List;
@@ -50,7 +50,7 @@ public class LoginOwnerServlet extends HttpServlet {
             centerBean.setCity(information.get(6));
             System.out.println(information.get(7));
             centerBean.setAddress(information.get(7));
-            centerBean.setCAP(information.get(8));
+            centerBean.setCap(information.get(8));
             centerBean.setNum(information.get(9));
             HttpSession session = req.getSession(true);
             session.setAttribute("loggedOwner", ownerBean);

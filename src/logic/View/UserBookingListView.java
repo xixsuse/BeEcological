@@ -9,9 +9,9 @@ import java.util.ResourceBundle;
 
 import com.sun.javafx.scene.control.skin.TableHeaderRow;
 
-import logic.Bean.BookingBean;
-import logic.Bean.UserBean;
 import logic.Controller.BookingController;
+import logic.bean.BookingBean;
+import logic.bean.UserBean;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
