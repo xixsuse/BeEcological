@@ -31,14 +31,15 @@ public class HistoryANDunloadsServlet extends HttpServlet {
     	CenterBean centerBean = new CenterBean();
         BookingBean bookingBean = new BookingBean();
         WasteUnloadedBean wasteBean = new WasteUnloadedBean();
+        String centername = request.getParameter("centername");
         ownerBean.setCobUsername(request.getParameter("username"));
         ownerBean.setCobEmail(request.getParameter("mail"));
         ownerBean.setCobPhone(request.getParameter("ownerphone"));
-        centerBean.setCbName(request.getParameter("centername"));
+        centerBean.setCbName(centername);
         centerBean.setCbAddress(request.getParameter("address"));
         centerBean.setCbPhone(request.getParameter("centerphone"));
-    	bookingBean.setBbCenter(request.getParameter("centername"));
-    	wasteBean.setWbCenter(request.getParameter("centername"));
+    	bookingBean.setBbCenter(centername);
+    	wasteBean.setWbCenter(centername);
     	bookingBean.setBbStatus("A");
         BookingController controller = new BookingController();
         ArrayList<BookingBean> bookAccept= controller.bookingListByCenter(bookingBean);

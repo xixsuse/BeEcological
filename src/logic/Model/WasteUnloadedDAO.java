@@ -9,10 +9,10 @@ import java.util.ArrayList;
 
 public class WasteUnloadedDAO {
 	
-	private static String USER = "root";
-    private static String PASS = "root";
-    private static String DB_URL = "jdbc:mysql://127.0.0.1:3306/beecological?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-    private static String DRIVER_CLASS_NAME = "com.mysql.cj.jdbc.Driver";
+	private static String wudaoUSER = "root";
+    private static String wudaoPASS = "root";
+    private static String wudaoDB_URL = "jdbc:mysql://127.0.0.1:3306/beecological?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+    private static String wudaoDriverClassName = "com.mysql.cj.jdbc.Driver";
    
 
     public static void registerWasteForUnload(WasteUnloaded wasteUnloaded) {
@@ -21,10 +21,10 @@ public class WasteUnloadedDAO {
         
         try {
             //caricamento driver mysql
-        	Class.forName(DRIVER_CLASS_NAME);
+        	Class.forName(wudaoDriverClassName);
             
         	//apertura connessione
-            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            conn = DriverManager.getConnection(wudaoDB_URL, wudaoUSER, wudaoPASS);
             
             //creazione ed esecuzione della query
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
@@ -50,10 +50,10 @@ public class WasteUnloadedDAO {
         
         try {
             //caricamento driver mysql
-        	Class.forName(DRIVER_CLASS_NAME);
+        	Class.forName(wudaoDriverClassName);
             
         	//apertura connessione
-            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            conn = DriverManager.getConnection(wudaoDB_URL, wudaoUSER, wudaoPASS);
             
             //creazione ed esecuzione della query
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
@@ -86,10 +86,10 @@ public class WasteUnloadedDAO {
         
         try {
             //caricamento driver mysql
-        	Class.forName(DRIVER_CLASS_NAME);
+        	Class.forName(wudaoDriverClassName);
             
         	//apertura connessione
-            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            conn = DriverManager.getConnection(wudaoDB_URL, wudaoUSER, wudaoPASS);
             
             //creazione ed esecuzione della query
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
@@ -120,10 +120,10 @@ public class WasteUnloadedDAO {
         
     	try {
             //caricamento driver mysql
-        	Class.forName(DRIVER_CLASS_NAME);
+        	Class.forName(wudaoDriverClassName);
             
         	//apertura connessione
-            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            conn = DriverManager.getConnection(wudaoDB_URL, wudaoUSER, wudaoPASS);
             
             //creazione ed esecuzione della query
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
@@ -150,10 +150,10 @@ public class WasteUnloadedDAO {
         
     	try {
             //caricamento driver mysql
-        	Class.forName(DRIVER_CLASS_NAME);
+        	Class.forName(wudaoDriverClassName);
             
         	//apertura connessione
-            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            conn = DriverManager.getConnection(wudaoDB_URL, wudaoUSER, wudaoPASS);
             
             //creazione ed esecuzione della query
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,

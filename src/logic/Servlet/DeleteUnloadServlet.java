@@ -28,6 +28,8 @@ public class DeleteUnloadServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
+		String openScript = "<script type=\"text/javascript\">";
+		String closeScript = "</script>";
 		CenterOwnerBean ownerBean = new CenterOwnerBean();
     	CenterBean centerBean = new CenterBean();
     	WasteUnloadedBean wasteBean = new WasteUnloadedBean();
@@ -54,9 +56,9 @@ public class DeleteUnloadServlet extends HttpServlet {
 		
         session.setAttribute("loggedOwner", ownerBean);
         session.setAttribute("centerInfo", centerBean);
-        out.println("<script type=\"text/javascript\">");
+        out.println(openScript);
         out.println("alert('Unload waste deleted successfully.');");
-        out.println("</script>");
+        out.println(closeScript);
 		
 		int count = controller.numberOfWasteForAnUnload(wasteBean);
 		if(count==0) {
@@ -70,13 +72,13 @@ public class DeleteUnloadServlet extends HttpServlet {
 	        controller1.deleteAnUnload(unload);
 	        session.setAttribute("loggedOwner", ownerBean);
 	        session.setAttribute("centerInfo", centerBean);
-	        out.println("<script type=\"text/javascript\">");
+	        out.println(openScript);
 	        out.println("alert('Unload deleted successfully. No one waste already exists for this unload.');");
-	        out.println("</script>");
+	        out.println(closeScript);
 		}
-        out.println("<script type=\"text/javascript\">");
+        out.println(openScript);
         out.println("location='homeOwner.jsp';");
-        out.println("</script>");
+        out.println(closeScript);
 	}
 
 }

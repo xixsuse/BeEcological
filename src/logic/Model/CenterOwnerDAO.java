@@ -11,14 +11,10 @@ import java.util.List;
 
 public class CenterOwnerDAO {
 	
-	private static String USER = "root";
-    private static String PASS = "root";
-    private static String DB_URL = "jdbc:mysql://127.0.0.1:3306/beecological?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-    private static String DRIVER_CLASS_NAME = "com.mysql.cj.jdbc.Driver";
-   
-    private CenterOwnerDAO(String userConn) {
-    	CenterOwnerDAO.USER = userConn;
-    }
+	private static String codaoUSER = "root";
+    private static String codaoPASS = "root";
+    private static String codaoDBUrl = "jdbc:mysql://127.0.0.1:3306/beecological?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+    private static String codaoDriverClassName = "com.mysql.cj.jdbc.Driver";
     
     public static boolean checkUsername(String username) {
     	Statement stmt = null;
@@ -28,9 +24,9 @@ public class CenterOwnerDAO {
         
         try {
             //caricamento driver mysql
-        	Class.forName(DRIVER_CLASS_NAME);
+        	Class.forName(codaoDriverClassName);
         	//apertura connessione
-            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            conn = DriverManager.getConnection(codaoDBUrl, codaoUSER, codaoPASS);
             
             //creazione ed esecuzione della query
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
@@ -61,10 +57,10 @@ public class CenterOwnerDAO {
         
         try {
             //caricamento driver mysql
-        	Class.forName(DRIVER_CLASS_NAME);
+        	Class.forName(codaoDriverClassName);
             
         	//apertura connessione
-            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            conn = DriverManager.getConnection(codaoDBUrl, codaoUSER, codaoPASS);
             
             //creazione ed esecuzione della query
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
@@ -96,10 +92,10 @@ public class CenterOwnerDAO {
         
         try {
             //caricamento driver mysql
-        	Class.forName(DRIVER_CLASS_NAME);
+        	Class.forName(codaoDriverClassName);
             
         	//apertura connessione
-            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            conn = DriverManager.getConnection(codaoDBUrl, codaoUSER, codaoPASS);
             
             //creazione ed esecuzione della query
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
@@ -134,10 +130,10 @@ public class CenterOwnerDAO {
         
     	try {
             //caricamento driver mysql
-        	Class.forName(DRIVER_CLASS_NAME);
+        	Class.forName(codaoDriverClassName);
             
         	//apertura connessione
-            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            conn = DriverManager.getConnection(codaoDBUrl, codaoUSER, codaoPASS);
             
             //creazione ed esecuzione della query
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,

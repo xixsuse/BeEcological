@@ -9,14 +9,10 @@ import java.util.ArrayList;
 
 public class BookingDAO {
 	
-	private static String USER = "root";
-    private static String PASS = "root";
-    private static String DB_URL = "jdbc:mysql://127.0.0.1:3306/beecological?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-    private static String DRIVER_CLASS_NAME = "com.mysql.cj.jdbc.Driver";
-   
-    private BookingDAO(String userConn) {
-    	BookingDAO.USER = userConn;
-    }
+	private static String bdaoUSER = "root";
+    private static String bdaoPASS = "root";
+    private static String bdaoDBUrl = "jdbc:mysql://127.0.0.1:3306/beecological?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+    private static String bdaoDriverClassName = "com.mysql.cj.jdbc.Driver";
     
     public static void makeBooking(Booking booking) {
     	Statement stmt = null;
@@ -24,10 +20,10 @@ public class BookingDAO {
         
         try {
             //caricamento driver mysql
-        	Class.forName(DRIVER_CLASS_NAME);
+        	Class.forName(bdaoDriverClassName);
             
         	//apertura connessione
-            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            conn = DriverManager.getConnection(bdaoDBUrl, bdaoUSER, bdaoPASS);
             
             //creazione ed esecuzione della query
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
@@ -51,10 +47,10 @@ public class BookingDAO {
         
         try {
             //caricamento driver mysql
-        	Class.forName(DRIVER_CLASS_NAME);
+        	Class.forName(bdaoDriverClassName);
             
         	//apertura connessione
-            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            conn = DriverManager.getConnection(bdaoDBUrl, bdaoUSER, bdaoPASS);
             
             //creazione ed esecuzione della query
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
@@ -81,10 +77,10 @@ public class BookingDAO {
         
         try {
             //caricamento driver mysql
-        	Class.forName(DRIVER_CLASS_NAME);
+        	Class.forName(bdaoDriverClassName);
             
         	//apertura connessione
-            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            conn = DriverManager.getConnection(bdaoDBUrl, bdaoUSER, bdaoPASS);
             
             //creazione ed esecuzione della query
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
@@ -113,10 +109,10 @@ public class BookingDAO {
         
         try {
             //caricamento driver mysql
-        	Class.forName(DRIVER_CLASS_NAME);
+        	Class.forName(bdaoDriverClassName);
             
         	//apertura connessione
-            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            conn = DriverManager.getConnection(bdaoDBUrl, bdaoUSER, bdaoPASS);
             
             //creazione ed esecuzione della query
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
@@ -146,10 +142,10 @@ public class BookingDAO {
         
         try {
             //caricamento driver mysql
-        	Class.forName(DRIVER_CLASS_NAME);
+        	Class.forName(bdaoDriverClassName);
             
         	//apertura connessione
-            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            conn = DriverManager.getConnection(bdaoDBUrl, bdaoUSER, bdaoPASS);
             
             //creazione ed esecuzione della query
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,

@@ -8,10 +8,10 @@ import java.sql.Statement;
 
 public class UnloadDAO {
 	
-	private static String USER = "root";
-    private static String PASS = "root";
-    private static String DB_URL = "jdbc:mysql://127.0.0.1:3306/beecological?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-    private static String DRIVER_CLASS_NAME = "com.mysql.cj.jdbc.Driver";
+	private static String udaoUSER = "root";
+    private static String udaoPASS = "root";
+    private static String udaoDBUrl = "jdbc:mysql://127.0.0.1:3306/beecological?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+    private static String udaoDriverClassName = "com.mysql.cj.jdbc.Driver";
    
 
     public static void saveUnload(Unload unload) {
@@ -20,10 +20,10 @@ public class UnloadDAO {
         
         try {
             //caricamento driver mysql
-        	Class.forName(DRIVER_CLASS_NAME);
+        	Class.forName(udaoDriverClassName);
             
         	//apertura connessione
-            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            conn = DriverManager.getConnection(udaoDBUrl, udaoUSER, udaoPASS);
             
             //creazione ed esecuzione della query
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
@@ -46,10 +46,10 @@ public class UnloadDAO {
         
     	try {
             //caricamento driver mysql
-        	Class.forName(DRIVER_CLASS_NAME);
+        	Class.forName(udaoDriverClassName);
             
         	//apertura connessione
-            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            conn = DriverManager.getConnection(udaoDBUrl, udaoUSER, udaoPASS);
             
             //creazione ed esecuzione della query
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,

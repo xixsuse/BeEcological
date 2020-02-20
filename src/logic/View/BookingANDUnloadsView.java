@@ -48,6 +48,8 @@ implements Initializable {
 	private ObservableList<BookingBean> booking_list = FXCollections.observableArrayList();
 	private ObservableList<WasteUnloadedBean> unload_list = FXCollections.observableArrayList();
 	
+	String errorData = "Error on Building Data";
+	
 	@FXML private Button homeButton;
 	@FXML private MenuButton ownerButton;
 	@FXML private MenuItem ownerProfileItem, logoutItem;
@@ -125,7 +127,7 @@ implements Initializable {
 	    	    }
 	    	    catch(Exception e){
 	    	          e.printStackTrace();
-	    	          System.out.println("Error on Building Data");            
+	    	          System.out.println(errorData);            
 	    	    }
 	    	    tableRegisteredUnloads.setItems(unload_list);
 			}
@@ -165,7 +167,7 @@ implements Initializable {
 		    }
 		    catch(Exception e){
 		          e.printStackTrace();
-		          System.out.println("Error on Building Data");            
+		          System.out.println(errorData);            
 		    }
 			tableBookingAccepted.setItems(booking_list);
 		}
@@ -230,7 +232,7 @@ implements Initializable {
 	    }
 	    catch(Exception e){
 	          e.printStackTrace();
-	          System.out.println("Error on Building Data");            
+	          System.out.println(errorData);            
 	    }
 	    //riempio le colonne tramite il corrispondente nome dell'attributo dato nella definizione della classe
 		col_id.setCellValueFactory(new PropertyValueFactory<>("ID"));
@@ -264,7 +266,7 @@ implements Initializable {
 	    }
 	    catch(Exception e){
 	          e.printStackTrace();
-	          System.out.println("Error on Building Data");            
+	          System.out.println(errorData);            
 	    }
 	    //riempio le colonne tramite il corrispondente nome dell'attributo dato nella definizione della classe
 		col_user1.setCellValueFactory(new PropertyValueFactory<>("user"));

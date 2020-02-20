@@ -11,10 +11,10 @@ import java.util.List;
 
 public class UserDAO {
 	
-	private static String USER = "root";
-    private static String PASS = "root";
-    private static String DB_URL = "jdbc:mysql://127.0.0.1:3306/beecological?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-    private static String DRIVER_CLASS_NAME = "com.mysql.cj.jdbc.Driver";
+	private static String usdaoUSER = "root";
+    private static String usdaoPASS = "root";
+    private static String usdaoDBUrl = "jdbc:mysql://127.0.0.1:3306/beecological?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+    private static String usdaoDriverClassName = "com.mysql.cj.jdbc.Driver";
    
     
     public static boolean checkUsername(String username) {
@@ -25,9 +25,9 @@ public class UserDAO {
         
         try {
             //caricamento driver mysql
-        	Class.forName(DRIVER_CLASS_NAME);
+        	Class.forName(usdaoDriverClassName);
         	//apertura connessione
-            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            conn = DriverManager.getConnection(usdaoDBUrl, usdaoUSER, usdaoPASS);
             
             //creazione ed esecuzione della query
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
@@ -55,10 +55,10 @@ public class UserDAO {
         
         try {
             //caricamento driver mysql
-        	Class.forName(DRIVER_CLASS_NAME);
+        	Class.forName(usdaoDriverClassName);
             
         	//apertura connessione
-            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            conn = DriverManager.getConnection(usdaoDBUrl, usdaoUSER, usdaoPASS);
             
             //creazione ed esecuzione della query
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
@@ -83,10 +83,10 @@ public class UserDAO {
         
         try {
             //caricamento driver mysql
-        	Class.forName(DRIVER_CLASS_NAME);
+        	Class.forName(usdaoDriverClassName);
         	
         	//apertura connessione
-            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            conn = DriverManager.getConnection(usdaoDBUrl, usdaoUSER, usdaoPASS);
             
             //creazione ed esecuzione della query
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
@@ -119,10 +119,10 @@ public class UserDAO {
         
         try {
             //caricamento driver mysql
-        	Class.forName(DRIVER_CLASS_NAME);
+        	Class.forName(usdaoDriverClassName);
             
         	//apertura connessione
-            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            conn = DriverManager.getConnection(usdaoDBUrl, usdaoUSER, usdaoPASS);
             
             //creazione ed esecuzione della query
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
@@ -151,10 +151,10 @@ public class UserDAO {
         
     	try {
             //caricamento driver mysql
-        	Class.forName(DRIVER_CLASS_NAME);
+        	Class.forName(usdaoDriverClassName);
             
         	//apertura connessione
-            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            conn = DriverManager.getConnection(usdaoDBUrl, usdaoUSER, usdaoPASS);
             
             //creazione ed esecuzione della query
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
@@ -175,10 +175,10 @@ public class UserDAO {
         
     	try {
             //caricamento driver mysql
-        	Class.forName(DRIVER_CLASS_NAME);
+        	Class.forName(usdaoDriverClassName);
             
         	//apertura connessione
-            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            conn = DriverManager.getConnection(usdaoDBUrl, usdaoUSER, usdaoPASS);
             
             //creazione ed esecuzione della query
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,

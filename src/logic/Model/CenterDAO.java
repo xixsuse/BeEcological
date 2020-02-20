@@ -9,14 +9,10 @@ import java.util.ArrayList;
 
 public class CenterDAO {
 	
-	private static String USER = "root";
-    private static String PASS = "root";
-    private static String DB_URL = "jdbc:mysql://127.0.0.1:3306/beecological?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-    private static String DRIVER_CLASS_NAME = "com.mysql.cj.jdbc.Driver";
-   
-    private CenterDAO(String userConn) {
-    	CenterDAO.USER = userConn;
-    }
+	private static String cdaoUSER = "root";
+    private static String cdaoPASS = "root";
+    private static String cdaoDB_URL = "jdbc:mysql://127.0.0.1:3306/beecological?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+    private static String cdaoDriverClassName = "com.mysql.cj.jdbc.Driver";
     
     public static ArrayList<Center> verifyCenter(String name) {
     	Statement stmt = null;
@@ -26,10 +22,10 @@ public class CenterDAO {
         
         try {
             //caricamento driver mysql
-        	Class.forName(DRIVER_CLASS_NAME);
+        	Class.forName(cdaoDriverClassName);
             
         	//apertura connessione
-            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            conn = DriverManager.getConnection(cdaoDB_URL, cdaoUSER, cdaoPASS);
             
             //creazione ed esecuzione della query
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
@@ -59,10 +55,10 @@ public class CenterDAO {
         
     	try {
             //caricamento driver mysql
-        	Class.forName(DRIVER_CLASS_NAME);
+        	Class.forName(cdaoDriverClassName);
             
         	//apertura connessione
-            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            conn = DriverManager.getConnection(cdaoDB_URL, cdaoUSER, cdaoPASS);
             
             //creazione ed esecuzione della query
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
