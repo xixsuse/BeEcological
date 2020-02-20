@@ -4,9 +4,11 @@ package logic.Controller;
 
 import java.util.ArrayList;
 
+import error.InexistentUsernameException;
 import logic.Bean.BookingBean;
 import logic.Model.Booking;
 import logic.Model.BookingDAO;
+import logic.Model.UserDAO;
 
 public class BookingController {
 	
@@ -19,9 +21,12 @@ public class BookingController {
 		return result;
 	}
 	
-	public void InsertBooking(BookingBean bookingBean) {
+	public void InsertBooking(BookingBean bookingBean) throws InexistentUsernameException {
 		Booking booking = new Booking(bookingBean.getUser(), bookingBean.getCenter(), bookingBean.getDate(), 
 				bookingBean.getTime(), bookingBean.getStatus());
+		if(UserDAO.checkUsername(bookingBean.getUser())) {
+			throw new InexistentUsernameException();
+		}
 		BookingDAO.makeBooking(booking);
 	}
 	

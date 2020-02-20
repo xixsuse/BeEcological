@@ -2,6 +2,8 @@ package logic.Controller;
 
 import java.util.List;
 
+import error.EmptyFieldException;
+import error.InexistentUsernameException;
 import logic.Bean.UserBean;
 import logic.Model.User;
 import logic.Model.UserDAO;
@@ -10,9 +12,15 @@ public class UserController {
 	
 	public UserController() {}
 	
-	public boolean Login(UserBean userBean) {
+	public boolean Login(UserBean userBean) throws InexistentUsernameException, EmptyFieldException {
 		User user = new User(userBean.getUsername());
 		user.setPassword(userBean.getPassword());
+		if(userBean.getUsername().length() == 0 || userBean.getPassword().length() == 0) {
+			throw new EmptyFieldException();
+		}
+		if(UserDAO.checkUsername(userBean.getUsername())) {
+			throw new InexistentUsernameException();
+		}
 		boolean result = UserDAO.verifyLogin(user);
 		return result;
 	}

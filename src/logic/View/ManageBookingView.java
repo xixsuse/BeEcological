@@ -13,6 +13,7 @@ import java.util.ResourceBundle;
 
 import com.sun.javafx.scene.control.skin.TableHeaderRow;
 
+import error.InexistentUsernameException;
 import logic.Bean.BookingBean;
 import logic.Bean.CenterOwnerBean;
 import logic.Bean.UserBean;
@@ -178,7 +179,11 @@ public class ManageBookingView implements Initializable {
 			return;
 		}
 		//la prenotazione non esiste
-		control2.InsertBooking(booking);
+		try {
+			control2.InsertBooking(booking);
+		} catch (InexistentUsernameException e) {
+
+		}
 		alert.setAlertType(AlertType.INFORMATION);;
 		alert.setTitle("Booking request completed.");
 		alert.setHeaderText(null);

@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import error.EmptyFieldException;
+import error.InexistentUsernameException;
 import logic.Bean.UserBean;
 import logic.Controller.UserController;
 
@@ -28,12 +30,16 @@ public class LoginUserServlet extends HttpServlet {
 	
 	@Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        boolean result;
+        boolean result = false;
     	UserBean userBean = new UserBean();
         userBean.setUsername(req.getParameter("username"));
         userBean.setPassword(req.getParameter("password"));
         UserController controller = new UserController();
-        result = controller.Login(userBean);
+        try {
+			result = controller.Login(userBean);
+		} catch (InexistentUsernameException | EmptyFieldException e) {
+
+		}
 
         if (!result) {
             req.setAttribute("alertMsg", "Not valid login credentials.");

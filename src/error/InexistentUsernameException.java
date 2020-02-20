@@ -1,6 +1,8 @@
 package error;
 
-public class InexistentUsernameException extends Exception {
+import java.sql.SQLException;
+
+public class InexistentUsernameException extends SQLException {
 	private static final long serialVersionUID = 1L;
 
 	public InexistentUsernameException() {

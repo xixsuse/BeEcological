@@ -4,6 +4,8 @@ import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import error.EmptyFieldException;
+import error.InexistentUsernameException;
 import logic.Bean.UserBean;
 import logic.Controller.UserController;
 import javafx.event.ActionEvent;
@@ -70,7 +72,7 @@ public class LoginUserView implements Initializable {
 		}
 	}
 	
-	public void loginUser(ActionEvent event) {
+	public void loginUser(ActionEvent event) throws InexistentUsernameException, EmptyFieldException {
 		boolean ok;
 		String username = loginUsername.getText();
 		String password = loginPassword.getText();

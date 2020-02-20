@@ -13,6 +13,8 @@ import java.util.ResourceBundle;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import error.EmptyFieldException;
+import error.InexistentUsernameException;
 import logic.Bean.BookingBean;
 import logic.Bean.CenterBean;
 import logic.Bean.UserBean;
@@ -195,12 +197,16 @@ public class CenterPageView implements Initializable {
 		    usr = usernamePassword.getKey();
 		    psw = usernamePassword.getValue();
 		    
-		    boolean ok;
+		    boolean ok = true;
 			user = new UserBean();
 			user.setUsername(UserBean.getUserInstance(usr).getUsername());
 			user.setPassword(psw);
 			control = new UserController();
-			ok = control.Login(user);
+			try {
+				ok = control.Login(user);
+			} catch (InexistentUsernameException | EmptyFieldException e1) {
+
+			}
 			Alert alert1 = new Alert(AlertType.ERROR);
 			if (!ok) {
 				UserBean.instance = null;
@@ -423,7 +429,11 @@ public class CenterPageView implements Initializable {
 			booking.setStatus("W");
 			
 			control1 = new BookingController();
-			control1.InsertBooking(booking);
+			try {
+				control1.InsertBooking(booking);
+			} catch (InexistentUsernameException e) {
+
+			}
 			alert.setAlertType(AlertType.INFORMATION);
 			alert.setTitle("Booking request completed.");
 			alert.setHeaderText(null);

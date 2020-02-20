@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import error.InexistentUsernameException;
 import logic.Bean.BookingBean;
 import logic.Bean.UserBean;
 import logic.Controller.BookingController;
@@ -43,7 +44,11 @@ public class BookingRequestServlet extends HttpServlet {
             bookingBean.setTime(request.getParameter("time"));
             bookingBean.setStatus("W");
             BookingController controller1 = new BookingController();
-            controller1.InsertBooking(bookingBean);
+            try {
+				controller1.InsertBooking(bookingBean);
+			} catch (InexistentUsernameException e) {
+				
+			}
         	session.setAttribute("loggedUser", userBean);
 		    out.println("<script type=\"text/javascript\">");
 		    out.println("alert('Your booking request is completed successfully!');");

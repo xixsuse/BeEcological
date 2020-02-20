@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import error.InexistentUsernameException;
 import logic.Bean.BookingBean;
 import logic.Bean.CenterBean;
 import logic.Bean.CenterOwnerBean;
@@ -110,7 +111,11 @@ public class InsertBookingServlet extends HttpServlet {
             return;
     	}    	
         
-    	controller1.InsertBooking(bookingBean);
+    	try {
+			controller1.InsertBooking(bookingBean);
+		} catch (InexistentUsernameException e) {
+
+		}
         
         out.println("<script type=\"text/javascript\">");
         out.println("alert('Booking accepted successfully.');");
