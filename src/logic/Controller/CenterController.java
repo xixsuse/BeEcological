@@ -1,45 +1,43 @@
-package logic.Controller;
+package logic.controller;
 
 import java.util.ArrayList;
 
-import logic.Model.Center;
-import logic.Model.CenterDAO;
-import logic.Model.CenterOwner;
 import logic.bean.CenterBean;
 import logic.bean.CenterOwnerBean;
+import logic.model.Center;
+import logic.model.CenterDAO;
+import logic.model.CenterOwner;
 
 public class CenterController {
 	
-	public CenterController() {}
-	
-	public ArrayList<CenterBean> CenterList(CenterBean centerBean) {
+	public ArrayList<CenterBean> centerList(CenterBean centerBean) {
 		ArrayList<CenterBean> listOfCenterBean = new ArrayList<>();
-		ArrayList<Center> listOfCenter = CenterDAO.verifyCenter(centerBean.getName());
+		ArrayList<Center> listOfCenter = CenterDAO.verifyCenter(centerBean.getCbName());
 		for(Center center : listOfCenter) {
 			CenterBean centerB = new CenterBean();
-			centerB.setName(center.getName());
-			centerB.setCity(center.getCity());
-			centerB.setCap(center.getCAP());
-			centerB.setAddress(center.getAddress());
-			centerB.setNum(center.getNum());
-			centerB.setCenterPhone(center.getCenterPhone());
+			centerB.setCbName(center.getcName());
+			centerB.setCbCity(center.getcCity());
+			centerB.setCbCap(center.getcCap());
+			centerB.setCbAddress(center.getcAddress());
+			centerB.setCbNum(center.getcNum());
+			centerB.setCbPhone(center.getcPhone());
 			listOfCenterBean.add(centerB);
 		}
 		return listOfCenterBean;
 	}
 	
-	public CenterOwnerBean OwnerOfTheSelectedCenter(CenterBean centerBean) {
+	public CenterOwnerBean ownerOfTheSelectedCenter(CenterBean centerBean) {
 		CenterOwner owner;
 		CenterOwnerBean ownerBean = new CenterOwnerBean();
-		Center center = new Center(centerBean.getName());
+		Center center = new Center(centerBean.getCbName());
 		owner = CenterDAO.ownerOfTheCenter(center);
 		ownerBean.setCenter(owner.getCenter());
-		ownerBean.setEmailAddress(owner.getEmailAddress());
-		ownerBean.setName(owner.getName());
-		ownerBean.setPassword(owner.getPassword());
-		ownerBean.setPhoneNumber(owner.getPhoneNumber());
-		ownerBean.setSurname(owner.getSurname());
-		ownerBean.setUsername(owner.getUsername());
+		ownerBean.setCobEmail(owner.getCoEmail());
+		ownerBean.setCobName(owner.getCoName());
+		ownerBean.setCobPassword(owner.getCoPassword());
+		ownerBean.setCobPhone(owner.getCoPhone());
+		ownerBean.setCobSurname(owner.getCoSurname());
+		ownerBean.setCobUsername(owner.getCoUsername());
 		return ownerBean;
 	}
 }

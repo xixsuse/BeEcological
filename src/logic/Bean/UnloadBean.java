@@ -1,44 +1,44 @@
 package logic.bean;
 
 public class UnloadBean {
-	private String user;
-    private String center;
-    private String date;
-    private String time;
+	private String ubUser;
+    private String ubCenter;
+    private String ubDate;
+    private String ubTime;
 
 
-    public String getUser() {
-        return this.user;
+    public String getUbUser() {
+        return this.ubUser;
     }
      
-    public void setUser(String user) {
-        this.user = user;
+    public void setUbUser(String user) {
+        this.ubUser = user;
     }
     
-    public String getCenter() {
-        return this.center;
+    public String getUbCenter() {
+        return this.ubCenter;
     }
 
 
-    public void setCenter(String center) {
-        this.center = center;
-    }
-    
-    public String getDate() {
-        return this.date;
-    }
-
-
-    public void setDate(String date) {
-        this.date = date;
+    public void setUbCenter(String center) {
+        this.ubCenter = center;
     }
     
-    public String getTime() {
-        return this.time;
+    public String getUbDate() {
+        return this.ubDate;
     }
 
 
-    public void setTime(String time) {
-        this.time = time;
+    public void setUbDate(String date) {
+        this.ubDate = date;
+    }
+    
+    public String getUbTime() {
+        return this.ubTime;
+    }
+
+
+    public void setUbTime(String time) {
+        this.ubTime = time;
     }
 }

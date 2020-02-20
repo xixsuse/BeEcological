@@ -1,4 +1,4 @@
-package logic.Servlet;
+package logic.servlet;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,10 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import logic.
-Controller.OwnerController;
 import logic.bean.CenterBean;
 import logic.bean.CenterOwnerBean;
+import logic.controller.OwnerController;
 
 import java.io.IOException;
 import java.util.List;
@@ -29,10 +28,10 @@ public class LoginOwnerServlet extends HttpServlet {
         boolean result;
     	CenterOwnerBean ownerBean = new CenterOwnerBean();
     	CenterBean centerBean = new CenterBean();
-        ownerBean.setUsername(req.getParameter("username"));
-        ownerBean.setPassword(req.getParameter("password"));
+        ownerBean.setCobUsername(req.getParameter("username"));
+        ownerBean.setCobPassword(req.getParameter("password"));
         OwnerController controller = new OwnerController();
-        result = controller.Login(ownerBean);
+        result = controller.login(ownerBean);
 
         if (!result) {
             req.setAttribute("alertMsg", "Not valid login credentials.");
@@ -40,18 +39,18 @@ public class LoginOwnerServlet extends HttpServlet {
             rd.include(req, resp);
         } else {
         	//credenziali corrette
-            List<String> information = controller.OwnerData(ownerBean);
-            ownerBean.setName(information.get(0));
-            ownerBean.setSurname(information.get(1));
-            ownerBean.setEmailAddress(information.get(2));
-            ownerBean.setPhoneNumber(information.get(3));
-            centerBean.setName(information.get(4));
-            centerBean.setCenterPhone(information.get(5));
-            centerBean.setCity(information.get(6));
+            List<String> information = controller.ownerData(ownerBean);
+            ownerBean.setCobName(information.get(0));
+            ownerBean.setCobSurname(information.get(1));
+            ownerBean.setCobEmail(information.get(2));
+            ownerBean.setCobPhone(information.get(3));
+            centerBean.setCbName(information.get(4));
+            centerBean.setCbPhone(information.get(5));
+            centerBean.setCbCity(information.get(6));
             System.out.println(information.get(7));
-            centerBean.setAddress(information.get(7));
-            centerBean.setCap(information.get(8));
-            centerBean.setNum(information.get(9));
+            centerBean.setCbAddress(information.get(7));
+            centerBean.setCbCap(information.get(8));
+            centerBean.setCbNum(information.get(9));
             HttpSession session = req.getSession(true);
             session.setAttribute("loggedOwner", ownerBean);
             session.setAttribute("centerInfo", centerBean);

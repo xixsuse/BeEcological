@@ -1,95 +1,95 @@
 package logic.bean;
 
 public class UserBean {
-	public static UserBean instance = null;
+	public static UserBean usbInstance = null;
 	
-    private String username;
-    private String password;
-    private String name;
-    private String surname;
-    private String emailAddress;
-    private String phoneNumber;
-    private String center;
-    private int ecoPoints;
+    private String usbUsername;
+    private String usbPassword;
+    private String usbName;
+    private String usbSurname;
+    private String usbEmail;
+    private String usbPhone;
+    private String usbCenter;
+    private int usbEcoPoints;
     
     
 	public static UserBean getUserInstance(String username) {
-		if (UserBean.instance == null) {
-			UserBean.instance = new UserBean();
-			UserBean.instance.username = username;
+		if (UserBean.usbInstance == null) {
+			UserBean.usbInstance = new UserBean();
+			UserBean.usbInstance.usbUsername = username;
 		}
-		return instance;
+		return usbInstance;
 	}
     
-    public String getUsername() {
-        return this.username;
+    public String getUsbUsername() {
+        return this.usbUsername;
     }
 
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUsbUsername(String username) {
+        this.usbUsername = username;
     }
 
-    public String getPassword() {
-        return this.password;
+    public String getUsbPassword() {
+        return this.usbPassword;
     }
 
         
-    public void setPassword(String password) {
-        this.password = password;
+    public void setUsbPassword(String password) {
+        this.usbPassword = password;
     }
     
-    public String getName() {
-        return this.name;
+    public String getUsbName() {
+        return this.usbName;
     }
 
 
-    public void setName(String name) {
-        this.name = name;
-    }
-    
-    public String getSurname() {
-        return this.surname;
-    }
-
-
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public void setUsbName(String name) {
+        this.usbName = name;
     }
     
-    public String getEmailAddress() {
-        return this.emailAddress;
+    public String getUsbSurname() {
+        return this.usbSurname;
     }
 
 
-    public void setEmailAddress(String emailAddress) {
-        this.emailAddress = emailAddress;
-    }
-    
-    public String getPhoneNumber() {
-        return this.phoneNumber;
-    }
-
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setUsbSurname(String surname) {
+        this.usbSurname = surname;
     }
     
-    public String getCenter() {
-        return this.center;
+    public String getUsbEmail() {
+        return this.usbEmail;
     }
 
 
-    public void setCenter(String center) {
-        this.center = center;
+    public void setUsbEmail(String emailAddress) {
+        this.usbEmail = emailAddress;
+    }
+    
+    public String getUsbPhone() {
+        return this.usbPhone;
+    }
+
+
+    public void setUsbPhone(String phoneNumber) {
+        this.usbPhone = phoneNumber;
+    }
+    
+    public String getUsbCenter() {
+        return this.usbCenter;
+    }
+
+
+    public void setUsbCenter(String center) {
+        this.usbCenter = center;
     }
     
     public int getEcopoints() {
-        return this.ecoPoints;
+        return this.usbEcoPoints;
     }
 
 
     public void setEcopoints(int ecoPoints) {
-        this.ecoPoints = ecoPoints;
+        this.usbEcoPoints = ecoPoints;
     }
 }

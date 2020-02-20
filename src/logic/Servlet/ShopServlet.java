@@ -1,4 +1,4 @@
-package logic.Servlet;
+package logic.servlet;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -7,9 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import logic.
-Controller.UserController;
 import logic.bean.UserBean;
+import logic.controller.UserController;
 
 import java.io.IOException;
 import java.util.List;
@@ -26,13 +25,13 @@ public class ShopServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession(true);
         UserBean userBean = new UserBean();
-        userBean.setUsername(req.getParameter("param"));
+        userBean.setUsbUsername(req.getParameter("param"));
         UserController controller = new UserController();
-        List<String> userInformation = controller.UserInformation(userBean);
-        userBean.setName(userInformation.get(0));
-        userBean.setSurname(userInformation.get(1));
-        userBean.setEmailAddress(userInformation.get(2));
-        userBean.setPhoneNumber(userInformation.get(3));
+        List<String> userInformation = controller.userInformation(userBean);
+        userBean.setUsbName(userInformation.get(0));
+        userBean.setUsbSurname(userInformation.get(1));
+        userBean.setUsbEmail(userInformation.get(2));
+        userBean.setUsbPhone(userInformation.get(3));
         userBean.setEcopoints(Integer.parseInt(userInformation.get(4)));
         
         session.setAttribute("loggedUser", userBean);

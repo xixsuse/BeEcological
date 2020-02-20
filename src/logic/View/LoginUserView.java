@@ -1,4 +1,4 @@
-package logic.View;
+package logic.view;
 
 import java.io.File;
 import java.net.URL;
@@ -9,8 +9,8 @@ import error.EmptyFieldException;
 import error.InexistentUsernameException;
 import error.InvalidEmailException;
 import error.ShortPasswordException;
-import logic.Controller.UserController;
 import logic.bean.UserBean;
+import logic.controller.UserController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -81,13 +81,13 @@ public class LoginUserView implements Initializable {
 		String password = loginPassword.getText();
 		
 		user = UserBean.getUserInstance(username);
-		user.setPassword(password);
+		user.setUsbPassword(password);
 		
 		control = new UserController();
-		ok = control.Login(user);
+		ok = control.login(user);
 		Alert alert = new Alert(AlertType.ERROR);
 		if (!ok) {
-			UserBean.instance = null;
+			UserBean.usbInstance = null;
 			alert.setTitle("Login failed");
 			alert.setHeaderText(null);
 			alert.setContentText("User not registered: incorrect username or password.\nRetry or register!");
@@ -113,8 +113,8 @@ public class LoginUserView implements Initializable {
 			controller.userGroup.setVisible(true);
 			controller.circleUserGroup.setVisible(true);
 			controller.circleOwnerGroup.setVisible(false);
-			controller.userButton.setText(UserBean.getUserInstance(username).getUsername());
-			controller.welcomebackText.setText("Welcome back, "+UserBean.getUserInstance("").getUsername());
+			controller.userButton.setText(UserBean.getUserInstance(username).getUsbUsername());
+			controller.welcomebackText.setText("Welcome back, "+UserBean.getUserInstance("").getUsbUsername());
 			window.show();
 		}catch(Exception e){
 			e.printStackTrace();
@@ -132,10 +132,10 @@ public class LoginUserView implements Initializable {
 		String confirmPassword = textConfirmPassword.getText();
 		
 		user = new UserBean();
-		user.setUsername(username);
+		user.setUsbUsername(username);
 		control = new UserController();
 		
-		ok = control.CheckRegistration(user);
+		ok = control.checkRegistration(user);
 		Alert alert = new Alert(AlertType.ERROR);
 		if (name.isEmpty() || surname.isEmpty()) {
 			alert.setTitle("Registration Failed - Invalid name");
@@ -196,14 +196,14 @@ public class LoginUserView implements Initializable {
 			alert.showAndWait();
 			return;
 		}
-		user.setName(name);
-		user.setSurname(surname);
-		user.setEmailAddress(emailAddress);
-		user.setPhoneNumber(phoneNumber);
-		user.setPassword(password);
+		user.setUsbName(name);
+		user.setUsbSurname(surname);
+		user.setUsbEmail(emailAddress);
+		user.setUsbPhone(phoneNumber);
+		user.setUsbPassword(password);
 		user.setEcopoints(0);
 		
-		control.SaveRegistration(user);
+		control.saveRegistration(user);
 		
 		try {
 			alert.setAlertType(AlertType.INFORMATION);
@@ -220,10 +220,10 @@ public class LoginUserView implements Initializable {
 			HomepageView controller = (HomepageView) loader.getController();
 			controller.loginGroup.setVisible(false);
 			controller.userGroup.setVisible(true);
-			controller.userButton.setText(UserBean.getUserInstance(username).getUsername());
+			controller.userButton.setText(UserBean.getUserInstance(username).getUsbUsername());
 			controller.circleUserGroup.setVisible(true);
 			controller.circleOwnerGroup.setVisible(false);
-			controller.welcomebackText.setText("Welcome back, "+UserBean.getUserInstance("").getUsername());
+			controller.welcomebackText.setText("Welcome back, "+UserBean.getUserInstance("").getUsbUsername());
 			window.setTitle("BeEcological - Home");
 			window.show();
 		}catch(Exception e){

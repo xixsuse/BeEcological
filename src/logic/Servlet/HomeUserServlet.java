@@ -1,4 +1,4 @@
-package logic.Servlet;
+package logic.servlet;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,7 +22,7 @@ public class HomeUserServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	UserBean userBean = new UserBean();
-        userBean.setUsername(request.getParameter("username"));
+        userBean.setUsbUsername(request.getParameter("username"));
 
         HttpSession session = request.getSession(true);
         session.setAttribute("loggedUser", userBean);

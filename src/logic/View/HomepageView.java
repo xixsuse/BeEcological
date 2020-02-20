@@ -1,4 +1,4 @@
-package logic.View;
+package logic.view;
 
 import java.io.File;
 import java.io.IOException;
@@ -58,13 +58,13 @@ public class HomepageView implements Initializable {
 			window.setTitle("Homepage");
 			
 			HomepageView controller = (HomepageView) loader.getController();
-			if(UserBean.instance != null) {
+			if(UserBean.usbInstance != null) {
 				controller.loginGroup.setVisible(false);
 				controller.userGroup.setVisible(true);
 				controller.circleUserGroup.setVisible(true);
 				controller.circleOwnerGroup.setVisible(false);
-				controller.userButton.setText(UserBean.getUserInstance("").getUsername());
-				controller.welcomebackText.setText("Welcome back, "+UserBean.getUserInstance("").getUsername());
+				controller.userButton.setText(UserBean.getUserInstance("").getUsbUsername());
+				controller.welcomebackText.setText("Welcome back, "+UserBean.getUserInstance("").getUsbUsername());
 			}
 			window.show();
 		}catch(Exception e){
@@ -94,10 +94,10 @@ public class HomepageView implements Initializable {
 			window.setTitle("BeEcological - Search Result");
 			
 			SearchResultView controller = (SearchResultView) loader.getController();
-			if(UserBean.instance != null) {
+			if(UserBean.usbInstance != null) {
 				controller.loginGroup.setVisible(false);
 				controller.userGroup.setVisible(true);
-				controller.userButton.setText(UserBean.instance.getUsername());
+				controller.userButton.setText(UserBean.usbInstance.getUsbUsername());
 			}
 			else {
 				controller.userGroup.setVisible(false);
@@ -159,7 +159,7 @@ public class HomepageView implements Initializable {
 				HomepageView controller = (HomepageView) loader.getController();
 				controller.userGroup.setVisible(false);
 				controller.loginGroup.setVisible(true);
-				UserBean.instance = null;
+				UserBean.usbInstance = null;
 				window.show();
 			}catch(Exception e){
 				e.printStackTrace();

@@ -1,4 +1,4 @@
-package logic.Servlet;
+package logic.servlet;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -7,10 +7,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import logic.Controller.BookingController;
 import logic.bean.BookingBean;
 import logic.bean.CenterBean;
 import logic.bean.CenterOwnerBean;
+import logic.controller.BookingController;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -31,23 +31,23 @@ public class DeleteBookingServlet extends HttpServlet {
     	CenterBean centerBean = new CenterBean();
         BookingBean bookingBean = new BookingBean();
         
-        ownerBean.setUsername(request.getParameter("username"));
-        ownerBean.setEmailAddress(request.getParameter("mail"));
-        ownerBean.setPhoneNumber(request.getParameter("ownerphone"));
-        centerBean.setName(request.getParameter("centername"));
-        centerBean.setAddress(request.getParameter("address"));
-        centerBean.setCenterPhone(request.getParameter("centerphone"));
+        ownerBean.setCobUsername(request.getParameter("username"));
+        ownerBean.setCobEmail(request.getParameter("mail"));
+        ownerBean.setCobPhone(request.getParameter("ownerphone"));
+        centerBean.setCbName(request.getParameter("centername"));
+        centerBean.setCbAddress(request.getParameter("address"));
+        centerBean.setCbPhone(request.getParameter("centerphone"));
         
-    	bookingBean.setCenter(request.getParameter("centername"));
-    	bookingBean.setUser(request.getParameter("userToDelete"));
-    	bookingBean.setDate(request.getParameter("date"));
-    	bookingBean.setTime(request.getParameter("time"));
-    	bookingBean.setStatus("D");
+    	bookingBean.setBbCenter(request.getParameter("centername"));
+    	bookingBean.setBbUser(request.getParameter("userToDelete"));
+    	bookingBean.setBbDate(request.getParameter("date"));
+    	bookingBean.setBbTime(request.getParameter("time"));
+    	bookingBean.setBbStatus("D");
     	
         HttpSession session = request.getSession(true);
     	
         BookingController controller = new BookingController();
-    	controller.ModifyBooking(bookingBean);
+    	controller.modifyBooking(bookingBean);
         
         session.setAttribute("loggedOwner", ownerBean);
         session.setAttribute("centerInfo", centerBean);

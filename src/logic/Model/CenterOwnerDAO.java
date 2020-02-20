@@ -1,4 +1,4 @@
-package logic.Model;
+package logic.model;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -67,8 +67,8 @@ public class CenterOwnerDAO {
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_READ_ONLY);
             
-        	String selectStatement = "SELECT count(*) FROM beecological.Owner WHERE Username = '" + owner.getUsername() + 
-        			"' and Password = '" + owner.getPassword() + "';";
+        	String selectStatement = "SELECT count(*) FROM beecological.Owner WHERE Username = '" + owner.getCoUsername() + 
+        			"' and Password = '" + owner.getCoPassword() + "';";
         	res = stmt.executeQuery(selectStatement);
         	res.next();
         	count = res.getInt(1);
@@ -103,7 +103,7 @@ public class CenterOwnerDAO {
                     ResultSet.CONCUR_READ_ONLY);
 
         	String selectStatement = "SELECT * FROM beecological.owner JOIN beecological.center ON beecological.owner.center = "
-        			+ "beecological.center.centerName WHERE beecological.owner.username = '" + owner.getUsername() + "';";
+        			+ "beecological.center.centerName WHERE beecological.owner.username = '" + owner.getCoUsername() + "';";
         	res = stmt.executeQuery(selectStatement);
     		res.next();
     		listInfo.add(res.getString("name"));

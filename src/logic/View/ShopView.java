@@ -1,4 +1,4 @@
-package logic.View;
+package logic.view;
 
 import java.io.File;
 import java.net.URL;
@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-import logic.Controller.UserController;
 import logic.bean.UserBean;
+import logic.controller.UserController;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -77,7 +77,7 @@ public class ShopView implements Initializable {
 			HomepageView controller = (HomepageView) loader.getController();
 			controller.loginGroup.setVisible(false);
 			controller.userGroup.setVisible(true);
-			controller.userButton.setText(UserBean.instance.getUsername());
+			controller.userButton.setText(UserBean.usbInstance.getUsbUsername());
 			controller.circleUserGroup.setVisible(true);
 			controller.circleOwnerGroup.setVisible(false);
 			window.show();
@@ -104,7 +104,7 @@ public class ShopView implements Initializable {
 				window.setTitle("Homepage");
 				HomepageView controller = (HomepageView) loader.getController();
 				controller.userGroup.setVisible(false);
-				UserBean.instance = null;
+				UserBean.usbInstance = null;
 				window.show();
 			}catch(Exception e){
 				e.printStackTrace();
@@ -221,9 +221,9 @@ public void updateEcoPoints(ActionEvent event,int cost) {
 	Optional<ButtonType> result = alert.showAndWait();
 	if (result.get() == ButtonType.OK){
 		int newEcoPoints = oldEcoPoints - cost;
-		UserBean.instance.setEcopoints(newEcoPoints);
+		UserBean.usbInstance.setEcopoints(newEcoPoints);
 		control = new UserController();
-		control.UpdateEcoPoints(UserBean.getUserInstance(""));
+		control.updateEcoPoints(UserBean.getUserInstance(""));
 		isBuying = false;
 		gotoShop(event);
 	}
@@ -236,8 +236,8 @@ public void updateEcoPoints(ActionEvent event,int cost) {
 	public void initialize(URL location, ResourceBundle resources) {
 		homeButton.setTooltip(new Tooltip("Return to BeEcological Homepage"));
 		control = new UserController();
-		List<String> userInfo = control.UserInformation(UserBean.instance);
-		userButton.setText(UserBean.instance.getUsername());
+		List<String> userInfo = control.userInformation(UserBean.usbInstance);
+		userButton.setText(UserBean.usbInstance.getUsbUsername());
 		ecoPoints.setText(userInfo.get(4));
 	}
 }

@@ -1,4 +1,4 @@
-package logic.Model;
+package logic.model;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -31,8 +31,8 @@ public class BookingDAO {
                     ResultSet.CONCUR_READ_ONLY);
             
             String insertStatement = String.format("INSERT INTO beecological.bookingrequest (user, center, date, time, status)"
-            		+ " VALUES ('%s' ,'%s' ,'%s' ,'%s' , '%s')", booking.getUser(), booking.getCenter(), booking.getDate(), 
-            		booking.getTime(), booking.getStatus());
+            		+ " VALUES ('%s' ,'%s' ,'%s' ,'%s' , '%s')", booking.getbUser(), booking.getbCenter(), booking.getbDate(), 
+            		booking.getbTime(), booking.getbStatus());
             stmt.executeUpdate(insertStatement);
             
             stmt.close();
@@ -59,8 +59,8 @@ public class BookingDAO {
 
             String updateStatement = String.format("UPDATE beecological.bookingrequest SET beecological.bookingrequest.status = '%s' "
             		+ "WHERE beecological.bookingrequest.user = '%s' AND beecological.bookingrequest.center ='%s' AND "
-            		+ "beecological.bookingrequest.date = '%s' AND beecological.bookingrequest.time = '%s';", booking.getStatus(),
-            		booking.getUser(), booking.getCenter(), booking.getDate(), booking.getTime());
+            		+ "beecological.bookingrequest.date = '%s' AND beecological.bookingrequest.time = '%s';", booking.getbStatus(),
+            		booking.getbUser(), booking.getbCenter(), booking.getbDate(), booking.getbTime());
             stmt.executeUpdate(updateStatement);
             
             stmt.close();
@@ -87,9 +87,9 @@ public class BookingDAO {
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_READ_ONLY);
 
-        	String selectStatement = "SELECT count(*) FROM beecological.bookingrequest WHERE beecological.bookingrequest.user = '" + booking.getUser() +"' "
-        			+ "and beecological.bookingrequest.center = '" + booking.getCenter() + "' and beecological.bookingrequest.date = '" + booking.getDate() + "' "
-        					+ "and beecological.bookingrequest.time = '" + booking.getTime() + "' and beecological.bookingrequest.status = '" + booking.getStatus() + "';";
+        	String selectStatement = "SELECT count(*) FROM beecological.bookingrequest WHERE beecological.bookingrequest.user = '" + booking.getbUser() +"' "
+        			+ "and beecological.bookingrequest.center = '" + booking.getbCenter() + "' and beecological.bookingrequest.date = '" + booking.getbDate() + "' "
+        					+ "and beecological.bookingrequest.time = '" + booking.getbTime() + "' and beecological.bookingrequest.status = '" + booking.getbStatus() + "';";
         	res = stmt.executeQuery(selectStatement);
         	res.next();
         	count = res.getInt(1);

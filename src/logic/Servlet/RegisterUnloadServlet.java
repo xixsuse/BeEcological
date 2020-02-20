@@ -1,4 +1,4 @@
-package logic.Servlet;
+package logic.servlet;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -7,10 +7,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import logic.Controller.BookingController;
 import logic.bean.BookingBean;
 import logic.bean.CenterBean;
 import logic.bean.CenterOwnerBean;
+import logic.controller.BookingController;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -28,16 +28,16 @@ public class RegisterUnloadServlet extends HttpServlet {
     	CenterOwnerBean ownerBean = new CenterOwnerBean();
     	CenterBean centerBean = new CenterBean();
         BookingBean bookingBean = new BookingBean();
-        ownerBean.setUsername(request.getParameter("username"));
-        ownerBean.setEmailAddress(request.getParameter("mail"));
-        ownerBean.setPhoneNumber(request.getParameter("ownerphone"));
-        centerBean.setName(request.getParameter("centername"));
-        centerBean.setAddress(request.getParameter("address"));
-        centerBean.setCenterPhone(request.getParameter("centerphone"));
-    	bookingBean.setCenter(request.getParameter("centername"));
-    	bookingBean.setStatus("A");
+        ownerBean.setCobUsername(request.getParameter("username"));
+        ownerBean.setCobEmail(request.getParameter("mail"));
+        ownerBean.setCobPhone(request.getParameter("ownerphone"));
+        centerBean.setCbName(request.getParameter("centername"));
+        centerBean.setCbAddress(request.getParameter("address"));
+        centerBean.setCbPhone(request.getParameter("centerphone"));
+    	bookingBean.setBbCenter(request.getParameter("centername"));
+    	bookingBean.setBbStatus("A");
         BookingController controller = new BookingController();
-        ArrayList<BookingBean> bookAccept= controller.BookingListByCenter(bookingBean);
+        ArrayList<BookingBean> bookAccept= controller.bookingListByCenter(bookingBean);
         
         HttpSession session = request.getSession(true);
         session.setAttribute("bookAccept", bookAccept);

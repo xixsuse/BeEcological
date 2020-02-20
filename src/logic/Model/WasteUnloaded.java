@@ -1,88 +1,88 @@
-package logic.Model;
+package logic.model;
 
 public class WasteUnloaded {
-    private String user;
-    private String center;
-    private String date;
-    private String time;
-    private String waste;
-    private int wasteQuantity;
-    private int ecoPoints;
+    private String wuUser;
+    private String wuCenter;
+    private String wuDate;
+    private String wuTime;
+    private String wuWaste;
+    private int wuWasteQuantity;
+    private int wuEcoPoints;
 
     public WasteUnloaded(String user, String center, String date, String time, String waste, int wasteQuantity){
-        this.user = user;
-        this.center = center;
-        this.date = date;
-        this.time = time;
-        this.waste = waste;
-        this.wasteQuantity = wasteQuantity;
+        this.wuUser = user;
+        this.wuCenter = center;
+        this.wuDate = date;
+        this.wuTime = time;
+        this.wuWaste = waste;
+        this.wuWasteQuantity = wasteQuantity;
     }
     
     public WasteUnloaded(String user, String center, String date, String time, String waste, int wasteQuantity, int ecoPoints){
-        this.user = user;
-        this.center = center;
-        this.date = date;
-        this.time = time;
-        this.waste = waste;
-        this.wasteQuantity = wasteQuantity;
-        this.ecoPoints = ecoPoints;
+        this.wuUser = user;
+        this.wuCenter = center;
+        this.wuDate = date;
+        this.wuTime = time;
+        this.wuWaste = waste;
+        this.wuWasteQuantity = wasteQuantity;
+        this.wuEcoPoints = ecoPoints;
     }
     
-    public String getUser() {
-    	return this.user;
+    public String getWuUser() {
+    	return this.wuUser;
     }
     
-    public void setUser(String user) {
-    	this.user = user;
+    public void setWuUser(String user) {
+    	this.wuUser = user;
     }
 
-    public String getCenter() {
-    	return this.center;
+    public String getWuCenter() {
+    	return this.wuCenter;
     }
     
-    public void setCenter(String center) {
-    	this.center = center;
+    public void setWuCenter(String center) {
+    	this.wuCenter = center;
     }
     
-    public String getDate() {
-    	return this.date;
+    public String getWuDate() {
+    	return this.wuDate;
     }
     
-    public void setDate(String date) {
-    	this.date = date;
+    public void setWuDate(String date) {
+    	this.wuDate = date;
     }
     
-    public String getTime() {
-    	return this.time;
+    public String getWuTime() {
+    	return this.wuTime;
     }
     
-    public void setTime(String time) {
-    	this.time = time;
+    public void setWuTime(String time) {
+    	this.wuTime = time;
     }
     
-    public String getWaste() {
-        return this.waste;
+    public String getWuWaste() {
+        return this.wuWaste;
     }
      
-    public void setWaste(String waste) {
-        this.waste = waste;
+    public void setWuWaste(String waste) {
+        this.wuWaste = waste;
     }
     
-    public int getWasteQuantity() {
-        return this.wasteQuantity;
+    public int getWuWasteQuantity() {
+        return this.wuWasteQuantity;
     }
 
 
-    public void setWasteQuantity(int wasteQuantity) {
-        this.wasteQuantity = wasteQuantity;
+    public void setWuWasteQuantity(int wasteQuantity) {
+        this.wuWasteQuantity = wasteQuantity;
     }
     
-    public int getEcoPoints() {
-        return this.ecoPoints;
+    public int getWuEcoPoints() {
+        return this.wuEcoPoints;
     }
 
 
-    public void setEcoPoints(int ecoPoints) {
-        this.ecoPoints = ecoPoints;
+    public void setWuEcoPoints(int ecoPoints) {
+        this.wuEcoPoints = ecoPoints;
     }
 }

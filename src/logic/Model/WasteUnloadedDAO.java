@@ -1,4 +1,4 @@
-package logic.Model;
+package logic.model;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -31,8 +31,8 @@ public class WasteUnloadedDAO {
                     ResultSet.CONCUR_READ_ONLY);
             
         	String insertStatement = String.format("INSERT INTO beecological.wasteunloaded(user,center,date,time,waste,wasteQuantity)"
-        			+ " VALUES ('%s' ,'%s' ,'%s' ,'%s' ,'%s' ,'%s')", wasteUnloaded.getUser(), wasteUnloaded.getCenter(), wasteUnloaded.getDate(), 
-        			wasteUnloaded.getTime(), wasteUnloaded.getWaste(), wasteUnloaded.getWasteQuantity());
+        			+ " VALUES ('%s' ,'%s' ,'%s' ,'%s' ,'%s' ,'%s')", wasteUnloaded.getWuUser(), wasteUnloaded.getWuCenter(), wasteUnloaded.getWuDate(), 
+        			wasteUnloaded.getWuTime(), wasteUnloaded.getWuWaste(), wasteUnloaded.getWuWasteQuantity());
             stmt.executeUpdate(insertStatement);
             
             stmt.close();
@@ -132,7 +132,7 @@ public class WasteUnloadedDAO {
         	String deleteStatement = String.format("DELETE FROM beecological.wasteunloaded WHERE beecological.wasteunloaded.user = '%s' "
         			+ "AND beecological.wasteunloaded.center = '%s' AND beecological.wasteunloaded.date = '%s' AND beecological.wasteunloaded.time = '%s' "
         			+ "AND beecological.wasteunloaded.waste = '%s';", 
-        			wasteUnloaded.getUser(), wasteUnloaded.getCenter(), wasteUnloaded.getDate(), wasteUnloaded.getTime(), wasteUnloaded.getWaste());
+        			wasteUnloaded.getWuUser(), wasteUnloaded.getWuCenter(), wasteUnloaded.getWuDate(), wasteUnloaded.getWuTime(), wasteUnloaded.getWuWaste());
         	stmt.executeUpdate(deleteStatement);
             
             stmt.close();
@@ -159,9 +159,9 @@ public class WasteUnloadedDAO {
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_READ_ONLY);
 
-        	String selectStatement = "SELECT count(*) FROM beecological.wasteunloaded WHERE beecological.wasteunloaded.user = '"+wasteUnloaded.getUser()+"' "
-        			+ "AND beecological.wasteunloaded.center = '"+wasteUnloaded.getCenter()+"' AND beecological.wasteunloaded.date = '"+wasteUnloaded.getDate()+"' "
-        					+ "AND beecological.wasteunloaded.time = '"+wasteUnloaded.getTime()+"';";
+        	String selectStatement = "SELECT count(*) FROM beecological.wasteunloaded WHERE beecological.wasteunloaded.user = '"+wasteUnloaded.getWuUser()+"' "
+        			+ "AND beecological.wasteunloaded.center = '"+wasteUnloaded.getWuCenter()+"' AND beecological.wasteunloaded.date = '"+wasteUnloaded.getWuDate()+"' "
+        					+ "AND beecological.wasteunloaded.time = '"+wasteUnloaded.getWuTime()+"';";
         	res = stmt.executeQuery(selectStatement);
         	res.next();
         	

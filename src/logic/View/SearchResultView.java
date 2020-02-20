@@ -1,4 +1,4 @@
-package logic.View;
+package logic.view;
 
 import java.io.File;
 import java.net.URL;
@@ -8,10 +8,10 @@ import java.util.ResourceBundle;
 
 import com.sun.javafx.scene.control.skin.TableHeaderRow;
 
-import logic.Controller.CenterController;
 import logic.bean.CenterBean;
 import logic.bean.CenterOwnerBean;
 import logic.bean.UserBean;
+import logic.controller.CenterController;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -75,13 +75,13 @@ public class SearchResultView implements Initializable {
 			window.setScene(tableViewScene);
 			window.setTitle("Homepage");
 			HomepageView controller = (HomepageView) loader.getController();
-			if (UserBean.instance != null) {
+			if (UserBean.usbInstance != null) {
 				controller.loginGroup.setVisible(false);
 				controller.userGroup.setVisible(true);
-				controller.userButton.setText(UserBean.getUserInstance("").getUsername());
+				controller.userButton.setText(UserBean.getUserInstance("").getUsbUsername());
 				controller.circleUserGroup.setVisible(true);
 				controller.circleOwnerGroup.setVisible(false);
-				controller.welcomebackText.setText("Welcome back, "+UserBean.getUserInstance("").getUsername());
+				controller.welcomebackText.setText("Welcome back, "+UserBean.getUserInstance("").getUsbUsername());
 			}
 			window.show();
 		}catch(Exception e){
@@ -101,10 +101,10 @@ public class SearchResultView implements Initializable {
 			window.setTitle("BeEcological - Search Result");
 			
 			SearchResultView controller = (SearchResultView) loader.getController();
-			if(UserBean.instance != null) {
+			if(UserBean.usbInstance != null) {
 				controller.loginGroup.setVisible(false);
 				controller.userGroup.setVisible(true);
-				controller.userButton.setText(UserBean.getUserInstance("").getUsername());
+				controller.userButton.setText(UserBean.getUserInstance("").getUsbUsername());
 			}
 			else {
 				controller.userGroup.setVisible(false);
@@ -153,10 +153,10 @@ public class SearchResultView implements Initializable {
 	        center = new CenterBean();
 	        control = new CenterController();
 	        center = tableView.getItems().get(index);
-	        owner = control.OwnerOfTheSelectedCenter(center);
+	        owner = control.ownerOfTheSelectedCenter(center);
 		}
-		System.out.println("Nome cliccato: "+center.getName());
-		tool.centerName = center.getName();
+		System.out.println("Nome cliccato: "+center.getCbName());
+		tool.centerName = center.getCbName();
 		try {
 			Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
 		    URL url = new File("src/fxml/CenterPage.fxml").toURI().toURL();
@@ -167,20 +167,20 @@ public class SearchResultView implements Initializable {
 			window.setTitle("BeEcological - Center Page");
 			
 			CenterPageView controller = (CenterPageView) loader.getController();
-			if(UserBean.instance != null) {
+			if(UserBean.usbInstance != null) {
 				controller.loginGroup.setVisible(false);
 				controller.userGroup.setVisible(true);
-				controller.userButton.setText(UserBean.instance.getUsername());
+				controller.userButton.setText(UserBean.usbInstance.getUsbUsername());
 			}
 			else {
 				controller.userGroup.setVisible(false);
 				controller.loginGroup.setVisible(true);
 			}
-			controller.centerSearched.setText(center.getName());
-			controller.infoSearched.setText(center.getAddress()+"\n"+center.getCity()+" "+center.getCap());
-			controller.centerPhoneSearched.setText(center.getCenterPhone());
-			controller.emailSearched.setText(owner.getEmailAddress());
-			controller.ownerPhoneSearched.setText(owner.getPhoneNumber());
+			controller.centerSearched.setText(center.getCbName());
+			controller.infoSearched.setText(center.getCbAddress()+"\n"+center.getCbCity()+" "+center.getCbCap());
+			controller.centerPhoneSearched.setText(center.getCbPhone());
+			controller.emailSearched.setText(owner.getCobEmail());
+			controller.ownerPhoneSearched.setText(owner.getCobPhone());
 			window.show();
 		}catch(Exception e){
 			e.printStackTrace();
@@ -219,7 +219,7 @@ public class SearchResultView implements Initializable {
 				Scene tableViewScene = new Scene(tableViewParent);
 				window.setScene(tableViewScene);
 				window.setTitle("Homepage");
-				UserBean.instance = null;
+				UserBean.usbInstance = null;
 				window.show();
 			}catch(Exception e){
 				e.printStackTrace();
@@ -236,11 +236,11 @@ public class SearchResultView implements Initializable {
 		searchBar.setFont(Font.font("Calibri Light", FontWeight.NORMAL, 15));
 		
 		center = new CenterBean();
-		center.setName(tool.string);
+		center.setCbName(tool.string);
 		center_list.removeAll(center_list);
 	    try{      
 	    	control = new CenterController();
-	        data = control.CenterList(center);
+	        data = control.centerList(center);
 	        center_list.addAll(data);
 	    }
 	    catch(Exception e){

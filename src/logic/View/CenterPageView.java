@@ -1,4 +1,4 @@
-package logic.View;
+package logic.view;
 
 import java.io.File;
 import java.io.IOException;
@@ -15,11 +15,11 @@ import java.util.TimerTask;
 
 import error.EmptyFieldException;
 import error.InexistentUsernameException;
-import logic.Controller.BookingController;
-import logic.Controller.UserController;
 import logic.bean.BookingBean;
 import logic.bean.CenterBean;
 import logic.bean.UserBean;
+import logic.controller.BookingController;
+import logic.controller.UserController;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -199,17 +199,17 @@ public class CenterPageView implements Initializable {
 		    
 		    boolean ok = true;
 			user = new UserBean();
-			user.setUsername(UserBean.getUserInstance(usr).getUsername());
-			user.setPassword(psw);
+			user.setUsbUsername(UserBean.getUserInstance(usr).getUsbUsername());
+			user.setUsbPassword(psw);
 			control = new UserController();
 			try {
-				ok = control.Login(user);
+				ok = control.login(user);
 			} catch (InexistentUsernameException | EmptyFieldException e1) {
 
 			}
 			Alert alert1 = new Alert(AlertType.ERROR);
 			if (!ok) {
-				UserBean.instance = null;
+				UserBean.usbInstance = null;
 				alert1.setTitle("Login failed");
 				alert1.setHeaderText(null);
 				alert1.setContentText("User not registered: incorrect username or password.\nRetry or register!");
@@ -224,7 +224,7 @@ public class CenterPageView implements Initializable {
 				alert1.showAndWait();
 				loginGroup.setVisible(false);
 				userGroup.setVisible(true);
-				userButton.setText(UserBean.getUserInstance(usr).getUsername());
+				userButton.setText(UserBean.getUserInstance(usr).getUsbUsername());
 			}catch(Exception e){
 				e.printStackTrace();
 			}
@@ -242,13 +242,13 @@ public class CenterPageView implements Initializable {
 			window.setScene(tableViewScene);
 			window.setTitle("Homepage");
 			HomepageView controller = (HomepageView) loader.getController();
-			if (UserBean.instance != null) {
+			if (UserBean.usbInstance != null) {
 				controller.loginGroup.setVisible(false);
 				controller.userGroup.setVisible(true);
-				controller.userButton.setText(UserBean.getUserInstance("").getUsername());
+				controller.userButton.setText(UserBean.getUserInstance("").getUsbUsername());
 				controller.circleUserGroup.setVisible(true);
 				controller.circleOwnerGroup.setVisible(false);
-				controller.welcomebackText.setText("Welcome back, "+UserBean.getUserInstance("").getUsername());
+				controller.welcomebackText.setText("Welcome back, "+UserBean.getUserInstance("").getUsbUsername());
 			}
 			window.show();
 		}catch(Exception e){
@@ -268,10 +268,10 @@ public class CenterPageView implements Initializable {
 			window.setTitle("BeEcological - Search Result");
 			
 			SearchResultView controller = (SearchResultView) loader.getController();
-			if(UserBean.instance != null) {
+			if(UserBean.usbInstance != null) {
 				controller.loginGroup.setVisible(false);
 				controller.userGroup.setVisible(true);
-				controller.userButton.setText(UserBean.getUserInstance("").getUsername());
+				controller.userButton.setText(UserBean.getUserInstance("").getUsbUsername());
 			}
 			else {
 				controller.userGroup.setVisible(false);
@@ -309,7 +309,7 @@ public class CenterPageView implements Initializable {
 			window.setScene(tableViewScene);
 			window.setTitle("BeEcological - Profile");
 			UserProfileView controller = (UserProfileView) loader.getController();
-			controller.userButton.setText(UserBean.getUserInstance("").getUsername());
+			controller.userButton.setText(UserBean.getUserInstance("").getUsbUsername());
 			window.show();
 		}catch(Exception e){
 			e.printStackTrace();
@@ -331,7 +331,7 @@ public class CenterPageView implements Initializable {
 			Scene tableViewScene = new Scene(tableViewParent);
 			window.setScene(tableViewScene);
 			window.setTitle("Homepage");
-			UserBean.instance = null;
+			UserBean.usbInstance = null;
 			window.show();
 		}catch(Exception e){
 			e.printStackTrace();
@@ -420,17 +420,17 @@ public class CenterPageView implements Initializable {
 		}
 		
 		
-		if (UserBean.instance != null) {
+		if (UserBean.usbInstance != null) {
 			booking = new BookingBean();
-			booking.setUser(UserBean.instance.getUsername());
-			booking.setCenter(centerSearched.getText());
-			booking.setDate(date);
-			booking.setTime(time);
-			booking.setStatus("W");
+			booking.setBbUser(UserBean.usbInstance.getUsbUsername());
+			booking.setBbCenter(centerSearched.getText());
+			booking.setBbDate(date);
+			booking.setBbTime(time);
+			booking.setBbStatus("W");
 			
 			control1 = new BookingController();
 			try {
-				control1.InsertBooking(booking);
+				control1.insertBooking(booking);
 			} catch (InexistentUsernameException e) {
 
 			}

@@ -10,8 +10,8 @@ import error.AlreadyUsedUsernameException;
 import error.EmptyFieldException;
 import error.InvalidEmailException;
 import error.ShortPasswordException;
-import logic.Controller.UserController;
 import logic.bean.UserBean;
+import logic.controller.UserController;
 
 public class TestRegistration {
 	
@@ -28,12 +28,12 @@ public class TestRegistration {
 		String username = "sixpain";
 		String password = "newPassword";
 		userBean = new UserBean();
-		userBean.setUsername(username);
-		userBean.setName(name);
-		userBean.setSurname(surname);
-		userBean.setEmailAddress(email);
-		userBean.setPhoneNumber(phone);
-		userBean.setPassword(password);
+		userBean.setUsbUsername(username);
+		userBean.setUsbName(name);
+		userBean.setUsbSurname(surname);
+		userBean.setUsbEmail(email);
+		userBean.setUsbPhone(phone);
+		userBean.setUsbPassword(password);
 	}
 	
 	@Test
@@ -42,7 +42,7 @@ public class TestRegistration {
 		result = true;
 		
 		try {
-			userController.SaveRegistration(userBean);
+			userController.saveRegistration(userBean);
 		} catch (EmptyFieldException e){
 			message = "Empty field";
 			result = false;

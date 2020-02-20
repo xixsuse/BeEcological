@@ -1,95 +1,95 @@
-package logic.Model;
+package logic.model;
 
 public class User {
-    private String username;
-    private String password;
-    private String name;
-    private String surname;
-    private String emailAddress;
-    private String phoneNumber;
-    private int ecoPoints;
+    private String usUsername;
+    private String usPassword;
+    private String usName;
+    private String usSurname;
+    private String usEmail;
+    private String usPhone;
+    private int usEcoPoints;
 
     public User(String username){
-        this.username = username;
+        this.usUsername = username;
     }
     
     public User(String name, String surname, String emailAddress, String phoneNumber, String username, String password, 
     		int ecoPoints){
-        this.name = name;
-        this.surname = surname;
-        this.emailAddress = emailAddress;
-        this.phoneNumber = phoneNumber;
-    	this.username = username;
-        this.password = password;
-        this.ecoPoints = ecoPoints;
+        this.usName = name;
+        this.usSurname = surname;
+        this.usEmail = emailAddress;
+        this.usPhone = phoneNumber;
+    	this.usUsername = username;
+        this.usPassword = password;
+        this.usEcoPoints = ecoPoints;
     }
     
-    public String getUsername() {
-        return this.username;
+    public String getUsUsername() {
+        return this.usUsername;
     }
 
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUsUsername(String username) {
+        this.usUsername = username;
     }
 
-    public String getPassword() {
-        return this.password;
+    public String getUsPassword() {
+        return this.usPassword;
     }
 
         
-    public void setPassword(String password) {
-        this.password = password;
+    public void setUsPassword(String password) {
+        this.usPassword = password;
     }
     
-    public String getName() {
-        return this.name;
+    public String getUsName() {
+        return this.usName;
     }
 
 
-    public void setName(String name) {
-        this.name = name;
-    }
-    
-    public String getSurname() {
-        return this.surname;
-    }
-
-
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public void setUsName(String name) {
+        this.usName = name;
     }
     
-    public String getEmailAddress() {
-        return this.emailAddress;
+    public String getUsSurname() {
+        return this.usSurname;
     }
 
 
-    public void setEmailAddress(String emailAddress) {
-        this.emailAddress = emailAddress;
+    public void setUsSurname(String surname) {
+        this.usSurname = surname;
     }
     
-    public String getPhoneNumber() {
-        return this.phoneNumber;
+    public String getUsEmail() {
+        return this.usEmail;
     }
 
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setUsEmail(String emailAddress) {
+        this.usEmail = emailAddress;
+    }
+    
+    public String getUsPhone() {
+        return this.usPhone;
+    }
+
+
+    public void setUsPhone(String phoneNumber) {
+        this.usPhone = phoneNumber;
     }
     
     public int getEcopoints() {
-        return this.ecoPoints;
+        return this.usEcoPoints;
     }
 
 
     public void setEcopoints(int ecoPoints) {
-        this.ecoPoints = ecoPoints;
+        this.usEcoPoints = ecoPoints;
     }
     
     @Override
     public String toString(){
-		return this.username + " \"" + this.password + "\" (" + this.ecoPoints + ")";    	
+		return this.usUsername + " \"" + this.usPassword + "\" (" + this.usEcoPoints + ")";    	
     }
 
 }

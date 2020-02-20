@@ -1,4 +1,4 @@
-package logic.Model;
+package logic.model;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -30,7 +30,7 @@ public class UnloadDAO {
                     ResultSet.CONCUR_READ_ONLY);
             
             String insertStatement = String.format("INSERT INTO beecological.unload (user, center, date, time) VALUES ('%s' ,'%s' ,'%s' ,"
-            		+ "'%s')", unload.getUser(), unload.getCenter(), unload.getDate(), unload.getTime());
+            		+ "'%s')", unload.getuUser(), unload.getuCenter(), unload.getuDate(), unload.getuTime());
             stmt.executeUpdate(insertStatement);
             
             stmt.close();
@@ -57,7 +57,7 @@ public class UnloadDAO {
             
         	String deleteStatement = String.format("DELETE FROM beecological.unload WHERE beecological.unload.user = '%s' AND "
         			+ "beecological.unload.center = '%s' AND beecological.unload.date = '%s' AND beecological.unload.time = '%s';", 
-        			unload.getUser(), unload.getCenter(), unload.getDate(), unload.getTime());
+        			unload.getuUser(), unload.getuCenter(), unload.getuDate(), unload.getuTime());
         	stmt.executeUpdate(deleteStatement);
             
             stmt.close();

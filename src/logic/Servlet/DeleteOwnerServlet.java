@@ -1,4 +1,4 @@
-package logic.Servlet;
+package logic.servlet;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import logic.Controller.OwnerController;
 import logic.bean.CenterOwnerBean;
+import logic.controller.OwnerController;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -26,7 +26,7 @@ public class DeleteOwnerServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		CenterOwnerBean ownerBean = new CenterOwnerBean();
         
-        ownerBean.setUsername(request.getParameter("username"));
+        ownerBean.setCobUsername(request.getParameter("username"));
         OwnerController controller = new OwnerController();
         controller.deleteAccount(ownerBean);
         HttpSession session = request.getSession(true);

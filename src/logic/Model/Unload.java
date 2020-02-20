@@ -1,50 +1,50 @@
-package logic.Model;
+package logic.model;
 
 public class Unload {
-	private String user;
-    private String center;
-    private String date;
-    private String time;
+	private String uUser;
+    private String uCenter;
+    private String uDate;
+    private String uTime;
 
     public Unload(String user, String center, String date, String time){
-    	this.user = user;
-        this.center = center;
-        this.date = date;
-        this.time = time;
+    	this.uUser = user;
+        this.uCenter = center;
+        this.uDate = date;
+        this.uTime = time;
     }
 
-    public String getUser() {
-        return this.user;
+    public String getuUser() {
+        return this.uUser;
     }
      
-    public void setUser(String user) {
-        this.user = user;
+    public void setuUser(String user) {
+        this.uUser = user;
     }
     
-    public String getCenter() {
-        return this.center;
+    public String getuCenter() {
+        return this.uCenter;
     }
 
 
-    public void setCenter(String center) {
-        this.center = center;
-    }
-    
-    public String getDate() {
-        return this.date;
-    }
-
-
-    public void setDate(String date) {
-        this.date = date;
+    public void setuCenter(String center) {
+        this.uCenter = center;
     }
     
-    public String getTime() {
-        return this.time;
+    public String getuDate() {
+        return this.uDate;
     }
 
 
-    public void setTime(String time) {
-        this.time = time;
+    public void setuDate(String date) {
+        this.uDate = date;
+    }
+    
+    public String getuTime() {
+        return this.uTime;
+    }
+
+
+    public void setuTime(String time) {
+        this.uTime = time;
     }
 }

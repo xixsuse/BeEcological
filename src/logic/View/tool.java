@@ -1,4 +1,4 @@
-package logic.View;
+package logic.view;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalTime;

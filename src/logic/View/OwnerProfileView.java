@@ -1,4 +1,4 @@
-package logic.View;
+package logic.view;
 
 import java.io.File;
 import java.net.URL;
@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-import logic.Controller.OwnerController;
 import logic.bean.CenterOwnerBean;
+import logic.controller.OwnerController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -149,11 +149,11 @@ public class OwnerProfileView implements Initializable {
 		homeButton.setTooltip(new Tooltip("Return to BeEcological Homepage"));
 		owner = new CenterOwnerBean();
 		control = new OwnerController();
-		owner.setUsername(CenterOwnerBean.getOwnerInstance("").getUsername());
-		ownerButton.setText(owner.getUsername());
-		userNick.setText(owner.getUsername());
+		owner.setCobUsername(CenterOwnerBean.getOwnerInstance("").getCobUsername());
+		ownerButton.setText(owner.getCobUsername());
+		userNick.setText(owner.getCobUsername());
 		
-		List<String> ownerInfo = control.OwnerData(owner);
+		List<String> ownerInfo = control.ownerData(owner);
 
 		name.setText(ownerInfo.get(0));
 		surname.setText(ownerInfo.get(1));

@@ -1,4 +1,4 @@
-package logic.View;
+package logic.view;
 
 import java.io.File;
 import java.net.URL;
@@ -9,9 +9,9 @@ import java.util.ResourceBundle;
 
 import com.sun.javafx.scene.control.skin.TableHeaderRow;
 
-import logic.Controller.BookingController;
 import logic.bean.BookingBean;
 import logic.bean.UserBean;
+import logic.controller.BookingController;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -69,10 +69,10 @@ public class UserBookingListView implements Initializable {
 			HomepageView controller = (HomepageView) loader.getController();
 			controller.loginGroup.setVisible(false);
 			controller.userGroup.setVisible(true);
-			controller.userButton.setText(UserBean.getUserInstance("").getUsername());
+			controller.userButton.setText(UserBean.getUserInstance("").getUsbUsername());
 			controller.circleUserGroup.setVisible(true);
 			controller.circleOwnerGroup.setVisible(false);
-			controller.welcomebackText.setText("Welcome back, "+UserBean.getUserInstance("").getUsername());
+			controller.welcomebackText.setText("Welcome back, "+UserBean.getUserInstance("").getUsbUsername());
 			window.show();
 		}catch(Exception e){
 			e.printStackTrace();
@@ -97,7 +97,7 @@ public class UserBookingListView implements Initializable {
 				window.setTitle("Homepage");
 				HomepageView controller = (HomepageView) loader.getController();
 				controller.userGroup.setVisible(false);
-				UserBean.instance = null;
+				UserBean.usbInstance = null;
 				window.show();
 			}catch(Exception e){
 				e.printStackTrace();
@@ -120,7 +120,7 @@ public class UserBookingListView implements Initializable {
 			window.setScene(tableViewScene);
 			window.setScene(tableViewScene);
 			window.setTitle("BeEcological - Profile");
-			System.out.println(UserBean.getUserInstance("").getUsername());
+			System.out.println(UserBean.getUserInstance("").getUsbUsername());
 			window.show();
 		}catch(Exception e){
 			e.printStackTrace();
@@ -151,15 +151,15 @@ public class UserBookingListView implements Initializable {
 		homeButton.setTooltip(new Tooltip("Return to BeEcological Homepage"));
 		userGroup.setVisible(true);
 		booking = new BookingBean();
-		booking.setUser(UserBean.instance.getUsername());
-		booking.setStatus("W");
-		userNick.setText(booking.getUser());
-		userButton.setText(booking.getUser());
+		booking.setBbUser(UserBean.usbInstance.getUsbUsername());
+		booking.setBbStatus("W");
+		userNick.setText(booking.getBbUser());
+		userButton.setText(booking.getBbUser());
 		
 		booking_wait_list.removeAll(booking_wait_list);
 	    try {
 			control = new BookingController();
-	    	data = control.BookingListByUser(booking); //richieste di prenotazione in attesa
+	    	data = control.bookingListByUser(booking); //richieste di prenotazione in attesa
 	        booking_wait_list.addAll(data);
 	    }
 	    catch(Exception e){
@@ -190,8 +190,8 @@ public class UserBookingListView implements Initializable {
 		
 		booking_accept_list.removeAll(booking_accept_list);
 	    try {
-	    	booking.setStatus("A");
-	        data = control.BookingListByUser(booking);	//richieste di prenotazione accettate
+	    	booking.setBbStatus("A");
+	        data = control.bookingListByUser(booking);	//richieste di prenotazione accettate
 	        booking_accept_list.addAll(data);
 	    }
 	    catch(Exception e){
@@ -222,8 +222,8 @@ public class UserBookingListView implements Initializable {
 
 		booking_refuse_list.removeAll(booking_refuse_list);
 	    try {
-	    	booking.setStatus("D");
-	    	data = control.BookingListByUser(booking);
+	    	booking.setBbStatus("D");
+	    	data = control.bookingListByUser(booking);
 	        booking_refuse_list.addAll(data);
 	    }
 	    catch(Exception e){

@@ -1,82 +1,80 @@
-package logic.Model;
+package logic.model;
 
 public class Booking {
-	private int ID;
-	private String user;
-	private String center;
-	private String date;
-	private String time;
-	private String status;
-	
-	public Booking() {}
+	private int bId;
+	private String bUser;
+	private String bCenter;
+	private String bDate;
+	private String bTime;
+	private String bStatus;
 	
 	public Booking(int ID, String user, String center, String date, String time, String status) {
-		this.ID = ID;
-		this.user = user;
-		this.center = center;
-		this.date = date;
-		this.time = time;
-		this.status = status;
+		this.bId = ID;
+		this.bUser = user;
+		this.bCenter = center;
+		this.bDate = date;
+		this.bTime = time;
+		this.bStatus = status;
 	}
 	
 	public Booking(String user, String center, String date, String time, String status) {
-		this.user = user;
-		this.center = center;
-		this.date = date;
-		this.time = time;
-		this.status = status;
+		this.bUser = user;
+		this.bCenter = center;
+		this.bDate = date;
+		this.bTime = time;
+		this.bStatus = status;
 	}
 	
-	public int getID() {
-		return this.ID;
+	public int getbId() {
+		return this.bId;
 	}
 	
-	public void setID(int ID) {
-		this.ID = ID;
+	public void setbId(int id) {
+		this.bId = id;
 	}
 	
-	public String getUser() {
-        return this.user;
+	public String getbUser() {
+        return this.bUser;
     }
 
 
-    public void setUser(String user) {
-        this.user = user;
+    public void setbUser(String user) {
+        this.bUser = user;
     }
 
-    public String getCenter() {
-        return this.center;
+    public String getbCenter() {
+        return this.bCenter;
     }
 
         
-    public void setCenter(String center) {
-        this.center = center;
+    public void setbCenter(String center) {
+        this.bCenter = center;
     }
     
-    public String getDate() {
-        return this.date;
+    public String getbDate() {
+        return this.bDate;
     }
 
 
-    public void setDate(String date) {
-        this.date = date;
-    }
-    
-    public String getTime() {
-        return this.time;
-    }
-
-
-    public void setTime(String time) {
-        this.time = time;
+    public void setbDate(String date) {
+        this.bDate = date;
     }
     
-    public String getStatus() {
-        return this.status;
+    public String getbTime() {
+        return this.bTime;
     }
 
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setbTime(String time) {
+        this.bTime = time;
+    }
+    
+    public String getbStatus() {
+        return this.bStatus;
+    }
+
+
+    public void setbStatus(String status) {
+        this.bStatus = status;
     }
 }

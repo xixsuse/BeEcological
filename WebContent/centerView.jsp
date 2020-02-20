@@ -7,8 +7,10 @@
 <%UserBean user = new UserBean();
 if(session.getAttribute("loggedUser")!=null){
 	user=(UserBean)session.getAttribute("loggedUser"); %>
-<%}else { 
-	user.setUsername("");}%>
+<%
+	}else { 
+	user.setUsbUsername("");}
+%>
 	
 <%CenterBean center = (CenterBean)session.getAttribute("centerInfo");
   CenterOwnerBean owner = (CenterOwnerBean)session.getAttribute("ownerInfo");%>
@@ -21,7 +23,7 @@ if(session.getAttribute("loggedUser")!=null){
 <body>
 <nav class="navbar navbar-expand-lg fixed-top navbar-dark" style = "background-color:#589442">
 <!-- logo sulla navbar -->
-  <a class="navbar-brand" href="HomeUserServlet?username=<%=user.getUsername()%>">
+  <a class="navbar-brand" href="HomeUserServlet?username=<%=user.getUsbUsername()%>">
     <img src="img/logo-white.png" width="250" height=45 class="d-inline-block align-top" alt="">
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,23 +32,29 @@ if(session.getAttribute("loggedUser")!=null){
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
   
        <ul class="navbar-nav ml-auto"> <!-- ml mette i pulsanti della navbar a sinistra -->
-      <%if(user.getUsername()==""){ %>
+      <%
+      	if(user.getUsbUsername()==""){
+      %>
       <li class="nav-item">
         <a class="nav-link" href="loginUser.jsp">LOGIN</a>
       </li>
-      <%}else { %>
+      <%
+      	}else {
+      %>
       <li class="nav-item">
-        <a class="nav-link" href="ShopServlet?param=<%=user.getUsername()%>" >SHOP</a>
+        <a class="nav-link" href="ShopServlet?param=<%=user.getUsbUsername()%>" >SHOP</a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-           <%= user.getUsername() %></a>
+           <%=user.getUsbUsername()%></a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="UserProfileServlet?username=<%=user.getUsername()%>">Your Profile</a>
-          <a class="dropdown-item" href="homepage.jsp" onclick=<%session.setAttribute("loggedUser", null); %>>Logout</a>
+          <a class="dropdown-item" href="UserProfileServlet?username=<%=user.getUsbUsername()%>">Your Profile</a>
+          <a class="dropdown-item" href="homepage.jsp" onclick=<%session.setAttribute("loggedUser", null);%>>Logout</a>
         </div>
       </li>
-      <%}%>
+      <%
+      	}
+      %>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           HELP</a>
@@ -63,13 +71,13 @@ if(session.getAttribute("loggedUser")!=null){
 		<div class="md-form mt-0">
 	  		<input class="form-control" type="text" placeholder="Search by center name, city, address..." aria-label="Search" 
 	  		id="src" name="search">
-	  		<input type="hidden" name="username" value="<%=user.getUsername()%>" />
+	  		<input type="hidden" name="username" value="<%=user.getUsbUsername()%>" />
 		</div>
 	</form>	
 
 <div class = "container">
 	<p></p>
-	<h1 style = "color:#589442"> <%=center.getName()%> </h1>
+	<h1 style = "color:#589442"> <%=center.getCbName()%> </h1>
 	<hr></hr>
 </div>
 
@@ -78,12 +86,12 @@ if(session.getAttribute("loggedUser")!=null){
     <div class="col-sm">
       <p></p>
       <div style="width:382px;height:342px;border:1px solid #0B526D;margin-left: 50px">
-      	<img src="img/jpeg/<%=center.getName()%>.jpg" width="380" height=340 class="d-inline-block align-top" alt="">
+      	<img src="img/jpeg/<%=center.getCbName()%>.jpg" width="380" height=340 class="d-inline-block align-top" alt="">
       </div>
     </div>
     <div class="col-sm" style="margin-left: 50px">
       <h4 style = "color:#589442;margin-top: 10px">Address</h4>
-      <p> <%=center.getAddress()%></p>
+      <p> <%=center.getCbAddress()%></p>
       <h4 style = "color:#589442; margin-top: 60px">Opening Hours</h4>
       <div style="width:200px;height:200px;border:1px solid #0B526D;">Hours-table</div>
     </div>
@@ -120,8 +128,8 @@ if(session.getAttribute("loggedUser")!=null){
       <option>19:00</option>
       <option>19:30</option>
     </select>
-    <input type="hidden" name="username" value="<%=user.getUsername()%>" />
-    <input type="hidden" name="centername" value="<%=center.getName()%>" />
+    <input type="hidden" name="username" value="<%=user.getUsbUsername()%>" />
+    <input type="hidden" name="centername" value="<%=center.getCbName()%>" />
   </div>
   		<button class = "btn btn-primary" type="submit"  style="height: 70px; margin-top: 20px">CONFIRM BOOKING</button>
 </form>
@@ -138,9 +146,9 @@ if(session.getAttribute("loggedUser")!=null){
     	<p></p>
     	<h3 style = "color: #589442;">Contact Us</h3>
     	<p style = "margin-top:90px"></p>
-      <div class= "row"><h4 style = "color:#589442"> Email: </h4><p class= "lead" style = "margin-left:200px;"><%=owner.getEmailAddress()%></p></div>
-      <div class= "row"><h4 style = "color:#589442"> Cell Number: </h4><p class= "lead" style = "margin-left:122px"><%=owner.getPhoneNumber()%></p></div>
-      <div class= "row"><h4 style = "color:#589442"> Phone Number: </h4><p class= "lead" style = "margin-left:94px"><%=center.getCenterPhone()%></p></div>
+      <div class= "row"><h4 style = "color:#589442"> Email: </h4><p class= "lead" style = "margin-left:200px;"><%=owner.getCobEmail()%></p></div>
+      <div class= "row"><h4 style = "color:#589442"> Cell Number: </h4><p class= "lead" style = "margin-left:122px"><%=owner.getCobPhone()%></p></div>
+      <div class= "row"><h4 style = "color:#589442"> Phone Number: </h4><p class= "lead" style = "margin-left:94px"><%=center.getCbPhone()%></p></div>
     </div>
 
 </div>

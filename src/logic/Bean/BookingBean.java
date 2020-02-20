@@ -1,64 +1,64 @@
 package logic.bean;
 
 public class BookingBean {
-	private int id;
-	private String user;
-	private String center;
-	private String date;
-	private String time;
-	private String status;
+	private int bbId;
+	private String bbUser;
+	private String bbCenter;
+	private String bbDate;
+	private String bbTime;
+	private String bbStatus;
 	
 	
-	public int getId() {
-		return this.id;
+	public int getBbId() {
+		return this.bbId;
 	}
 	
-	public void setId(int ID) {
-		this.id = ID;
+	public void setBbId(int id) {
+		this.bbId = id;
 	}
 	
-	public String getUser() {
-        return this.user;
+	public String getBbUser() {
+        return this.bbUser;
     }
 
 
-    public void setUser(String user) {
-        this.user = user;
+    public void setBbUser(String user) {
+        this.bbUser = user;
     }
 
-    public String getCenter() {
-        return this.center;
+    public String getBbCenter() {
+        return this.bbCenter;
     }
 
         
-    public void setCenter(String center) {
-        this.center = center;
+    public void setBbCenter(String center) {
+        this.bbCenter = center;
     }
     
-    public String getDate() {
-        return this.date;
+    public String getBbDate() {
+        return this.bbDate;
     }
 
 
-    public void setDate(String date) {
-        this.date = date;
-    }
-    
-    public String getTime() {
-        return this.time;
-    }
-
-
-    public void setTime(String time) {
-        this.time = time;
+    public void setBbDate(String date) {
+        this.bbDate = date;
     }
     
-    public String getStatus() {
-        return this.status;
+    public String getBbTime() {
+        return this.bbTime;
     }
 
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setBbTime(String time) {
+        this.bbTime = time;
+    }
+    
+    public String getBbStatus() {
+        return this.bbStatus;
+    }
+
+
+    public void setBbStatus(String status) {
+        this.bbStatus = status;
     }
 }

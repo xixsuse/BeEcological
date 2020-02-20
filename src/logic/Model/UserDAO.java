@@ -1,4 +1,4 @@
-package logic.Model;
+package logic.model;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -64,8 +64,8 @@ public class UserDAO {
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_READ_ONLY);
             String insertStatement = String.format("INSERT INTO beecological.User (Username, Password, Name, Surname, Email, "
-            		+ "Phone, Ecopoints) VALUES ('%s' ,'%s' ,'%s' ,'%s' ,'%s' ,'%s' , 0)", user.getUsername(), user.getPassword(), 
-            		user.getName(), user.getSurname(), user.getEmailAddress(), user.getPhoneNumber());
+            		+ "Phone, Ecopoints) VALUES ('%s' ,'%s' ,'%s' ,'%s' ,'%s' ,'%s' , 0)", user.getUsUsername(), user.getUsPassword(), 
+            		user.getUsName(), user.getUsSurname(), user.getUsEmail(), user.getUsPhone());
             stmt.executeUpdate(insertStatement);
             
             stmt.close();
@@ -92,8 +92,8 @@ public class UserDAO {
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_READ_ONLY);
         	
-        	String selectStatement = "SELECT count(*) FROM beecological.User WHERE Username = '" + user.getUsername() + 
-        			"' and Password = '" + user.getPassword() + "';";
+        	String selectStatement = "SELECT count(*) FROM beecological.User WHERE Username = '" + user.getUsUsername() + 
+        			"' and Password = '" + user.getUsPassword() + "';";
         	res = stmt.executeQuery(selectStatement);
         	res.next();
         	count = res.getInt(1);
@@ -128,7 +128,7 @@ public class UserDAO {
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_READ_ONLY);
 
-        	String selectStatement = "SELECT * FROM beecological.User WHERE Username = '" + user.getUsername() + "';";
+        	String selectStatement = "SELECT * FROM beecological.User WHERE Username = '" + user.getUsUsername() + "';";
         	res = stmt.executeQuery(selectStatement);   
     		res.next();
     		listInfo.add(res.getString("Name"));

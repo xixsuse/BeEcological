@@ -1,4 +1,4 @@
-package logic.Servlet;
+package logic.servlet;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -7,9 +7,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import logic.Controller.CenterController;
 import logic.bean.CenterBean;
 import logic.bean.UserBean;
+import logic.controller.CenterController;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -31,13 +31,13 @@ public class SearchServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     	CenterBean centerBean = new CenterBean();
     	UserBean userBean = new UserBean();
-        centerBean.setName(req.getParameter("search"));
-        userBean.setUsername(req.getParameter("username"));
+        centerBean.setCbName(req.getParameter("search"));
+        userBean.setUsbUsername(req.getParameter("username"));
         CenterController controller = new CenterController();
-        ArrayList<CenterBean> centerList = controller.CenterList(centerBean);
+        ArrayList<CenterBean> centerList = controller.centerList(centerBean);
         
         HttpSession session = req.getSession(true);
-        session.setAttribute("textSearched", centerBean.getName());
+        session.setAttribute("textSearched", centerBean.getCbName());
         session.setAttribute("listOfCenter", centerList);
         session.setAttribute("loggedUser", userBean);
         resp.sendRedirect("searchResult.jsp");

@@ -1,4 +1,4 @@
-package logic.View;
+package logic.view;
 
 import java.io.File;
 import java.net.URL;
@@ -9,10 +9,10 @@ import java.util.ResourceBundle;
 
 import com.sun.javafx.scene.control.skin.TableHeaderRow;
 
-import logic.Controller.UserController;
-import logic.Controller.WasteUnloadedController;
 import logic.bean.UserBean;
 import logic.bean.WasteUnloadedBean;
+import logic.controller.UserController;
+import logic.controller.WasteUnloadedController;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -67,10 +67,10 @@ public class UserProfileView implements Initializable {
 			HomepageView controller = (HomepageView) loader.getController();
 			controller.loginGroup.setVisible(false);
 			controller.userGroup.setVisible(true);
-			controller.userButton.setText(UserBean.instance.getUsername());
+			controller.userButton.setText(UserBean.usbInstance.getUsbUsername());
 			controller.circleUserGroup.setVisible(true);
 			controller.circleOwnerGroup.setVisible(false);
-			controller.welcomebackText.setText("Welcome back, "+UserBean.instance.getUsername());
+			controller.welcomebackText.setText("Welcome back, "+UserBean.usbInstance.getUsbUsername());
 			window.show();
 		}catch(Exception e){
 			e.printStackTrace();
@@ -89,7 +89,7 @@ public class UserProfileView implements Initializable {
 			SearchResultView controller = (SearchResultView) loader.getController();
 			controller.loginGroup.setVisible(false);
 			controller.userGroup.setVisible(true);
-			controller.userButton.setText(UserBean.instance.getUsername());
+			controller.userButton.setText(UserBean.usbInstance.getUsbUsername());
 			window.show();
 		}catch(Exception e){
 			e.printStackTrace();
@@ -165,8 +165,8 @@ public class UserProfileView implements Initializable {
 				HomepageView controller = (HomepageView) loader.getController();
 				controller.userGroup.setVisible(false);
 				control = new UserController();
-				control.deleteAccount(UserBean.instance);
-				UserBean.instance = null;
+				control.deleteAccount(UserBean.usbInstance);
+				UserBean.usbInstance = null;
 				window.show();
 			}catch(Exception e){
 				e.printStackTrace();
@@ -185,7 +185,7 @@ public class UserProfileView implements Initializable {
 			window.setScene(tableViewScene);
 			window.setScene(tableViewScene);
 			window.setTitle("BeEcological - Profile");
-			System.out.println(UserBean.instance.getUsername());
+			System.out.println(UserBean.usbInstance.getUsbUsername());
 			window.show();			
 		}catch(Exception e){
 			e.printStackTrace();
@@ -210,7 +210,7 @@ public class UserProfileView implements Initializable {
 				window.setTitle("Homepage");
 				HomepageView controller = (HomepageView) loader.getController();
 				controller.userGroup.setVisible(false);
-				UserBean.instance = null;
+				UserBean.usbInstance = null;
 				window.show();
 			}catch(Exception e){
 				e.printStackTrace();
@@ -225,9 +225,9 @@ public class UserProfileView implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		userGroup.setVisible(true);
 		control = new UserController();
-		List<String> userInfo = control.UserInformation(UserBean.instance);
-		userButton.setText(UserBean.instance.getUsername());
-		userNick.setText(UserBean.instance.getUsername());
+		List<String> userInfo = control.userInformation(UserBean.usbInstance);
+		userButton.setText(UserBean.usbInstance.getUsbUsername());
+		userNick.setText(UserBean.usbInstance.getUsbUsername());
 		name.setText(userInfo.get(0));
 		surname.setText(userInfo.get(1));
 		email.setText(userInfo.get(2));
@@ -237,7 +237,7 @@ public class UserProfileView implements Initializable {
 		unload_list.removeAll(unload_list);
 	    try {
 	        control1 = new WasteUnloadedController();
-	    	data = control1.ListUnloadByUser(UserBean.instance);
+	    	data = control1.listUnloadByUser(UserBean.usbInstance);
 	        unload_list.addAll(data);
 	    }
 	    catch(Exception e){

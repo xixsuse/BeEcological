@@ -1,4 +1,4 @@
-package logic.Servlet;
+package logic.servlet;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,12 +8,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import error.InexistentUsernameException;
-import logic.Controller.BookingController;
-import logic.Controller.UserController;
 import logic.bean.BookingBean;
 import logic.bean.CenterBean;
 import logic.bean.CenterOwnerBean;
 import logic.bean.UserBean;
+import logic.controller.BookingController;
+import logic.controller.UserController;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -48,19 +48,19 @@ public class InsertBookingServlet extends HttpServlet {
     	CenterBean centerBean = new CenterBean();
         BookingBean bookingBean = new BookingBean();
         
-        userBean.setUsername(request.getParameter("userToRegister"));
+        userBean.setUsbUsername(request.getParameter("userToRegister"));
         
-        ownerBean.setUsername(request.getParameter("username"));
-        ownerBean.setEmailAddress(request.getParameter("mail"));
-        ownerBean.setPhoneNumber(request.getParameter("ownerphone"));
-        centerBean.setName(request.getParameter("centername"));
-        centerBean.setAddress(request.getParameter("address"));
-        centerBean.setCenterPhone(request.getParameter("centerphone"));
+        ownerBean.setCobUsername(request.getParameter("username"));
+        ownerBean.setCobEmail(request.getParameter("mail"));
+        ownerBean.setCobPhone(request.getParameter("ownerphone"));
+        centerBean.setCbName(request.getParameter("centername"));
+        centerBean.setCbAddress(request.getParameter("address"));
+        centerBean.setCbPhone(request.getParameter("centerphone"));
         
-    	bookingBean.setCenter(request.getParameter("centername"));
-    	bookingBean.setUser(request.getParameter("userToRegister"));
-    	bookingBean.setDate(request.getParameter("date"));
-    	bookingBean.setTime(request.getParameter("time"));
+    	bookingBean.setBbCenter(request.getParameter("centername"));
+    	bookingBean.setBbUser(request.getParameter("userToRegister"));
+    	bookingBean.setBbDate(request.getParameter("date"));
+    	bookingBean.setBbTime(request.getParameter("time"));
         
         HttpSession session = request.getSession(true);
         session.setAttribute("loggedOwner", ownerBean);
@@ -68,7 +68,7 @@ public class InsertBookingServlet extends HttpServlet {
         
     	UserController controller = new UserController();
     	boolean result = false;
-		result = controller.CheckRegistration(userBean);
+		result = controller.checkRegistration(userBean);
     	if(result) {
     		//username non esiste non posso inserire
             out.println("<script type=\"text/javascript\">");
@@ -78,7 +78,7 @@ public class InsertBookingServlet extends HttpServlet {
             return;
     	}
     	
-		if (!checkTime(bookingBean.getTime())) {
+		if (!checkTime(bookingBean.getBbTime())) {
 			//orario immesso invalido non posso inserire
             out.println("<script type=\"text/javascript\">");
             out.println("alert('Insert a correct time format: [HH:MM].');");
@@ -88,12 +88,12 @@ public class InsertBookingServlet extends HttpServlet {
 		}
     	
     	BookingController controller1 = new BookingController();
-    	bookingBean.setStatus("W");
-    	int count = controller1.VerifyBooking(bookingBean);
+    	bookingBean.setBbStatus("W");
+    	int count = controller1.verifyBooking(bookingBean);
     	if(count!=0) {
     		//esiste prenotazione, la aggiorno accettandola
-    		bookingBean.setStatus("A");
-    		controller1.ModifyBooking(bookingBean);
+    		bookingBean.setBbStatus("A");
+    		controller1.modifyBooking(bookingBean);
             out.println("<script type=\"text/javascript\">");
             out.println("alert('Booking accepted successfully.');");
             out.println("location='homeOwner.jsp';");
@@ -101,8 +101,8 @@ public class InsertBookingServlet extends HttpServlet {
             return;
     	}
     	
-    	bookingBean.setStatus("A");
-		count = controller1.VerifyBooking(bookingBean);
+    	bookingBean.setBbStatus("A");
+		count = controller1.verifyBooking(bookingBean);
     	if(count!=0) {
     		//prenotazione gia accettata, non posso inserire
             out.println("<script type=\"text/javascript\">");
@@ -113,7 +113,7 @@ public class InsertBookingServlet extends HttpServlet {
     	}    	
         
     	try {
-			controller1.InsertBooking(bookingBean);
+			controller1.insertBooking(bookingBean);
 		} catch (InexistentUsernameException e) {
 
 		}

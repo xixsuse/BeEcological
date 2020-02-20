@@ -1,70 +1,70 @@
 package logic.bean;
 
 public class WasteUnloadedBean {
-    private String user;
-    private String center;
-    private String date;
-    private String time;
-    private String waste;
-    private int wasteQuantity;
-    private int ecoPoints;
+    private String wbUser;
+    private String wbCenter;
+    private String wbDate;
+    private String wbTime;
+    private String wbWaste;
+    private int wbWasteQuantity;
+    private int wbEcoPoints;
 
     
-    public String getUser() {
-    	return this.user;
+    public String getWbUser() {
+    	return this.wbUser;
     }
     
-    public void setUser(String user) {
-    	this.user = user;
+    public void setWbUser(String user) {
+    	this.wbUser = user;
     }
 
-    public String getCenter() {
-    	return this.center;
+    public String getWbCenter() {
+    	return this.wbCenter;
     }
     
-    public void setCenter(String center) {
-    	this.center = center;
+    public void setWbCenter(String center) {
+    	this.wbCenter = center;
     }
     
-    public String getDate() {
-    	return this.date;
+    public String getWbDate() {
+    	return this.wbDate;
     }
     
-    public void setDate(String date) {
-    	this.date = date;
+    public void setWbDate(String date) {
+    	this.wbDate = date;
     }
     
-    public String getTime() {
-    	return this.time;
+    public String getWbTime() {
+    	return this.wbTime;
     }
     
-    public void setTime(String time) {
-    	this.time = time;
+    public void setWbTime(String time) {
+    	this.wbTime = time;
     }
     
-    public String getWaste() {
-        return this.waste;
+    public String getWbWaste() {
+        return this.wbWaste;
     }
      
-    public void setWaste(String waste) {
-        this.waste = waste;
+    public void setWbWaste(String waste) {
+        this.wbWaste = waste;
     }
     
-    public int getWasteQuantity() {
-        return this.wasteQuantity;
+    public int getWbWasteQuantity() {
+        return this.wbWasteQuantity;
     }
 
 
-    public void setWasteQuantity(int wasteQuantity) {
-        this.wasteQuantity = wasteQuantity;
+    public void setWbWasteQuantity(int wasteQuantity) {
+        this.wbWasteQuantity = wasteQuantity;
     }
     
-    public int getEcoPoints() {
-        return this.ecoPoints;
+    public int getWbEcoPoints() {
+        return this.wbEcoPoints;
     }
 
 
-    public void setEcoPoints(int ecoPoints) {
-        this.ecoPoints = ecoPoints;
+    public void setWbEcoPoints(int ecoPoints) {
+        this.wbEcoPoints = ecoPoints;
     }
 }

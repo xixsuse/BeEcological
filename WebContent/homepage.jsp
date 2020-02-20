@@ -5,8 +5,10 @@
 <%UserBean user = new UserBean();
 if(session.getAttribute("loggedUser")!=null){
 	user=(UserBean)session.getAttribute("loggedUser"); %>
-<%}else { 
-	user.setUsername("");}%>
+<%
+	}else { 
+	user.setUsbUsername("");}
+%>
 <head>
 	<meta charset= "UTF-8">
 	<title>BeEcological - Homepage</title>
@@ -17,7 +19,7 @@ if(session.getAttribute("loggedUser")!=null){
 
 <nav class="navbar navbar-expand-lg fixed-top navbar-dark" style = "background-color:#589442">
 <!-- logo sulla navbar -->
-  <a class="navbar-brand" href="HomeUserServlet?username=<%=user.getUsername()%>">
+  <a class="navbar-brand" href="HomeUserServlet?username=<%=user.getUsbUsername()%>">
     <img src="img/logo-white.png" width="250" height=45 class="d-inline-block align-top" alt="">
   </a>
   
@@ -28,23 +30,29 @@ if(session.getAttribute("loggedUser")!=null){
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
  
     <ul class="navbar-nav ml-auto"> <!-- ml mette i pulsanti della navbar a sinistra -->
-      <%if(user.getUsername()==""){ %>
+      <%
+      	if(user.getUsbUsername()==""){
+      %>
       <li class="nav-item">
         <a class="nav-link" href="loginUser.jsp">LOGIN</a>
       </li>
-      <%}else { %>
+      <%
+      	}else {
+      %>
       <li class="nav-item">
-        <a class="nav-link" href="ShopServlet?param=<%=user.getUsername()%>" >SHOP</a>
+        <a class="nav-link" href="ShopServlet?param=<%=user.getUsbUsername()%>" >SHOP</a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-           <%= user.getUsername() %></a>
+           <%=user.getUsbUsername()%></a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="UserProfileServlet?username=<%=user.getUsername()%>">Your Profile</a>
+          <a class="dropdown-item" href="UserProfileServlet?username=<%=user.getUsbUsername()%>">Your Profile</a>
           <a class="dropdown-item" href="homepage.jsp" onclick="<%session.setAttribute("loggedUser",null);%>">Logout</a>
         </div>
       </li>
-      <%}%>
+      <%
+      	}
+      %>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           HELP</a>
@@ -67,7 +75,7 @@ if(session.getAttribute("loggedUser")!=null){
 		<div class="md-form mt-0">
 	  		<input class="form-control" type="text" placeholder="Search by center name, city, address..." aria-label="Search" 
 	  		id="src" name="search">
-	  		<input type="hidden" name="username" value="<%=user.getUsername()%>" />
+	  		<input type="hidden" name="username" value="<%=user.getUsbUsername()%>" />
 		</div>
 	</form>	
 		<h4 align = "center" style = "margin-top: 100px;">How it works?</h4>
@@ -101,7 +109,9 @@ if(session.getAttribute("loggedUser")!=null){
     </a>
   </div>
 
-<%if(user.getUsername()==""){ %>
+<%
+	if(user.getUsbUsername()==""){
+%>
 	<h4 align = "center" style = " text-decoration: underline; margin-top: 50px;">Are you an Ecological Island owner?</h4>	
 	<div class="text-center">
     	<img src="img/owner.png" class="rounded" style = "height:200px" alt="">
@@ -110,13 +120,15 @@ if(session.getAttribute("loggedUser")!=null){
 		<p align = "center" style ="margin-bottom:0px">Join BeEcological to increase your online visibility,</p>
 		<p align = "center">manage booking schedule and attract new customers</p>
       
-      <%}else { %>
+      <%
+            	}else {
+            %>
 	<h4 align = "center" style = " text-decoration: underline; margin-top: 50px;">Welcome Back!</h4>	
 	<form action="UserBookingListServlet" method="post">
 	<div class="text-center">
     	<img src="img/user.png" class="rounded" style = "height:200px" alt="">
     	<button class="btn" type="submit"></button>
-    	<input type="hidden" name="username" value="<%=user.getUsername()%>" />
+    	<input type="hidden" name="username" value="<%=user.getUsbUsername()%>" />
 	</div>
 	</form>
 		<p align = "center" style ="margin-bottom:0px">See your booking request, and your</p>

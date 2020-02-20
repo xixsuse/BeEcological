@@ -1,4 +1,4 @@
-package logic.View;
+package logic.view;
 
 import java.io.File;
 import java.net.URL;
@@ -12,15 +12,15 @@ import java.util.ResourceBundle;
 
 import com.sun.javafx.scene.control.skin.TableHeaderRow;
 
-import logic.Controller.BookingController;
-import logic.Controller.UnloadController;
-import logic.Controller.UserController;
-import logic.Controller.WasteUnloadedController;
 import logic.bean.BookingBean;
 import logic.bean.CenterOwnerBean;
 import logic.bean.UnloadBean;
 import logic.bean.UserBean;
 import logic.bean.WasteUnloadedBean;
+import logic.controller.BookingController;
+import logic.controller.UnloadController;
+import logic.controller.UserController;
+import logic.controller.WasteUnloadedController;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -157,14 +157,14 @@ public class RegisterUnloadView implements Initializable {
 		if (event.getButton().equals(MouseButton.PRIMARY)) {
 	        int index = tableBookingAccepted.getSelectionModel().getSelectedIndex();
 	        booking = tableBookingAccepted.getItems().get(index);
-			text_user.setText(booking.getUser());
-	        text_hour.setText(booking.getTime());
-			text_date.setValue(LocalDate.parse(booking.getDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+			text_user.setText(booking.getBbUser());
+	        text_hour.setText(booking.getBbTime());
+			text_date.setValue(LocalDate.parse(booking.getBbDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
 			
-			bookingID = booking.getId();
-			user_selected = booking.getUser();
-			hour_selected = booking.getTime();
-			date_selected = booking.getDate();
+			bookingID = booking.getBbId();
+			user_selected = booking.getBbUser();
+			hour_selected = booking.getBbTime();
+			date_selected = booking.getBbDate();
 		}
 	}
 
@@ -172,14 +172,14 @@ public class RegisterUnloadView implements Initializable {
 		boolean res;
 		user = new UserBean();
 		control = new UserController();
-		user.setUsername(text_user.getText());
+		user.setUsbUsername(text_user.getText());
 		LocalDate date = text_date.getValue();
 		String time = text_hour.getText();
 		waste_list.removeAll(waste_list);
 		wasteQuantity_list.removeAll(wasteQuantity_list);
 		
 		Alert alert = new Alert(AlertType.ERROR);		
-		res = control.CheckRegistration(user);
+		res = control.checkRegistration(user);
 		//se true username non esiste, non posso aggiungere prenotazione
 		if (res) {
 			alert.setTitle("Invalid unload registration.");
@@ -212,11 +212,11 @@ public class RegisterUnloadView implements Initializable {
 		
 		unload = new UnloadBean();
 		control1 = new UnloadController();
-		unload.setUser(user.getUsername());
-		unload.setCenter(CenterOwnerBean.instance.getCenter());
-		unload.setDate(date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-		unload.setTime(time);
-		control1.InsertAnUnload(unload);
+		unload.setUbUser(user.getUsbUsername());
+		unload.setUbCenter(CenterOwnerBean.instance.getCenter());
+		unload.setUbDate(date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+		unload.setUbTime(time);
+		control1.insertAnUnload(unload);
 		
 		int i, quantity;
 		String waste;
@@ -228,19 +228,19 @@ public class RegisterUnloadView implements Initializable {
 				quantity = Integer.parseInt(data1.get(i).getText());
 				wasteUnloaded = new WasteUnloadedBean();
 				control2 = new WasteUnloadedController();
-				wasteUnloaded.setUser(user.getUsername());
-				wasteUnloaded.setCenter(CenterOwnerBean.instance.getCenter());
-				wasteUnloaded.setDate(date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-				wasteUnloaded.setTime(time);
-				wasteUnloaded.setWaste(waste);
-				wasteUnloaded.setWasteQuantity(quantity);
-				control2.InsertWasteForAnUnload(wasteUnloaded);
+				wasteUnloaded.setWbUser(user.getUsbUsername());
+				wasteUnloaded.setWbCenter(CenterOwnerBean.instance.getCenter());
+				wasteUnloaded.setWbDate(date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+				wasteUnloaded.setWbTime(time);
+				wasteUnloaded.setWbWaste(waste);
+				wasteUnloaded.setWbWasteQuantity(quantity);
+				control2.insertWasteForAnUnload(wasteUnloaded);
 				check = true;
 			}
 		}
 		//se check rimane false vuol dire che non ho messo alcun rifiuto per lo scarico, quindi elimino l'unload registrato
 		if (!check) {
-			control1.DeleteAnUnload(unload);
+			control1.deleteAnUnload(unload);
 			alert.setTitle("Invalid unload registration.");
 			alert.setHeaderText(null);
 			alert.setContentText("Cannot register an unload without any waste. Retry.");		
@@ -254,18 +254,18 @@ public class RegisterUnloadView implements Initializable {
 		alert.showAndWait();
 
 		//se era una prenotazione presente nella griglia la salvo come registrata
-		if(user.getUsername().equals(user_selected) && date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd")).equals(date_selected) && time.equals(hour_selected )) {
+		if(user.getUsbUsername().equals(user_selected) && date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd")).equals(date_selected) && time.equals(hour_selected )) {
 			booking = new BookingBean();
 			control3 = new BookingController();
-			booking.setId(bookingID);
-			booking.setStatus("R");
-			control3.ModifyBooking(booking);
+			booking.setBbId(bookingID);
+			booking.setBbStatus("R");
+			control3.modifyBooking(booking);
 			
 			booking_list.removeAll(booking_list);
 		    try {
-		    	booking.setCenter(CenterOwnerBean.instance.getCenter());
-		    	booking.setStatus("A");
-		    	data = control3.BookingListByCenter(booking);	//prenotazioni accettate dal gestore
+		    	booking.setBbCenter(CenterOwnerBean.instance.getCenter());
+		    	booking.setBbStatus("A");
+		    	data = control3.bookingListByCenter(booking);	//prenotazioni accettate dal gestore
 		        booking_list.addAll(data);
 		    }
 		    catch(Exception e){
@@ -334,14 +334,14 @@ public class RegisterUnloadView implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		homeButton.setTooltip(new Tooltip("Return to BeEcological Homepage"));
-		ownerButton.setText(CenterOwnerBean.getOwnerInstance("").getUsername());
+		ownerButton.setText(CenterOwnerBean.getOwnerInstance("").getCobUsername());
 		booking_list.removeAll(booking_list);
 	    try {
 	    	booking = new BookingBean();
 	    	control3 = new BookingController();
-	    	booking.setCenter(CenterOwnerBean.instance.getCenter());
-	    	booking.setStatus("A");
-	    	data = control3.BookingListByCenter(booking);	//prenotazioni accettate dal gestore
+	    	booking.setBbCenter(CenterOwnerBean.instance.getCenter());
+	    	booking.setBbStatus("A");
+	    	data = control3.bookingListByCenter(booking);	//prenotazioni accettate dal gestore
 	        booking_list.addAll(data);
 	    }
 	    catch(Exception e){

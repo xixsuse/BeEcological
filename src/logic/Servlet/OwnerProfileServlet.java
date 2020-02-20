@@ -1,4 +1,4 @@
-package logic.Servlet;
+package logic.servlet;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -7,9 +7,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import logic.Controller.OwnerController;
 import logic.bean.CenterBean;
 import logic.bean.CenterOwnerBean;
+import logic.controller.OwnerController;
 
 import java.io.IOException;
 import java.util.List;
@@ -27,21 +27,21 @@ public class OwnerProfileServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         CenterOwnerBean ownerBean = new CenterOwnerBean();
         CenterBean centerBean = new CenterBean();
-    	ownerBean.setUsername(request.getParameter("username"));
+    	ownerBean.setCobUsername(request.getParameter("username"));
     	OwnerController controller = new OwnerController();
         
-        List<String> information = controller.OwnerData(ownerBean);
-        ownerBean.setName(information.get(0));
-        ownerBean.setSurname(information.get(1));
-        ownerBean.setEmailAddress(information.get(2));
-        ownerBean.setPhoneNumber(information.get(3));
+        List<String> information = controller.ownerData(ownerBean);
+        ownerBean.setCobName(information.get(0));
+        ownerBean.setCobSurname(information.get(1));
+        ownerBean.setCobEmail(information.get(2));
+        ownerBean.setCobPhone(information.get(3));
         ownerBean.setCenter(information.get(4));
-        centerBean.setName(information.get(4));
-        centerBean.setCenterPhone(information.get(5));
-        centerBean.setCity(information.get(6));
-        centerBean.setAddress(information.get(7));
-        centerBean.setCap(information.get(8));
-        centerBean.setNum(information.get(9));
+        centerBean.setCbName(information.get(4));
+        centerBean.setCbPhone(information.get(5));
+        centerBean.setCbCity(information.get(6));
+        centerBean.setCbAddress(information.get(7));
+        centerBean.setCbCap(information.get(8));
+        centerBean.setCbNum(information.get(9));
         
         HttpSession session = request.getSession(true);
         session.setAttribute("loggedOwner", ownerBean);

@@ -1,4 +1,4 @@
-package logic.Servlet;
+package logic.servlet;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,8 +10,8 @@ import javax.servlet.http.HttpSession;
 
 import error.EmptyFieldException;
 import error.InexistentUsernameException;
-import logic.Controller.UserController;
 import logic.bean.UserBean;
+import logic.controller.UserController;
 
 import java.io.IOException;
 
@@ -32,11 +32,11 @@ public class LoginUserServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         boolean result = false;
     	UserBean userBean = new UserBean();
-        userBean.setUsername(req.getParameter("username"));
-        userBean.setPassword(req.getParameter("password"));
+        userBean.setUsbUsername(req.getParameter("username"));
+        userBean.setUsbPassword(req.getParameter("password"));
         UserController controller = new UserController();
         try {
-			result = controller.Login(userBean);
+			result = controller.login(userBean);
 		} catch (InexistentUsernameException | EmptyFieldException e) {
 
 		}
@@ -46,7 +46,7 @@ public class LoginUserServlet extends HttpServlet {
             RequestDispatcher rd = req.getRequestDispatcher("/loginUser.jsp");
             rd.include(req, resp);
         } else {
-        	System.out.println("login con "+userBean.getUsername()+" "+userBean.getPassword());
+        	System.out.println("login con "+userBean.getUsbUsername()+" "+userBean.getUsbPassword());
             HttpSession session = req.getSession(true);
             session.setAttribute("loggedUser", userBean);
             resp.sendRedirect("homepage.jsp");

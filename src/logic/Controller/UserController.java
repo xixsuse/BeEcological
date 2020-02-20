@@ -1,4 +1,4 @@
-package logic.Controller;
+package logic.controller;
 
 import java.util.List;
 
@@ -7,64 +7,59 @@ import error.EmptyFieldException;
 import error.InexistentUsernameException;
 import error.InvalidEmailException;
 import error.ShortPasswordException;
-import logic.Model.User;
-import logic.Model.UserDAO;
 import logic.bean.UserBean;
+import logic.model.User;
+import logic.model.UserDAO;
 
 public class UserController {
 	
-	public UserController() {}
-	
-	public boolean Login(UserBean userBean) throws InexistentUsernameException, EmptyFieldException {
-		User user = new User(userBean.getUsername());
-		user.setPassword(userBean.getPassword());
-		if(userBean.getUsername().length() == 0 || userBean.getPassword().length() == 0) {
+	public boolean login(UserBean userBean) throws InexistentUsernameException, EmptyFieldException {
+		User user = new User(userBean.getUsbUsername());
+		user.setUsPassword(userBean.getUsbPassword());
+		if(userBean.getUsbUsername().length() == 0 || userBean.getUsbPassword().length() == 0) {
 			throw new EmptyFieldException();
 		}
-		if(UserDAO.checkUsername(userBean.getUsername())) {
+		if(UserDAO.checkUsername(userBean.getUsbUsername())) {
 			throw new InexistentUsernameException();
 		}
-		boolean result = UserDAO.verifyLogin(user);
-		return result;
+		return UserDAO.verifyLogin(user);
 	}
 	
-	public boolean CheckRegistration(UserBean userBean) {
-		boolean result = UserDAO.checkUsername(userBean.getUsername());
-		return result;
+	public boolean checkRegistration(UserBean userBean) {
+		return UserDAO.checkUsername(userBean.getUsbUsername());
 	}
 	
-	public void SaveRegistration(UserBean userBean) throws EmptyFieldException, ShortPasswordException, InvalidEmailException, AlreadyUsedUsernameException {
-		User user = new User(userBean.getName(), userBean.getSurname(), userBean.getEmailAddress(), userBean.getPhoneNumber(), 
-				userBean.getUsername(), userBean.getPassword(), userBean.getEcopoints());
-		if(userBean.getPassword().length() == 0) {
+	public void saveRegistration(UserBean userBean) throws EmptyFieldException, ShortPasswordException, InvalidEmailException, AlreadyUsedUsernameException {
+		User user = new User(userBean.getUsbName(), userBean.getUsbSurname(), userBean.getUsbEmail(), userBean.getUsbPhone(), 
+				userBean.getUsbUsername(), userBean.getUsbPassword(), userBean.getEcopoints());
+		if(userBean.getUsbPassword().length() == 0) {
 			throw new EmptyFieldException();
 		}
-		if(userBean.getPassword().length() < 8) {
+		if(userBean.getUsbPassword().length() < 8) {
 			throw new ShortPasswordException();
 		}
-		if(!userBean.getEmailAddress().contains("@")) {
+		if(!userBean.getUsbEmail().contains("@")) {
 			throw new InvalidEmailException();
 		}
-		if(!UserDAO.checkUsername(userBean.getUsername())) {
+		if(!UserDAO.checkUsername(userBean.getUsbUsername())) {
 			throw new AlreadyUsedUsernameException();
 		}
  		UserDAO.saveUser(user);
 	}
 	
-	public List<String> UserInformation(UserBean userBean) {
-		User user = new User(userBean.getUsername());
-		List<String> result = UserDAO.userInfo(user);
-		return result;
+	public List<String> userInformation(UserBean userBean) {
+		User user = new User(userBean.getUsbUsername());
+		return UserDAO.userInfo(user);
 	}
 
-	public void UpdateEcoPoints(UserBean userBean) {
-		User user = new User(userBean.getUsername());
+	public void updateEcoPoints(UserBean userBean) {
+		User user = new User(userBean.getUsbUsername());
 		user.setEcopoints(userBean.getEcopoints());
-		UserDAO.updateUserEcoPoints(user.getUsername(), user.getEcopoints());
+		UserDAO.updateUserEcoPoints(user.getUsUsername(), user.getEcopoints());
 	}
 	
 	public void deleteAccount(UserBean userBean) {
-		User user = new User(userBean.getUsername());
-		UserDAO.deleteUserAccount(user.getUsername());
+		User user = new User(userBean.getUsbUsername());
+		UserDAO.deleteUserAccount(user.getUsUsername());
 	}
 }

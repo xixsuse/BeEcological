@@ -1,31 +1,28 @@
-package logic.Controller;
+package logic.controller;
 
 import java.util.List;
 
-import logic.Model.CenterOwner;
-import logic.Model.CenterOwnerDAO;
-import logic.Model.Unload;
-import logic.Model.UnloadDAO;
 import logic.bean.CenterOwnerBean;
 import logic.bean.UnloadBean;
+import logic.model.CenterOwner;
+import logic.model.CenterOwnerDAO;
+import logic.model.Unload;
+import logic.model.UnloadDAO;
 
 public class UnloadController {
 	
-	public UnloadController() {}
-	
-	public void InsertAnUnload(UnloadBean unloadBean) {
-		Unload unload = new Unload(unloadBean.getUser(), unloadBean.getCenter(), unloadBean.getDate(), unloadBean.getTime());
+	public void insertAnUnload(UnloadBean unloadBean) {
+		Unload unload = new Unload(unloadBean.getUbUser(), unloadBean.getUbCenter(), unloadBean.getUbDate(), unloadBean.getUbTime());
 		UnloadDAO.saveUnload(unload);
 	}
 	
-	public void DeleteAnUnload(UnloadBean unloadBean) {
-		Unload unload = new Unload(unloadBean.getUser(), unloadBean.getCenter(), unloadBean.getDate(), unloadBean.getTime());
+	public void deleteAnUnload(UnloadBean unloadBean) {
+		Unload unload = new Unload(unloadBean.getUbUser(), unloadBean.getUbCenter(), unloadBean.getUbDate(), unloadBean.getUbTime());
 		UnloadDAO.deleteUnload(unload);
 	}
 	
-	public List<String> OwnerData(CenterOwnerBean ownerBean) {
-		CenterOwner owner = new CenterOwner(ownerBean.getUsername());
-		List<String> result = CenterOwnerDAO.ownerInfo(owner);
-		return result;
+	public List<String> ownerData(CenterOwnerBean ownerBean) {
+		CenterOwner owner = new CenterOwner(ownerBean.getCobUsername());
+		return CenterOwnerDAO.ownerInfo(owner);
 	}
 }

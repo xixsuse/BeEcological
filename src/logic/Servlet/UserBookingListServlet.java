@@ -1,4 +1,4 @@
-package logic.Servlet;
+package logic.servlet;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -7,9 +7,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import logic.Controller.BookingController;
 import logic.bean.BookingBean;
 import logic.bean.UserBean;
+import logic.controller.BookingController;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -26,15 +26,15 @@ public class UserBookingListServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	UserBean userBean = new UserBean();
         BookingBean bookingBean = new BookingBean();
-    	userBean.setUsername(request.getParameter("username"));
-    	bookingBean.setUser(userBean.getUsername());
-    	bookingBean.setStatus("W");
+    	userBean.setUsbUsername(request.getParameter("username"));
+    	bookingBean.setBbUser(userBean.getUsbUsername());
+    	bookingBean.setBbStatus("W");
         BookingController controller = new BookingController();
-        ArrayList<BookingBean> bookingWait = controller.BookingListByUser(bookingBean);
-        bookingBean.setStatus("A");
-        ArrayList<BookingBean> bookingAccepted = controller.BookingListByUser(bookingBean);
-        bookingBean.setStatus("D");
-        ArrayList<BookingBean> bookingRefuse = controller.BookingListByUser(bookingBean);
+        ArrayList<BookingBean> bookingWait = controller.bookingListByUser(bookingBean);
+        bookingBean.setBbStatus("A");
+        ArrayList<BookingBean> bookingAccepted = controller.bookingListByUser(bookingBean);
+        bookingBean.setBbStatus("D");
+        ArrayList<BookingBean> bookingRefuse = controller.bookingListByUser(bookingBean);
         
         HttpSession session = request.getSession(true);
         session.setAttribute("bookWait", bookingWait);

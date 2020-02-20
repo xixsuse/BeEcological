@@ -1,4 +1,4 @@
-package logic.View;
+package logic.view;
 
 import java.io.File;
 import java.net.URL;
@@ -8,13 +8,13 @@ import java.util.ResourceBundle;
 
 import com.sun.javafx.scene.control.skin.TableHeaderRow;
 
-import logic.Controller.BookingController;
-import logic.Controller.UnloadController;
-import logic.Controller.WasteUnloadedController;
 import logic.bean.BookingBean;
 import logic.bean.CenterOwnerBean;
 import logic.bean.UnloadBean;
 import logic.bean.WasteUnloadedBean;
+import logic.controller.BookingController;
+import logic.controller.UnloadController;
+import logic.controller.WasteUnloadedController;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -93,34 +93,34 @@ implements Initializable {
 			if (result.get() == ButtonType.OK) {
 				//cancello lo scarico di un rifiuto e tolgo ecoPoints con trigger
 				control = new WasteUnloadedController();
-				control.DeleteWasteForAnUnload(waste);
+				control.deleteWasteForAnUnload(waste);
 				alert.setAlertType(AlertType.INFORMATION);
 				alert.setTitle("Unload waste deleted.");
 	    		alert.setHeaderText(null);
-	    		alert.setContentText("Unload waste delete for '"+waste.getUser()+"' has been completed successfully.");		
+	    		alert.setContentText("Unload waste delete for '"+waste.getWbUser()+"' has been completed successfully.");		
 	    		alert.showAndWait();
 				
 
-				int count = control.NumberOfWasteForAnUnload(waste);
+				int count = control.numberOfWasteForAnUnload(waste);
 				if(count==0) {
 					//non ho piu niente registrato per quello scarico, lo elimino
 			        unload = new UnloadBean();
-					unload.setUser(waste.getUser());
-					unload.setCenter(waste.getCenter());
-					unload.setDate(waste.getDate());
-					unload.setTime(waste.getTime());
+					unload.setUbUser(waste.getWbUser());
+					unload.setUbCenter(waste.getWbCenter());
+					unload.setUbDate(waste.getWbDate());
+					unload.setUbTime(waste.getWbTime());
 					control1 = new UnloadController();
-			        control1.DeleteAnUnload(unload);
+			        control1.deleteAnUnload(unload);
 					alert.setAlertType(AlertType.INFORMATION);
 					alert.setTitle("Unload deleted.");
 		    		alert.setHeaderText(null);
-		    		alert.setContentText("Unload delete for '"+unload.getUser()+"' has been completed successfully.\nNo one waste already exists for this unload.");		
+		    		alert.setContentText("Unload delete for '"+unload.getUbUser()+"' has been completed successfully.\nNo one waste already exists for this unload.");		
 		    		alert.showAndWait();
 				}
 	    		
 	    		unload_list.removeAll(unload_list);
 	    	    try {
-	    	        data1 = control.ListUnloadByCenter(waste);
+	    	        data1 = control.listUnloadByCenter(waste);
 	    	        unload_list.addAll(data1);
 	    	    }
 	    	    catch(Exception e){
@@ -145,22 +145,22 @@ implements Initializable {
 	        Optional<ButtonType> result = alert.showAndWait();
 	        
 	        if (result.get() == ButtonType.OK){
-	    		booking.setStatus("D");
+	    		booking.setBbStatus("D");
 	    		control2 = new BookingController();
-	        	control2.ModifyBooking(booking);
+	        	control2.modifyBooking(booking);
 	    		alert.setAlertType(AlertType.INFORMATION);
 	    		alert.setTitle("Booking refuse completed.");
 	    		alert.setHeaderText(null);
-	    		alert.setContentText("Booking refused successfully for '"+booking.getUser()+"'.\n\nYou can check the list of booking in wait through\n         'Homepage> Manage Booking'.");		
+	    		alert.setContentText("Booking refused successfully for '"+booking.getBbUser()+"'.\n\nYou can check the list of booking in wait through\n         'Homepage> Manage Booking'.");		
 	    		alert.showAndWait();
 	        }
 	        
 	        book = new BookingBean();
-	        book.setCenter(CenterOwnerBean.getOwnerInstance("").getCenter());
-	        book.setStatus("A");
+	        book.setBbCenter(CenterOwnerBean.getOwnerInstance("").getCenter());
+	        book.setBbStatus("A");
 	        booking_list.removeAll(booking_list);
 		    try {
-		        data = control2.BookingListByCenter(book);
+		        data = control2.bookingListByCenter(book);
 		        booking_list.addAll(data);
 		    }
 		    catch(Exception e){
@@ -217,15 +217,15 @@ implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		homeButton.setTooltip(new Tooltip("Return to BeEcological Homepage"));
-		ownerButton.setText(CenterOwnerBean.getOwnerInstance("").getUsername());
+		ownerButton.setText(CenterOwnerBean.getOwnerInstance("").getCobUsername());
 		
 		book = new BookingBean();
-		book.setCenter(CenterOwnerBean.getOwnerInstance("").getCenter());
-		book.setStatus("A");
+		book.setBbCenter(CenterOwnerBean.getOwnerInstance("").getCenter());
+		book.setBbStatus("A");
 		booking_list.removeAll(booking_list);
 	    try {
 	    	control2 = new BookingController();
-	        data = control2.BookingListByCenter(book);
+	        data = control2.bookingListByCenter(book);
 	        booking_list.addAll(data);
 	    }
 	    catch(Exception e){
@@ -255,11 +255,11 @@ implements Initializable {
 		});
 		
 		waste = new WasteUnloadedBean();
-		waste.setCenter(CenterOwnerBean.getOwnerInstance("").getCenter());
+		waste.setWbCenter(CenterOwnerBean.getOwnerInstance("").getCenter());
 		unload_list.removeAll(unload_list);
 	    try {
 	    	control = new WasteUnloadedController();
-	        data1 = control.ListUnloadByCenter(waste);
+	        data1 = control.listUnloadByCenter(waste);
 	        unload_list.addAll(data1);
 	    }
 	    catch(Exception e){

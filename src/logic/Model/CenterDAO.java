@@ -1,4 +1,4 @@
-package logic.Model;
+package logic.model;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -65,7 +65,7 @@ public class CenterDAO {
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                     ResultSet.CONCUR_READ_ONLY);
 
-        	String selectStatement = "SELECT * FROM beecological.owner WHERE beecological.owner.center = '" + center.getName() + "';";
+        	String selectStatement = "SELECT * FROM beecological.owner WHERE beecological.owner.center = '" + center.getcName() + "';";
         	res = stmt.executeQuery(selectStatement);
         	res.next();
         	owner = new CenterOwner(res.getString("name"), res.getString("surname"), res.getString("email"), res.getString("phone"), 

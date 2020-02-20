@@ -1,4 +1,4 @@
-package logic.View;
+package logic.view;
 
 import java.io.File;
 import java.io.IOException;
@@ -9,8 +9,8 @@ import java.util.ResourceBundle;
 
 import org.apache.commons.io.FileUtils;
 
-import logic.Controller.OwnerController;
 import logic.bean.CenterOwnerBean;
+import logic.controller.OwnerController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -192,10 +192,10 @@ public class HomeOwnerView implements Initializable {
 		
 		owner = new CenterOwnerBean();
 		control = new OwnerController();
-		owner.setUsername(CenterOwnerBean.getOwnerInstance("").getUsername());
-		ownerButton.setText(owner.getUsername());
+		owner.setCobUsername(CenterOwnerBean.getOwnerInstance("").getCobUsername());
+		ownerButton.setText(owner.getCobUsername());
 		
-		List<String> ownerInfo = control.OwnerData(owner);
+		List<String> ownerInfo = control.ownerData(owner);
 		centerName.setText(ownerInfo.get(4));
 		centerAddress.setText(ownerInfo.get(7)+" "+ownerInfo.get(9));
 		ownerMail.setText(ownerInfo.get(2));

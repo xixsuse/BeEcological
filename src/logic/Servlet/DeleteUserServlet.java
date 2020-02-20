@@ -1,4 +1,4 @@
-package logic.Servlet;
+package logic.servlet;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import logic.Controller.UserController;
 import logic.bean.UserBean;
+import logic.controller.UserController;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -26,7 +26,7 @@ public class DeleteUserServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		UserBean userBean = new UserBean();
         
-        userBean.setUsername(request.getParameter("username"));
+        userBean.setUsbUsername(request.getParameter("username"));
         UserController controller = new UserController();
         controller.deleteAccount(userBean);
         HttpSession session = request.getSession(true);

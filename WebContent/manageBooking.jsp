@@ -16,8 +16,8 @@ center = (CenterBean)session.getAttribute("centerInfo"); %>
 <body>
 <nav class="navbar navbar-expand-lg fixed-top navbar-dark" style = "background-color:#0B526D">
 <!-- logo sulla navbar -->
-  <a class="navbar-brand" href="HomeOwnerServlet?username=<%=owner.getUsername()%>&ownerphone=<%=owner.getPhoneNumber()%>
-  &mail=<%=owner.getEmailAddress()%>&centername=<%=center.getName()%>&address=<%=center.getAddress()%>&centerphone=<%=center.getCenterPhone()%>">
+  <a class="navbar-brand" href="HomeOwnerServlet?username=<%=owner.getCobUsername()%>&ownerphone=<%=owner.getCobPhone()%>
+  &mail=<%=owner.getCobEmail()%>&centername=<%=center.getCbName()%>&address=<%=center.getCbAddress()%>&centerphone=<%=center.getCbPhone()%>">
     <img src="img/logo-owner.png" width="320" height=45 class="d-inline-block align-top" alt="">
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,9 +27,9 @@ center = (CenterBean)session.getAttribute("centerInfo"); %>
     <ul class="navbar-nav ml-auto"> <!-- ml mette i pulsanti della navbar a sinistra -->
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <%=owner.getUsername() %></a>
+          <%=owner.getCobUsername()%></a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="OwnerProfileServlet?username=<%=owner.getUsername()%>">Your Profile</a>
+          <a class="dropdown-item" href="OwnerProfileServlet?username=<%=owner.getCobUsername()%>">Your Profile</a>
           <a class="dropdown-item" href="homepage.jsp" onclick=<%session.setAttribute("loggedOwner", null);%> >Logout</a>
         </div>
       </li>
@@ -68,12 +68,12 @@ center = (CenterBean)session.getAttribute("centerInfo"); %>
     		</div>
     		<div class="col-sm">
       			<button class = "btn btn-primary" type="submit"  style="height: 70px; margin-top: 75px;margin-left:100px">ADD BOOKING</button>
-    			<input type="hidden" name="username" value="<%=owner.getUsername()%>" />
-		     	<input type="hidden" name="ownerphone" value="<%=owner.getPhoneNumber()%>" />
-		     	<input type="hidden" name="mail" value="<%=owner.getEmailAddress()%>" />
-		     	<input type="hidden" name="centername" value="<%=center.getName()%>" />
-		     	<input type="hidden" name="centerphone" value="<%=center.getCenterPhone()%>" />
-		     	<input type="hidden" name="address" value="<%=center.getAddress()%>" />
+    			<input type="hidden" name="username" value="<%=owner.getCobUsername()%>" />
+		     	<input type="hidden" name="ownerphone" value="<%=owner.getCobPhone()%>" />
+		     	<input type="hidden" name="mail" value="<%=owner.getCobEmail()%>" />
+		     	<input type="hidden" name="centername" value="<%=center.getCbName()%>" />
+		     	<input type="hidden" name="centerphone" value="<%=center.getCbPhone()%>" />
+		     	<input type="hidden" name="address" value="<%=center.getCbAddress()%>" />
     		</div>
   		</div>
 	</div>

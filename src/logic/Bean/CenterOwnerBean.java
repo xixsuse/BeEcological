@@ -3,83 +3,83 @@ package logic.bean;
 public class CenterOwnerBean {
 	public static CenterOwnerBean instance = null;
 	
-    private String username;
-    private String password;
-    private String name;
-    private String surname;
-    private String emailAddress;
-    private String phoneNumber;
-    private String centerName;
+    private String cobUsername;
+    private String cobPassword;
+    private String cobName;
+    private String cobSurname;
+    private String cobEmail;
+    private String cobPhone;
+    private String cobCenter;
     
     
 	public static CenterOwnerBean getOwnerInstance(String username) {
 		if (CenterOwnerBean.instance == null) {
 			CenterOwnerBean.instance = new CenterOwnerBean();
-			CenterOwnerBean.instance.username = username;
+			CenterOwnerBean.instance.cobUsername = username;
 		}
 		return instance;
 	}
 
-    public String getUsername() {
-        return this.username;
+    public String getCobUsername() {
+        return this.cobUsername;
     }
 
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setCobUsername(String username) {
+        this.cobUsername = username;
     }
 
-    public String getPassword() {
-        return this.password;
+    public String getCobPassword() {
+        return this.cobPassword;
     }
 
         
-    public void setPassword(String password) {
-        this.password = password;
+    public void setCobPassword(String password) {
+        this.cobPassword = password;
     }
     
-    public String getName() {
-        return this.name;
+    public String getCobName() {
+        return this.cobName;
     }
 
 
-    public void setName(String name) {
-        this.name = name;
-    }
-    
-    public String getSurname() {
-        return this.surname;
-    }
-
-
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public void setCobName(String name) {
+        this.cobName = name;
     }
     
-    public String getEmailAddress() {
-        return this.emailAddress;
+    public String getCobSurname() {
+        return this.cobSurname;
     }
 
 
-    public void setEmailAddress(String emailAddress) {
-        this.emailAddress = emailAddress;
+    public void setCobSurname(String surname) {
+        this.cobSurname = surname;
     }
     
-    public String getPhoneNumber() {
-        return this.phoneNumber;
+    public String getCobEmail() {
+        return this.cobEmail;
     }
 
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setCobEmail(String emailAddress) {
+        this.cobEmail = emailAddress;
+    }
+    
+    public String getCobPhone() {
+        return this.cobPhone;
+    }
+
+
+    public void setCobPhone(String phoneNumber) {
+        this.cobPhone = phoneNumber;
     }
     
     public String getCenter() {
-        return this.centerName;
+        return this.cobCenter;
     }
 
 
     public void setCenter(String centerName) {
-        this.centerName = centerName;
+        this.cobCenter = centerName;
     }
 }

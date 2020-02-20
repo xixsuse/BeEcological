@@ -1,68 +1,65 @@
-package logic.Controller;
+package logic.controller;
 
 
 
 import java.util.ArrayList;
 
 import error.InexistentUsernameException;
-import logic.Model.Booking;
-import logic.Model.BookingDAO;
-import logic.Model.UserDAO;
 import logic.bean.BookingBean;
+import logic.model.Booking;
+import logic.model.BookingDAO;
+import logic.model.UserDAO;
 
 public class BookingController {
 	
-	public BookingController() {}
-	
-	public int VerifyBooking(BookingBean bookingBean) {
-		Booking booking = new Booking(bookingBean.getUser(), bookingBean.getCenter(), bookingBean.getDate(), 
-				bookingBean.getTime(), bookingBean.getStatus());
-		int result = BookingDAO.existingBooking(booking);
-		return result;
+	public int verifyBooking(BookingBean bookingBean) {
+		Booking booking = new Booking(bookingBean.getBbUser(), bookingBean.getBbCenter(), bookingBean.getBbDate(), 
+				bookingBean.getBbTime(), bookingBean.getBbStatus());
+		return BookingDAO.existingBooking(booking);
 	}
 	
-	public void InsertBooking(BookingBean bookingBean) throws InexistentUsernameException {
-		Booking booking = new Booking(bookingBean.getUser(), bookingBean.getCenter(), bookingBean.getDate(), 
-				bookingBean.getTime(), bookingBean.getStatus());
-		if(UserDAO.checkUsername(bookingBean.getUser())) {
+	public void insertBooking(BookingBean bookingBean) throws InexistentUsernameException {
+		Booking booking = new Booking(bookingBean.getBbUser(), bookingBean.getBbCenter(), bookingBean.getBbDate(), 
+				bookingBean.getBbTime(), bookingBean.getBbStatus());
+		if(UserDAO.checkUsername(bookingBean.getBbUser())) {
 			throw new InexistentUsernameException();
 		}
 		BookingDAO.makeBooking(booking);
 	}
 	
-	public void ModifyBooking(BookingBean bookingBean) {
-		Booking booking = new Booking(bookingBean.getUser(), bookingBean.getCenter(), bookingBean.getDate(), 
-				bookingBean.getTime(), bookingBean.getStatus());
+	public void modifyBooking(BookingBean bookingBean) {
+		Booking booking = new Booking(bookingBean.getBbUser(), bookingBean.getBbCenter(), bookingBean.getBbDate(), 
+				bookingBean.getBbTime(), bookingBean.getBbStatus());
 		BookingDAO.updateBooking(booking);
 	}
 	
-	public ArrayList<BookingBean> BookingListByCenter(BookingBean bookingBean) {
+	public ArrayList<BookingBean> bookingListByCenter(BookingBean bookingBean) {
 		ArrayList<BookingBean> listOfBookingBean = new ArrayList<>();
-		ArrayList<Booking> listOfBooking = BookingDAO.listOfBookingByCenter(bookingBean.getCenter(), bookingBean.getStatus());
+		ArrayList<Booking> listOfBooking = BookingDAO.listOfBookingByCenter(bookingBean.getBbCenter(), bookingBean.getBbStatus());
 		for(Booking book : listOfBooking) {
 			BookingBean bookB = new BookingBean();
-			bookB.setId(book.getID());
-			bookB.setUser(book.getUser());
-			bookB.setCenter(book.getCenter());
-			bookB.setDate(book.getDate());
-			bookB.setTime(book.getTime());
-			bookB.setStatus(book.getStatus());
+			bookB.setBbId(book.getbId());
+			bookB.setBbUser(book.getbUser());
+			bookB.setBbCenter(book.getbCenter());
+			bookB.setBbDate(book.getbDate());
+			bookB.setBbTime(book.getbTime());
+			bookB.setBbStatus(book.getbStatus());
 			listOfBookingBean.add(bookB);
 		}
 		return listOfBookingBean;
 	}
 	
-	public ArrayList<BookingBean> BookingListByUser(BookingBean bookingBean) {
+	public ArrayList<BookingBean> bookingListByUser(BookingBean bookingBean) {
 		ArrayList<BookingBean> listOfBookingBean = new ArrayList<>();
-		ArrayList<Booking> listOfBooking = BookingDAO.listOfBookingByUser(bookingBean.getUser(), bookingBean.getStatus());
+		ArrayList<Booking> listOfBooking = BookingDAO.listOfBookingByUser(bookingBean.getBbUser(), bookingBean.getBbStatus());
 		for(Booking book : listOfBooking) {
 			BookingBean bookB = new BookingBean();
-			bookB.setId(book.getID());
-			bookB.setUser(book.getUser());
-			bookB.setCenter(book.getCenter());
-			bookB.setDate(book.getDate());
-			bookB.setTime(book.getTime());
-			bookB.setStatus(book.getStatus());
+			bookB.setBbId(book.getbId());
+			bookB.setBbUser(book.getbUser());
+			bookB.setBbCenter(book.getbCenter());
+			bookB.setBbDate(book.getbDate());
+			bookB.setBbTime(book.getbTime());
+			bookB.setBbStatus(book.getbStatus());
 			listOfBookingBean.add(bookB);
 		}
 		return listOfBookingBean;

@@ -1,94 +1,94 @@
-package logic.Model;
+package logic.model;
 
 public class CenterOwner {
-    private String username;
-    private String password;
-    private String name;
-    private String surname;
-    private String emailAddress;
-    private String phoneNumber;
-    private String centerName;
+    private String coUsername;
+    private String coPassword;
+    private String coName;
+    private String coSurname;
+    private String coEmail;
+    private String coPhone;
+    private String coCenter;
     
     public CenterOwner(String username){
-        this.username = username;
+        this.coUsername = username;
     }
     
     public CenterOwner(String name, String surname, String emailAddress, String phoneNumber, String username, String password,
     		String centerName){
-        this.name = name;
-        this.surname = surname;
-        this.emailAddress = emailAddress;
-        this.phoneNumber = phoneNumber;
-    	this.username = username;
-        this.password = password;
-        this.centerName = centerName;
+        this.coName = name;
+        this.coSurname = surname;
+        this.coEmail = emailAddress;
+        this.coPhone = phoneNumber;
+    	this.coUsername = username;
+        this.coPassword = password;
+        this.coCenter = centerName;
     }
 
-    public String getUsername() {
-        return this.username;
+    public String getCoUsername() {
+        return this.coUsername;
     }
 
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setCoUsername(String username) {
+        this.coUsername = username;
     }
 
-    public String getPassword() {
-        return this.password;
+    public String getCoPassword() {
+        return this.coPassword;
     }
 
         
-    public void setPassword(String password) {
-        this.password = password;
+    public void setCoPassword(String password) {
+        this.coPassword = password;
     }
     
-    public String getName() {
-        return this.name;
+    public String getCoName() {
+        return this.coName;
     }
 
 
-    public void setName(String name) {
-        this.name = name;
-    }
-    
-    public String getSurname() {
-        return this.surname;
-    }
-
-
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public void setCoName(String name) {
+        this.coName = name;
     }
     
-    public String getEmailAddress() {
-        return this.emailAddress;
+    public String getCoSurname() {
+        return this.coSurname;
     }
 
 
-    public void setEmailAddress(String emailAddress) {
-        this.emailAddress = emailAddress;
+    public void setCoSurname(String surname) {
+        this.coSurname = surname;
     }
     
-    public String getPhoneNumber() {
-        return this.phoneNumber;
+    public String getCoEmail() {
+        return this.coEmail;
     }
 
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setCoEmail(String emailAddress) {
+        this.coEmail = emailAddress;
+    }
+    
+    public String getCoPhone() {
+        return this.coPhone;
+    }
+
+
+    public void setCoPhone(String phoneNumber) {
+        this.coPhone = phoneNumber;
     }
     
     public String getCenter() {
-        return this.centerName;
+        return this.coCenter;
     }
 
 
     public void setCenter(String centerName) {
-        this.centerName = centerName;
+        this.coCenter = centerName;
     }
     
     @Override
     public String toString(){
-		return this.username + " \"" + this.password + "\" (" + this.centerName + ")";    	
+		return this.coUsername + " \"" + this.coPassword + "\" (" + this.coCenter + ")";    	
     }
 }

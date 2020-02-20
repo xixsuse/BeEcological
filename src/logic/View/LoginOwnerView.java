@@ -1,11 +1,11 @@
-package logic.View;
+package logic.view;
 
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import logic.Controller.OwnerController;
 import logic.bean.CenterOwnerBean;
+import logic.controller.OwnerController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -71,10 +71,10 @@ public class LoginOwnerView implements Initializable {
 		String password = loginPassword.getText();
 		
 		owner = CenterOwnerBean.getOwnerInstance(username);
-		owner.setPassword(password);
+		owner.setCobPassword(password);
 		
 		control = new OwnerController();
-		ok = control.Login(owner);
+		ok = control.login(owner);
 		Alert alert = new Alert(AlertType.ERROR);
 		if (!ok) {
 			CenterOwnerBean.instance = null;

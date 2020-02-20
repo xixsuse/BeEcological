@@ -8,10 +8,10 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import logic.Controller.UserController;
-import logic.Controller.WasteUnloadedController;
 import logic.bean.UserBean;
 import logic.bean.WasteUnloadedBean;
+import logic.controller.UserController;
+import logic.controller.WasteUnloadedController;
 
 public class TestEarnEcopoints {
 	
@@ -32,13 +32,13 @@ public class TestEarnEcopoints {
 		userBean = new UserBean();
 		wasteBean = new WasteUnloadedBean();
 		
-		userBean.setUsername(username);
-		wasteBean.setUser(username);
-		wasteBean.setCenter(center);
-		wasteBean.setDate(date);
-		wasteBean.setTime(time);
-		wasteBean.setWaste(waste);
-		wasteBean.setWasteQuantity(wasteQuantity);
+		userBean.setUsbUsername(username);
+		wasteBean.setWbUser(username);
+		wasteBean.setWbCenter(center);
+		wasteBean.setWbDate(date);
+		wasteBean.setWbTime(time);
+		wasteBean.setWbWaste(waste);
+		wasteBean.setWbWasteQuantity(wasteQuantity);
 	}
 	
 	@Test
@@ -46,12 +46,12 @@ public class TestEarnEcopoints {
 		int oldPoints, newPoints;
 		int pointsObtained = 5*3; //3 is the value_per_kg of plastic packaging
 
-		List<String> info = userController.UserInformation(userBean);
+		List<String> info = userController.userInformation(userBean);
 		oldPoints = Integer.parseInt(info.get(4));
 		int expected = oldPoints + pointsObtained;
 		
-		wasteController.InsertWasteForAnUnload(wasteBean);
-		info = userController.UserInformation(userBean);
+		wasteController.insertWasteForAnUnload(wasteBean);
+		info = userController.userInformation(userBean);
 		newPoints = Integer.parseInt(info.get(4));
 		
 		String message = "expected: "+expected+" new: "+newPoints;
@@ -60,6 +60,6 @@ public class TestEarnEcopoints {
 	
 	@After
 	public void deleteUnload() {
-		wasteController.DeleteWasteForAnUnload(wasteBean);
+		wasteController.deleteWasteForAnUnload(wasteBean);
 	}
 }

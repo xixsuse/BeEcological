@@ -1,4 +1,4 @@
-package logic.Servlet;
+package logic.servlet;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,12 +24,12 @@ public class HomeOwnerServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	CenterOwnerBean ownerBean = new CenterOwnerBean();
     	CenterBean centerBean = new CenterBean();
-    	ownerBean.setUsername(request.getParameter("username"));
-    	ownerBean.setPhoneNumber(request.getParameter("ownerphone"));
-    	ownerBean.setEmailAddress(request.getParameter("mail"));
-    	centerBean.setName(request.getParameter("centername"));
-    	centerBean.setAddress(request.getParameter("address"));
-    	centerBean.setCenterPhone(request.getParameter("centerphone"));
+    	ownerBean.setCobUsername(request.getParameter("username"));
+    	ownerBean.setCobPhone(request.getParameter("ownerphone"));
+    	ownerBean.setCobEmail(request.getParameter("mail"));
+    	centerBean.setCbName(request.getParameter("centername"));
+    	centerBean.setCbAddress(request.getParameter("address"));
+    	centerBean.setCbPhone(request.getParameter("centerphone"));
     	
         HttpSession session = request.getSession(true);
         session.setAttribute("loggedOwner", ownerBean);

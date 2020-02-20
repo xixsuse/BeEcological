@@ -1,4 +1,4 @@
-package logic.Servlet;
+package logic.servlet;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -7,10 +7,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import logic.Controller.CenterController;
 import logic.bean.CenterBean;
 import logic.bean.CenterOwnerBean;
 import logic.bean.UserBean;
+import logic.controller.CenterController;
 
 import java.io.IOException;
 
@@ -28,13 +28,13 @@ public class CenterPageServlet extends HttpServlet {
         UserBean userBean = new UserBean();
         CenterBean centerBean = new CenterBean();
         CenterOwnerBean owner = new CenterOwnerBean();
-    	userBean.setUsername(request.getParameter("username"));
-    	centerBean.setAddress(request.getParameter("address"));
-    	centerBean.setCenterPhone(request.getParameter("phone"));
-    	centerBean.setName(request.getParameter("centername"));
+    	userBean.setUsbUsername(request.getParameter("username"));
+    	centerBean.setCbAddress(request.getParameter("address"));
+    	centerBean.setCbPhone(request.getParameter("phone"));
+    	centerBean.setCbName(request.getParameter("centername"));
     	
         CenterController controller = new CenterController();
-        owner = controller.OwnerOfTheSelectedCenter(centerBean);
+        owner = controller.ownerOfTheSelectedCenter(centerBean);
         
         HttpSession session = request.getSession(true);
         session.setAttribute("loggedUser", userBean);

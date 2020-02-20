@@ -1,4 +1,4 @@
-package logic.Servlet;
+package logic.servlet;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -7,12 +7,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import logic.Controller.UnloadController;
-import logic.Controller.WasteUnloadedController;
 import logic.bean.CenterBean;
 import logic.bean.CenterOwnerBean;
 import logic.bean.UnloadBean;
 import logic.bean.WasteUnloadedBean;
+import logic.controller.UnloadController;
+import logic.controller.WasteUnloadedController;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -32,23 +32,23 @@ public class DeleteUnloadServlet extends HttpServlet {
     	CenterBean centerBean = new CenterBean();
     	WasteUnloadedBean wasteBean = new WasteUnloadedBean();
     	
-        ownerBean.setUsername(request.getParameter("username"));
-        ownerBean.setEmailAddress(request.getParameter("mail"));
-        ownerBean.setPhoneNumber(request.getParameter("ownerphone"));
-        centerBean.setName(request.getParameter("centername"));
-        centerBean.setAddress(request.getParameter("address"));
-        centerBean.setCenterPhone(request.getParameter("centerphone"));
+        ownerBean.setCobUsername(request.getParameter("username"));
+        ownerBean.setCobEmail(request.getParameter("mail"));
+        ownerBean.setCobPhone(request.getParameter("ownerphone"));
+        centerBean.setCbName(request.getParameter("centername"));
+        centerBean.setCbAddress(request.getParameter("address"));
+        centerBean.setCbPhone(request.getParameter("centerphone"));
         
-        wasteBean.setUser(request.getParameter("userToDelete1"));
-    	wasteBean.setCenter(request.getParameter("centername"));
-    	wasteBean.setDate(request.getParameter("date1"));
-    	wasteBean.setTime(request.getParameter("time1"));
-    	wasteBean.setWaste(request.getParameter("waste"));
-    	wasteBean.setWasteQuantity(Integer.parseInt(request.getParameter("quantity")));
+        wasteBean.setWbUser(request.getParameter("userToDelete1"));
+    	wasteBean.setWbCenter(request.getParameter("centername"));
+    	wasteBean.setWbDate(request.getParameter("date1"));
+    	wasteBean.setWbTime(request.getParameter("time1"));
+    	wasteBean.setWbWaste(request.getParameter("waste"));
+    	wasteBean.setWbWasteQuantity(Integer.parseInt(request.getParameter("quantity")));
         
 		//cancello lo scarico di un rifiuto e tolgo ecoPoints con trigger
 		WasteUnloadedController controller = new WasteUnloadedController();
-		controller.DeleteWasteForAnUnload(wasteBean);
+		controller.deleteWasteForAnUnload(wasteBean);
 		
 		HttpSession session = request.getSession(true);
 		
@@ -58,16 +58,16 @@ public class DeleteUnloadServlet extends HttpServlet {
         out.println("alert('Unload waste deleted successfully.');");
         out.println("</script>");
 		
-		int count = controller.NumberOfWasteForAnUnload(wasteBean);
+		int count = controller.numberOfWasteForAnUnload(wasteBean);
 		if(count==0) {
 			//non ho piu niente registrato per quello scarico, lo elimino
 	        UnloadBean unload = new UnloadBean();
-			unload.setUser(wasteBean.getUser());
-			unload.setCenter(wasteBean.getCenter());
-			unload.setDate(wasteBean.getDate());
-			unload.setTime(wasteBean.getTime());
+			unload.setUbUser(wasteBean.getWbUser());
+			unload.setUbCenter(wasteBean.getWbCenter());
+			unload.setUbDate(wasteBean.getWbDate());
+			unload.setUbTime(wasteBean.getWbTime());
 			UnloadController controller1 = new UnloadController();
-	        controller1.DeleteAnUnload(unload);
+	        controller1.deleteAnUnload(unload);
 	        session.setAttribute("loggedOwner", ownerBean);
 	        session.setAttribute("centerInfo", centerBean);
 	        out.println("<script type=\"text/javascript\">");

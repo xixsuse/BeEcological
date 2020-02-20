@@ -1,4 +1,4 @@
-package logic.View;
+package logic.view;
 
 import java.io.File;
 import java.net.URL;
@@ -14,12 +14,12 @@ import java.util.ResourceBundle;
 import com.sun.javafx.scene.control.skin.TableHeaderRow;
 
 import error.InexistentUsernameException;
-import logic.Controller.BookingController;
-import logic.Controller.OwnerController;
-import logic.Controller.UserController;
 import logic.bean.BookingBean;
 import logic.bean.CenterOwnerBean;
 import logic.bean.UserBean;
+import logic.controller.BookingController;
+import logic.controller.OwnerController;
+import logic.controller.UserController;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -93,9 +93,9 @@ public class ManageBookingView implements Initializable {
 		
 		control = new OwnerController();
 		
-		owner.setUsername(CenterOwnerBean.getOwnerInstance("").getUsername());
-		user.setUsername(userToBook.getText());
-		List<String> ownerData = control.OwnerData(owner);
+		owner.setCobUsername(CenterOwnerBean.getOwnerInstance("").getCobUsername());
+		user.setUsbUsername(userToBook.getText());
+		List<String> ownerData = control.ownerData(owner);
 		String center = ownerData.get(4);
 		LocalDate date = dateToBook.getValue();
 		String time = hourToBook.getText();
@@ -103,7 +103,7 @@ public class ManageBookingView implements Initializable {
 		control1 = new UserController();
 		
 		Alert alert = new Alert(AlertType.ERROR);		
-		res = control1.CheckRegistration(user);
+		res = control1.checkRegistration(user);
 		//se true username non esiste, non posso aggiungere prenotazione
 		if (res) {
 			alert.setTitle("Invalid booking request.");
@@ -136,28 +136,28 @@ public class ManageBookingView implements Initializable {
 			return;
 		}
 		
-		booking.setUser(user.getUsername());
-		booking.setCenter(center);
-		booking.setDate(date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-		booking.setTime(time);
+		booking.setBbUser(user.getUsbUsername());
+		booking.setBbCenter(center);
+		booking.setBbDate(date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+		booking.setBbTime(time);
 		
-		booking.setStatus("W");
+		booking.setBbStatus("W");
 		control2 = new BookingController();
-		int count = control2.VerifyBooking(booking);
+		int count = control2.verifyBooking(booking);
     	if(count!=0) {
     		//esiste prenotazione, la aggiorno accettandola
-    		booking.setStatus("A");
-    		control2.ModifyBooking(booking);
+    		booking.setBbStatus("A");
+    		control2.modifyBooking(booking);
     		alert.setAlertType(AlertType.INFORMATION);;
     		alert.setTitle("Booking request completed.");
     		alert.setHeaderText(null);
-    		alert.setContentText("Booking insert for '"+booking.getUser()+"' has been completed successfully.\n\nYou can check the list of booking accepted through\n         'Homepage> History & Unloads'.");		
+    		alert.setContentText("Booking insert for '"+booking.getBbUser()+"' has been completed successfully.\n\nYou can check the list of booking accepted through\n         'Homepage> History & Unloads'.");		
     		alert.showAndWait();
 	        booking_list.removeAll(booking_list);
 		    try {
-		        booking.setCenter(CenterOwnerBean.instance.getCenter());
-		        booking.setStatus("W");
-		    	data = control2.BookingListByCenter(booking); //richieste di prenotazione da accettare
+		        booking.setBbCenter(CenterOwnerBean.instance.getCenter());
+		        booking.setBbStatus("W");
+		    	data = control2.bookingListByCenter(booking); //richieste di prenotazione da accettare
 		        booking_list.addAll(data);
 		    }
 		    catch(Exception e){
@@ -168,27 +168,27 @@ public class ManageBookingView implements Initializable {
     		return;
     	}
 		
-    	booking.setStatus("A");
-		count = control2.VerifyBooking(booking);
+    	booking.setBbStatus("A");
+		count = control2.verifyBooking(booking);
 		if (count!=0) {
 			//la prenotazione già è stata accettata
 			alert.setAlertType(AlertType.INFORMATION);;
 			alert.setTitle("Booking request not valid.");
 			alert.setHeaderText(null);
-			alert.setContentText("Booking insert for '"+booking.getUser()+"' already exists. Retry.");		
+			alert.setContentText("Booking insert for '"+booking.getBbUser()+"' already exists. Retry.");		
 			alert.showAndWait();
 			return;
 		}
 		//la prenotazione non esiste
 		try {
-			control2.InsertBooking(booking);
+			control2.insertBooking(booking);
 		} catch (InexistentUsernameException e) {
 
 		}
 		alert.setAlertType(AlertType.INFORMATION);;
 		alert.setTitle("Booking request completed.");
 		alert.setHeaderText(null);
-		alert.setContentText("Booking insert for '"+booking.getUser()+"' has been completed successfully.\n\nYou can check the list of booking accepted through\n         'Homepage> History & Unloads'.");		
+		alert.setContentText("Booking insert for '"+booking.getBbUser()+"' has been completed successfully.\n\nYou can check the list of booking accepted through\n         'Homepage> History & Unloads'.");		
 		alert.showAndWait();
 	}
 	
@@ -213,27 +213,27 @@ public class ManageBookingView implements Initializable {
 	        Optional<ButtonType> result = alert.showAndWait();
 	        Alert alert1 = new Alert(AlertType.INFORMATION);
 	        if (result.get() == buttonTypeYes){
-	    		booking.setStatus("A");
-	        	control2.ModifyBooking(booking);
+	    		booking.setBbStatus("A");
+	        	control2.modifyBooking(booking);
 	    		alert1.setTitle("Booking request completed.");
 	    		alert1.setHeaderText(null);
-	    		alert1.setContentText("Booking insert for '"+booking.getUser()+"' has been completed successfully.\n\nYou can check the list of booking accepted through\n         'Homepage> History & Unloads'.");		
+	    		alert1.setContentText("Booking insert for '"+booking.getBbUser()+"' has been completed successfully.\n\nYou can check the list of booking accepted through\n         'Homepage> History & Unloads'.");		
 	    		alert1.showAndWait();
 	        } else if (result.get() == buttonTypeNo) {
-	            booking.setStatus("D");
-	        	control2.ModifyBooking(booking);
+	            booking.setBbStatus("D");
+	        	control2.modifyBooking(booking);
 	    		alert1.setTitle("Booking request refused.");
 	    		alert1.setHeaderText(null);
-	    		alert1.setContentText("Booking refused for '"+booking.getUser()+"' has been completed successfully");		
+	    		alert1.setContentText("Booking refused for '"+booking.getBbUser()+"' has been completed successfully");		
 	    		alert1.showAndWait();
 	        } else {
 	            //do nothing
 	        }
 	        booking_list.removeAll(booking_list);
 		    try {
-		        booking.setCenter(CenterOwnerBean.instance.getCenter());
-		        booking.setStatus("W");
-		    	data = control2.BookingListByCenter(booking); //richieste di prenotazione da accettare
+		        booking.setBbCenter(CenterOwnerBean.instance.getCenter());
+		        booking.setBbStatus("W");
+		    	data = control2.bookingListByCenter(booking); //richieste di prenotazione da accettare
 		        booking_list.addAll(data);
 		    }
 		    catch(Exception e){
@@ -293,15 +293,15 @@ public class ManageBookingView implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		homeButton.setTooltip(new Tooltip("Return to BeEcological Homepage"));
-		ownerButton.setText(CenterOwnerBean.getOwnerInstance("").getUsername());
+		ownerButton.setText(CenterOwnerBean.getOwnerInstance("").getCobUsername());
 		booking_list.removeAll(booking_list);
 		try {
 	    	booking = new BookingBean();
 	    	control2 = new BookingController();
-	    	booking.setCenter(CenterOwnerBean.getOwnerInstance("").getCenter());
-	    	booking.setStatus("W");
+	    	booking.setBbCenter(CenterOwnerBean.getOwnerInstance("").getCenter());
+	    	booking.setBbStatus("W");
 	        control2 = new BookingController();
-	    	data = control2.BookingListByCenter(booking); //richieste di prenotazione da accettare
+	    	data = control2.bookingListByCenter(booking); //richieste di prenotazione da accettare
 	        booking_list.addAll(data);
 	    }
 	    catch(Exception e){

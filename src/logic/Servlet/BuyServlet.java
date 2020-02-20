@@ -1,4 +1,4 @@
-package logic.Servlet;
+package logic.servlet;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import logic.Controller.UserController;
 import logic.bean.UserBean;
+import logic.controller.UserController;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -25,7 +25,7 @@ public class BuyServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
         UserBean userBean = new UserBean();
-        userBean.setUsername(request.getParameter("username"));
+        userBean.setUsbUsername(request.getParameter("username"));
         userBean.setEcopoints(Integer.parseInt(request.getParameter("totalPoints")));
         
 		HttpSession session = request.getSession(true);
@@ -42,7 +42,7 @@ public class BuyServlet extends HttpServlet {
 		    userBean.setEcopoints(newEcopoints);
 		    
 		    UserController controller = new UserController();
-		    controller.UpdateEcoPoints(userBean);
+		    controller.updateEcoPoints(userBean);
 		    out.println("<script type=\"text/javascript\">");
 		    out.println("alert('Item acquired successfully.');");
 		    out.println("location='shop.jsp';");

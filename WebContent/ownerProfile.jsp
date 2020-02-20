@@ -15,8 +15,8 @@ center = (CenterBean)session.getAttribute("centerInfo"); %>
 <body>
 <nav class="navbar navbar-expand-lg fixed-top navbar-dark" style = "background-color:#0B526D">
 <!-- logo sulla navbar -->
-  <a class="navbar-brand" href="HomeOwnerServlet?username=<%=owner.getUsername()%>&ownerphone=<%=owner.getPhoneNumber()%>
-  &mail=<%=owner.getEmailAddress()%>&centername=<%=center.getName()%>&address=<%=center.getAddress()%>&centerphone=<%=center.getCenterPhone()%>">
+  <a class="navbar-brand" href="HomeOwnerServlet?username=<%=owner.getCobUsername()%>&ownerphone=<%=owner.getCobPhone()%>
+  &mail=<%=owner.getCobEmail()%>&centername=<%=center.getCbName()%>&address=<%=center.getCbAddress()%>&centerphone=<%=center.getCbPhone()%>">
     <img src="img/logo-owner.png" width="320" height=45 class="d-inline-block align-top" alt="">
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,9 +26,9 @@ center = (CenterBean)session.getAttribute("centerInfo"); %>
     <ul class="navbar-nav ml-auto"> <!-- ml mette i pulsanti della navbar a sinistra -->
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-         <%= owner.getUsername() %></a>
+         <%=owner.getCobUsername()%></a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="OwnerProfileServlet?username=<%=owner.getUsername()%>">Your Profile</a>
+          <a class="dropdown-item" href="OwnerProfileServlet?username=<%=owner.getCobUsername()%>">Your Profile</a>
           <a class="dropdown-item" href="homepage.jsp" onclick=<%session.setAttribute("loggedOwner", null);%> >Logout</a>
         </div>
       </li>
@@ -46,16 +46,16 @@ center = (CenterBean)session.getAttribute("centerInfo"); %>
 </nav>
 
 <div class="container">
-  <h1 style = "color:#0B526D;text-align: center"><%=owner.getUsername()%></h1>
+  <h1 style = "color:#0B526D;text-align: center"><%=owner.getCobUsername()%></h1>
   <h1 style = "color: #0B526D;margin-top: 1 0px">Personal Data</h1>
   <hr></hr>
   <div class="row">
     <div class="col-sm">
       <p></p>
-      <div class= "row"><h4 style = "color:#0B526D;margin-left: 15px"> Name: </h4><p class= "lead" style = "margin-left:125px"><%=owner.getName()%></p></div>
-      <div class= "row"><h4 style = "color:#0B526D;margin-left: 15px"> Surname: </h4><p class= "lead" style = "margin-left:94px"><%=owner.getSurname()%></p></div>
-      <div class= "row"><h4 style = "color:#0B526D;margin-left: 15px"> Email: </h4><p class= "lead" style = "margin-left:132px;"><%=owner.getEmailAddress()%></p></div>
-      <div class= "row"><h4 style = "color:#0B526D;margin-left: 15px"> Cell Number: </h4><p class= "lead" style = "margin-left:54px"><%=owner.getPhoneNumber()%></p></div>
+      <div class= "row"><h4 style = "color:#0B526D;margin-left: 15px"> Name: </h4><p class= "lead" style = "margin-left:125px"><%=owner.getCobName()%></p></div>
+      <div class= "row"><h4 style = "color:#0B526D;margin-left: 15px"> Surname: </h4><p class= "lead" style = "margin-left:94px"><%=owner.getCobSurname()%></p></div>
+      <div class= "row"><h4 style = "color:#0B526D;margin-left: 15px"> Email: </h4><p class= "lead" style = "margin-left:132px;"><%=owner.getCobEmail()%></p></div>
+      <div class= "row"><h4 style = "color:#0B526D;margin-left: 15px"> Cell Number: </h4><p class= "lead" style = "margin-left:54px"><%=owner.getCobPhone()%></p></div>
     </div>
     <div class="col-sm" style = "margin-left:200px;margin-right: -100px">
       <p style = "margin-top: 60px"></p>
@@ -70,7 +70,7 @@ center = (CenterBean)session.getAttribute("centerInfo"); %>
 <form action="DeleteOwnerServlet" method="post">
   <div style = "text-align:center">
       <button class = "btn delete-account" type="submit"  style="height: 80px; margin-top: 20px">DELETE ACCOUNT</button>
-      <input type="hidden" name="username" value="<%=owner.getUsername()%>" />
+      <input type="hidden" name="username" value="<%=owner.getCobUsername()%>" />
   </div>
 </form>
 </div>
