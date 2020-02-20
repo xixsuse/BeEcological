@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import error.AlreadyUsedUsernameException;
 import error.InexistentUsernameException;
 import logic.Bean.BookingBean;
 import logic.Bean.UserBean;
@@ -33,7 +34,12 @@ public class BookingRequestServlet extends HttpServlet {
         userBean.setUsername(request.getParameter("username"));
         
         UserController controller = new UserController();
-        boolean result = controller.CheckRegistration(userBean);
+        boolean result = true;
+		try {
+			result = controller.CheckRegistration(userBean);
+		} catch (AlreadyUsedUsernameException e1) {
+			e1.printStackTrace();
+		}
         HttpSession session = request.getSession(true);
         
         //se false l'username esiste nel sistema

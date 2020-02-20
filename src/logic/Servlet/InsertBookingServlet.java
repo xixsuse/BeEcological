@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import error.AlreadyUsedUsernameException;
 import error.InexistentUsernameException;
 import logic.Bean.BookingBean;
 import logic.Bean.CenterBean;
@@ -67,7 +68,12 @@ public class InsertBookingServlet extends HttpServlet {
         session.setAttribute("centerInfo", centerBean);
         
     	UserController controller = new UserController();
-    	boolean result = controller.CheckRegistration(userBean);
+    	boolean result = false;
+		try {
+			result = controller.CheckRegistration(userBean);
+		} catch (AlreadyUsedUsernameException e1) {
+			e1.printStackTrace();
+		}
     	if(result) {
     		//username non esiste non posso inserire
             out.println("<script type=\"text/javascript\">");

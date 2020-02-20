@@ -13,7 +13,7 @@ import logic.Bean.WasteUnloadedBean;
 import logic.Controller.UserController;
 import logic.Controller.WasteUnloadedController;
 
-public class TestEcopoints {
+public class TestEarnEcopoints {
 	
 	private UserBean userBean;
 	private WasteUnloadedBean wasteBean;

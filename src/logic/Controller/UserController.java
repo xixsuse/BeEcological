@@ -2,6 +2,7 @@ package logic.Controller;
 
 import java.util.List;
 
+import error.AlreadyUsedUsernameException;
 import error.EmptyFieldException;
 import error.InexistentUsernameException;
 import logic.Bean.UserBean;
@@ -25,7 +26,10 @@ public class UserController {
 		return result;
 	}
 	
-	public boolean CheckRegistration(UserBean userBean) {
+	public boolean CheckRegistration(UserBean userBean) throws AlreadyUsedUsernameException {
+		if(!UserDAO.checkUsername(userBean.getUsername())) {
+			throw new AlreadyUsedUsernameException();
+		}
 		boolean result = UserDAO.checkUsername(userBean.getUsername());
 		return result;
 	}

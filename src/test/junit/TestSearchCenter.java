@@ -10,7 +10,7 @@ import org.junit.Test;
 import logic.Bean.CenterBean;
 import logic.Controller.CenterController;
 
-public class TestSearch {
+public class TestSearchCenter {
 	
 	private CenterBean centerBean;
 	private CenterBean center;
