@@ -2,6 +2,7 @@ package logic.Controller;
 
 import java.util.List;
 
+import error.AlreadyUsedUsernameException;
 import error.EmptyFieldException;
 import error.InexistentUsernameException;
 import error.InvalidEmailException;
@@ -32,7 +33,7 @@ public class UserController {
 		return result;
 	}
 	
-	public void SaveRegistration(UserBean userBean) throws EmptyFieldException, ShortPasswordException, InvalidEmailException {
+	public void SaveRegistration(UserBean userBean) throws EmptyFieldException, ShortPasswordException, InvalidEmailException, AlreadyUsedUsernameException {
 		User user = new User(userBean.getName(), userBean.getSurname(), userBean.getEmailAddress(), userBean.getPhoneNumber(), 
 				userBean.getUsername(), userBean.getPassword(), userBean.getEcopoints());
 		if(userBean.getPassword().length() == 0) {
@@ -43,6 +44,9 @@ public class UserController {
 		}
 		if(!userBean.getEmailAddress().contains("@")) {
 			throw new InvalidEmailException();
+		}
+		if(!UserDAO.checkUsername(userBean.getUsername())) {
+			throw new AlreadyUsedUsernameException();
 		}
  		UserDAO.saveUser(user);
 	}

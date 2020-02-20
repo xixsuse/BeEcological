@@ -6,6 +6,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import error.AlreadyUsedUsernameException;
 import error.EmptyFieldException;
 import error.InvalidEmailException;
 import error.ShortPasswordException;
@@ -16,6 +17,7 @@ public class TestRegistration {
 	
 	UserBean userBean;
 	UserController userController = new UserController();
+	boolean result;
 	
 	@Before
 	public void prepareData() {
@@ -23,7 +25,7 @@ public class TestRegistration {
 		String surname = "surname";
 		String email = "newEmail@gmail.com";	
 		String phone = "3333333333";
-		String username = "newUsername";
+		String username = "sixpain";
 		String password = "newPassword";
 		userBean = new UserBean();
 		userBean.setUsername(username);
@@ -37,8 +39,7 @@ public class TestRegistration {
 	@Test
 	public void testRegistration() {
 		String message = "";
-		boolean expected = true;
-		boolean result = userController.CheckRegistration(userBean);
+		result = true;
 		
 		try {
 			userController.SaveRegistration(userBean);
@@ -51,12 +52,17 @@ public class TestRegistration {
 		} catch (InvalidEmailException e) {
 			message = "Invalid email";
 			result = false;
+		} catch (AlreadyUsedUsernameException e) {
+			message = "Username already exists";
+			result = false;
 		}
-		assertEquals(message, expected, result);
+		assertEquals(message, true, result);
 	}
 	
 	@After
 	public void deleteRegister() {
-		userController.deleteAccount(userBean);
+		if(result) {
+			userController.deleteAccount(userBean);
+		}
 	}
 }

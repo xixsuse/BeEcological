@@ -4,8 +4,11 @@ import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import error.AlreadyUsedUsernameException;
 import error.EmptyFieldException;
 import error.InexistentUsernameException;
+import error.InvalidEmailException;
+import error.ShortPasswordException;
 import logic.Bean.UserBean;
 import logic.Controller.UserController;
 import javafx.event.ActionEvent;
@@ -118,7 +121,7 @@ public class LoginUserView implements Initializable {
 		}
 	}
 	
-	public void registerUser(ActionEvent event) {
+	public void registerUser(ActionEvent event) throws EmptyFieldException, ShortPasswordException, InvalidEmailException, AlreadyUsedUsernameException {
 		boolean ok = true;
 		String name = textName.getText();
 		String surname = textSurname.getText();
