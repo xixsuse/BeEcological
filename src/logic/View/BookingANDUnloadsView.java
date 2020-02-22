@@ -158,7 +158,7 @@ implements Initializable {
 	        }
 	        
 	        book = new BookingBean();
-	        book.setBbCenter(CenterOwnerBean.getOwnerInstance("").getCenter());
+	        book.setBbCenter(CenterOwnerBean.getOwnerInstance("").getCobCenter());
 	        book.setBbStatus("A");
 	        booking_list.removeAll(booking_list);
 		    try {
@@ -222,7 +222,7 @@ implements Initializable {
 		ownerButton.setText(CenterOwnerBean.getOwnerInstance("").getCobUsername());
 		
 		book = new BookingBean();
-		book.setBbCenter(CenterOwnerBean.getOwnerInstance("").getCenter());
+		book.setBbCenter(CenterOwnerBean.getOwnerInstance("").getCobCenter());
 		book.setBbStatus("A");
 		booking_list.removeAll(booking_list);
 	    try {
@@ -257,7 +257,7 @@ implements Initializable {
 		});
 		
 		waste = new WasteUnloadedBean();
-		waste.setWbCenter(CenterOwnerBean.getOwnerInstance("").getCenter());
+		waste.setWbCenter(CenterOwnerBean.getOwnerInstance("").getCobCenter());
 		unload_list.removeAll(unload_list);
 	    try {
 	    	control = new WasteUnloadedController();

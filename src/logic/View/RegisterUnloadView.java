@@ -233,7 +233,7 @@ public class RegisterUnloadView implements Initializable {
 		unload = new UnloadBean();
 		control1 = new UnloadController();
 		unload.setUbUser(user.getUsbUsername());
-		unload.setUbCenter(CenterOwnerBean.instance.getCenter());
+		unload.setUbCenter(CenterOwnerBean.instance.getCobCenter());
 		unload.setUbDate(date.format(DateTimeFormatter.ofPattern(dateFormat)));
 		unload.setUbTime(time);
 		control1.insertAnUnload(unload);
@@ -249,7 +249,7 @@ public class RegisterUnloadView implements Initializable {
 				wasteUnloaded = new WasteUnloadedBean();
 				control2 = new WasteUnloadedController();
 				wasteUnloaded.setWbUser(user.getUsbUsername());
-				wasteUnloaded.setWbCenter(CenterOwnerBean.instance.getCenter());
+				wasteUnloaded.setWbCenter(CenterOwnerBean.instance.getCobCenter());
 				wasteUnloaded.setWbDate(date.format(DateTimeFormatter.ofPattern(dateFormat)));
 				wasteUnloaded.setWbTime(time);
 				wasteUnloaded.setWbWaste(waste);
@@ -283,7 +283,7 @@ public class RegisterUnloadView implements Initializable {
 			
 			booking_list.removeAll(booking_list);
 		    try {
-		    	booking.setBbCenter(CenterOwnerBean.instance.getCenter());
+		    	booking.setBbCenter(CenterOwnerBean.instance.getCobCenter());
 		    	booking.setBbStatus("A");
 		    	data = control3.bookingListByCenter(booking);	//prenotazioni accettate dal gestore
 		        booking_list.addAll(data);
@@ -359,7 +359,7 @@ public class RegisterUnloadView implements Initializable {
 	    try {
 	    	booking = new BookingBean();
 	    	control3 = new BookingController();
-	    	booking.setBbCenter(CenterOwnerBean.instance.getCenter());
+	    	booking.setBbCenter(CenterOwnerBean.instance.getCobCenter());
 	    	booking.setBbStatus("A");
 	    	data = control3.bookingListByCenter(booking);	//prenotazioni accettate dal gestore
 	        booking_list.addAll(data);

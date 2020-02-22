@@ -34,6 +34,7 @@ public class CenterDAO {
         	String selectStatement = "SELECT * FROM beecological.center WHERE beecological.center.centerName = '" + name + "' or "
         			+ "beecological.center.city = '" + name + "' or beecological.center.address = '" + name + "';";
         	res = stmt.executeQuery(selectStatement);
+        	System.out.println(selectStatement);
         	while (res.next()) {
         		listCenter.add(new Center(res.getString("centerName"), res.getString("city"), res.getString("CAP"), 
         				res.getString("address") +" "+ res.getString("num"), res.getString("centerPhone")));

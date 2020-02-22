@@ -74,12 +74,12 @@ public class CenterOwnerBean {
         this.cobPhone = phoneNumber;
     }
     
-    public String getCenter() {
+    public String getCobCenter() {
         return this.cobCenter;
     }
 
 
-    public void setCenter(String centerName) {
+    public void setCobCenter(String centerName) {
         this.cobCenter = centerName;
     }
 }

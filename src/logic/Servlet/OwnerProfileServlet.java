@@ -35,7 +35,7 @@ public class OwnerProfileServlet extends HttpServlet {
         ownerBean.setCobSurname(information.get(1));
         ownerBean.setCobEmail(information.get(2));
         ownerBean.setCobPhone(information.get(3));
-        ownerBean.setCenter(information.get(4));
+        ownerBean.setCobCenter(information.get(4));
         centerBean.setCbName(information.get(4));
         centerBean.setCbPhone(information.get(5));
         centerBean.setCbCity(information.get(6));

@@ -31,7 +31,7 @@ public class CenterController {
 		CenterOwnerBean ownerBean = new CenterOwnerBean();
 		Center center = new Center(centerBean.getCbName());
 		owner = CenterDAO.ownerOfTheCenter(center);
-		ownerBean.setCenter(owner.getCenter());
+		ownerBean.setCobCenter(owner.getCenter());
 		ownerBean.setCobEmail(owner.getCoEmail());
 		ownerBean.setCobName(owner.getCoName());
 		ownerBean.setCobPassword(owner.getCoPassword());

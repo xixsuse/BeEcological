@@ -170,7 +170,7 @@ public class HomeOwnerView implements Initializable {
 		fileChooser.setTitle("Choose a photo for your center");
 		Stage window = (Stage) changePhotoButton.getScene().getWindow();
 		File source = fileChooser.showOpenDialog(window);
-		String destFileName = CenterOwnerBean.getOwnerInstance("").getCenter()+".jpg";
+		String destFileName = CenterOwnerBean.getOwnerInstance("").getCobCenter()+".jpg";
 		File dest = new File ("src/jpeg/"+destFileName);
 		try {
 		    FileUtils.copyFile(source, dest);
@@ -203,7 +203,7 @@ public class HomeOwnerView implements Initializable {
 		centerPhone.setText(ownerInfo.get(5));
 		
 		String centerName = ownerInfo.get(4);
-		CenterOwnerBean.getOwnerInstance("").setCenter(centerName);
+		CenterOwnerBean.getOwnerInstance("").setCobCenter(centerName);
 		File sourcePhoto = new File("src/jpeg/"+centerName+".jpg");
 		if(sourcePhoto.exists() && !sourcePhoto.isDirectory()) { 
 			Image image = new Image(sourcePhoto.toURI().toString());

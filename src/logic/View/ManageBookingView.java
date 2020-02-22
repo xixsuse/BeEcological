@@ -160,7 +160,7 @@ public class ManageBookingView implements Initializable {
     		alert.showAndWait();
 	        booking_list.removeAll(booking_list);
 		    try {
-		        booking.setBbCenter(CenterOwnerBean.instance.getCenter());
+		        booking.setBbCenter(CenterOwnerBean.instance.getCobCenter());
 		        booking.setBbStatus("W");
 		    	data = control2.bookingListByCenter(booking); //richieste di prenotazione da accettare
 		        booking_list.addAll(data);
@@ -236,7 +236,7 @@ public class ManageBookingView implements Initializable {
 	        }
 	        booking_list.removeAll(booking_list);
 		    try {
-		        booking.setBbCenter(CenterOwnerBean.instance.getCenter());
+		        booking.setBbCenter(CenterOwnerBean.instance.getCobCenter());
 		        booking.setBbStatus("W");
 		    	data = control2.bookingListByCenter(booking); //richieste di prenotazione da accettare
 		        booking_list.addAll(data);
@@ -303,7 +303,7 @@ public class ManageBookingView implements Initializable {
 		try {
 	    	booking = new BookingBean();
 	    	control2 = new BookingController();
-	    	booking.setBbCenter(CenterOwnerBean.getOwnerInstance("").getCenter());
+	    	booking.setBbCenter(CenterOwnerBean.getOwnerInstance("").getCobCenter());
 	    	booking.setBbStatus("W");
 	        control2 = new BookingController();
 	    	data = control2.bookingListByCenter(booking); //richieste di prenotazione da accettare
